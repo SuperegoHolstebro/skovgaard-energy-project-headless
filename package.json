@@ -1,0 +1,106 @@
+{
+  "name": "second-turbo",
+  "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "typegen": "cd ./apps/studio && SKIP_VALIDATION=true  sanity schema extract --path ../web/schema.json --enforce-required-fields --workspace home && cd ../web && sanity typegen generate",
+    "deploy": "cd ./apps/studio && sanity deploy"
+  },
+  "prettier": {
+    "semi": false,
+    "printWidth": 100,
+    "bracketSpacing": true,
+    "singleQuote": true
+  },
+  "eslintConfig": {
+    "rules": {
+      "import/no-unresolved": [
+        2,
+        {
+          "ignore": [
+            "^(all|part):"
+          ]
+        }
+      ]
+    }
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.3",
+    "prettier": "^3.2.5",
+    "tailwindcss": "^4.1.5",
+    "turbo": "^2.3.0",
+    "typescript": "5.5.4"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "npm@10.8.2",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "dependencies": {
+    "@gsap/react": "^2.1.2",
+    "@lottiefiles/react-lottie-player": "^3.5.4",
+    "@mynaui/icons-react": "^0.3.2",
+    "@next/third-parties": "^15.0.3",
+    "@radix-ui/react-dialog": "^1.1.2",
+    "@radix-ui/react-navigation-menu": "^1.2.3",
+    "@radix-ui/react-slot": "^1.1.0",
+    "@repo/dashboard": "^0.0.0",
+    "@repo/sanity-studio": "^1.4.0",
+    "@repo/utils": "*",
+    "@sanity/cli": "^3.75.1",
+    "@sanity/client": "^6.22.4",
+    "@sanity/dashboard": "^4.1.0",
+    "@sanity/demo": "^2.0.0",
+    "@sanity/document-internationalization": "^3.2.0",
+    "@sanity/icons": "^3.4.0",
+    "@sanity/image-url": "^1.1.0",
+    "@sanity/locale-da-dk": "^1.0.8",
+    "@sanity/orderable-document-list": "^1.2.2",
+    "@sanity/presentation": "^1.16.5",
+    "@sanity/preview-url-secret": "^2.0.3",
+    "@sanity/react-loader": "^1.10.19",
+    "@sanity/schema": "^3.64.1",
+    "@sanity/types": "^3.64.1",
+    "@sanity/ui": "^2.8.23",
+    "@sanity/vision": "^3.64.1",
+    "@sanity/visual-editing": "^2.8.0",
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/container-queries": "^0.1.1",
+    "@tailwindcss/forms": "^0.5.9",
+    "@tailwindcss/line-clamp": "^0.4.4",
+    "@tailwindcss/postcss": "^4.1.5",
+    "@tailwindcss/typography": "^0.5.15",
+    "@tanstack/react-virtual": "^3.13.0",
+    "axios": "^1.7.7",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "embla-carousel-react": "^8.6.0",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "glazejs": "^2.0.1",
+    "gsap": "^3.13.0",
+    "lenis": "^1.1.16",
+    "motion": "^11.15.0",
+    "next": "^15.1.7",
+    "next-sanity": "^9.8.15",
+    "node-fetch": "^3.3.2",
+    "nodemailer": "^6.9.16",
+    "react-player": "^2.16.0",
+    "sanity": "^3.88.3",
+    "sanity-plugin-asset-source-unsplash": "^3.0.1",
+    "sanity-plugin-iframe-pane": "^3.1.6",
+    "sanity-plugin-internationalized-array": "^3.0.2",
+    "sanity-plugin-media": "^2.4.2",
+    "sanity-plugin-seo-pane": "^2.0.1",
+    "styled-components": "^6.1.13",
+    "tailwind-merge": "^3.2.0",
+    "tailwindcss-debug-screens": "^2.2.1",
+    "xml2js": "^0.6.2"
+  }
+}
