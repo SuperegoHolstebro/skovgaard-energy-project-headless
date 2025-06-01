@@ -3,8 +3,8 @@ import Heading from '../atoms/Heading'
 import { Button } from '../atoms/Button'
 import Paragraph from '../atoms/Paragraph'
 import Accordion from '../molecules/Accordion'
-import { clean } from '@repo/utils/src/sanitize'
-import { extractPlainText } from '@repo/utils/src/StructuredJsonData'
+import { clean } from '@repo/utils/sanitize'
+import { extractPlainText } from '@repo/utils/StructuredJsonData'
 
 
 interface InnerBlocks_Type {

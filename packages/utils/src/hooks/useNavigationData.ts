@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import { client } from '../lib/sanity.client'
 import { NAVIGATION_QUERY } from '@repo/groq/documents/navigation.query'
+import { client } from '../lib/sanity.client'
 
 const useNavigationData = (locale: any) => {
   const [data, setData] = useState(null)

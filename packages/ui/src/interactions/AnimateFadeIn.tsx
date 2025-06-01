@@ -1,7 +1,7 @@
 "use client";
 import { ReactNode } from 'react';
 import { motion } from "motion/react";
-import { defaultOptions } from '@repo/utils/src/hooks/useAnimate'
+import { defaultOptions } from '@repo/utils/hooks/useAnimate'
 
 /**
  *

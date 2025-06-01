@@ -7,7 +7,7 @@ import Logo, { LogoProps } from '../atoms/Logo'
 import Section from '../sections/Section'
 import NavigationGroup from './NavigationGroup'
 import { useParams } from 'next/navigation'
-import { resolveHomeHref } from '@repo/utils/src/resolveHref'
+import { resolveHomeHref } from '@repo/utils/resolveHref'
 
 type HeaderProps = {
   logoVariant?: LogoProps['variant']

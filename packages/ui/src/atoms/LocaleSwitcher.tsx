@@ -1,9 +1,9 @@
 import { useParams } from 'next/navigation'
 import Link from 'next/link'
-import Appconfig from '@repo/utils/src/superego.config'
-import { cn } from '@repo/utils/src/twMerge'
-import useLocaleData from '@repo/utils/src/hooks/useLocaleData'
-import { resolveHref } from '@repo/utils/src/resolveHref'
+import Appconfig from '@repo/utils/superego.config'
+import { cn } from '@repo/utils/twMerge'
+import useLocaleData from '@repo/utils/hooks/useLocaleData'
+import { resolveHref } from '@repo/utils/resolveHref'
 import Heading from './Heading'
 import { cva, VariantProps } from 'class-variance-authority'
 

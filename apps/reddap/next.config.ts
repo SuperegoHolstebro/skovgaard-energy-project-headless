@@ -1,6 +1,6 @@
-import { getClient } from '@repo/utils/src/lib/sanity.client'
+import { getClient } from '@repo/utils/lib/sanity.client'
 import { groq } from 'next-sanity'
-const client = getClient()
+const client = getClient({ token: process.env.SANITY_API_READ_TOKEN || undefined })
 
 // Initialize Sanity client
 async function generateRedirects() {

@@ -1,7 +1,7 @@
-import { headers } from 'next/headers'
+import { headers } from 'next/headers.js'
 
 // Token mapping - centralized in one place
-const TOKEN_MAP = {
+export const TOKEN_MAP = {
   reddap: process.env.SANITY_STUDIO_READ_TOKEN_REDDAP,
   idomlund: process.env.SANITY_STUDIO_READ_TOKEN_IDOMLUND,
   ramme: process.env.SANITY_STUDIO_READ_TOKEN_RAMME,
@@ -9,7 +9,7 @@ const TOKEN_MAP = {
 }
 
 // Get token by project ID
-export const getTokenByProject = (projectId: any) => {
+export const getTokenByProject = (projectId: keyof typeof TOKEN_MAP) => {
   return TOKEN_MAP[projectId] || null
 }
 
@@ -21,28 +21,28 @@ export const getCurrentProjectId = () => {
 // Get current project ID from domain (if you need this)
 export const getProjectFromDomain = async () => {
   const headersList = await headers()
-  const host = headersList.get('host')
+  const host = headersList.get('host') as string | null
 
-  const domainMap = {
+  const domainMap: Record<string, keyof typeof TOKEN_MAP> = {
     'reddap.dk': 'reddap',
     'idomlund.dk': 'idomlund',
     'ramme.dk': 'ramme',
     'nordvestjylland.dk': 'nordvestjylland',
   }
 
-  return domainMap[host] || getCurrentProjectId()
+  return host && domainMap[host] ? domainMap[host] : getCurrentProjectId()
 }
 
 // Get current project token (combines the above)
 export const getCurrentProjectToken = () => {
   const projectId = getCurrentProjectId()
-  return getTokenByProject(projectId)
+  return getTokenByProject(projectId as keyof typeof TOKEN_MAP)
 }
 
 // Get current project token with domain detection
 export const getCurrentProjectTokenFromDomain = async () => {
   const projectId = await getProjectFromDomain()
-  return getTokenByProject(projectId)
+  return getTokenByProject(projectId as keyof typeof TOKEN_MAP)
 }
 
 // Updated sanity.api.js exports

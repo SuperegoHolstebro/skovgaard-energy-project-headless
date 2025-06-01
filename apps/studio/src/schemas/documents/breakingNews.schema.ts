@@ -1,4 +1,4 @@
-import Appconfig from '@repo/utils/src/superego.config'
+import Appconfig from '@repo/utils/superego.config'
 import { defineField, defineType } from 'sanity'
 
 export default defineType({

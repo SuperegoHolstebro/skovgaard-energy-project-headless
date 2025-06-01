@@ -4,7 +4,7 @@ import * as React from 'react'
 import useEmblaCarousel, { type UseEmblaCarouselType } from 'embla-carousel-react'
 import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight } from '@mynaui/icons-react'
 import { AdvancedButton } from '../atoms/AdvancedButton'
-import { cn } from '@repo/utils/src/twMerge'
+import { cn } from '@repo/utils/twMerge'
 import Icon from '../atoms/Icons'
 
 type CarouselApi = UseEmblaCarouselType[1]

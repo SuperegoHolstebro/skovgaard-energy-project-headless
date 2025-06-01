@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from 'motion/react'
 import Image from 'next/image'
 import React from 'react'
 import Section from '../sections/Section'
-import { clean } from '@repo/utils/src/sanitize'
+import { clean } from '@repo/utils/sanitize'
 
 /**
  *

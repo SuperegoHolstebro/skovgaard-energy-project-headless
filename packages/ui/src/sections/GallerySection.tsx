@@ -11,7 +11,7 @@ import Paragraph from '../atoms/Paragraph'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '../molecules/Modal'
 import PlayIcon from '../atoms/PlayIcon'
 import Heading from '../atoms/Heading'
-import { clean } from '@repo/utils/src/sanitize'
+import { clean } from '@repo/utils/sanitize'
 
 /**
  *

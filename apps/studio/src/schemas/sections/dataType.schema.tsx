@@ -1,9 +1,9 @@
 // ./schemas/DataType.ts
 
 import { defineField, defineType } from 'sanity'
-import IconPickerInput from '@repo/ui/sanity/IconPickerInput'
-import Icon from '@repo/ui/atoms/Icons'
 import { QuestionCircle } from '@mynaui/icons-react'
+import Icon from '@repo/ui/atoms/Icons'
+import IconPickerInput from '@repo/ui/sanity/IconPickerInput'
 
 export const DataType = defineType({
   name: 'DataType',

@@ -1,6 +1,6 @@
 import { defineArrayMember, defineField, defineType } from 'sanity'
 import { File } from '@mynaui/icons-react'
-import Appconfig from '@repo/utils/src/superego.config'
+import Appconfig from '@repo/utils/superego.config'
 
 export default defineType({
   name: 'article',

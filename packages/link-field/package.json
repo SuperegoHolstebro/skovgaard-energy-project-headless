@@ -1,9 +1,18 @@
 {
   "name": "@repo/link-field",
-  "type": "module",
   "scripts": {
     "dev": "tsc --watch",
     "build": "tsc"
+  },
+  "exports": {
+    ".": {
+      "import": "./src/index.tsx",
+      "require": "./src/index.tsx"
+    },
+    "./*": [
+      "./src/*.ts",
+      "./src/*.tsx"
+    ]
   },
   "main": "src/index.tsx",
   "types": "src/index.ts",

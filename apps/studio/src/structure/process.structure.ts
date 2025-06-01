@@ -1,6 +1,6 @@
 import { ChartLine } from '@mynaui/icons-react'
 import { ListItemBuilder } from 'sanity/structure'
-import Appconfig from '@repo/utils/src/superego.config'
+import Appconfig from '@repo/utils/superego.config'
 import { iconByLocale } from '../utils/iconByLocale'
 import defineStructure from '../utils/defineStructure'
 

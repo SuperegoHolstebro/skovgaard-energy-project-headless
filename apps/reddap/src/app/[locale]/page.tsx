@@ -1,9 +1,9 @@
 import React from 'react'
-import { useLoadPage } from '@repo/utils/src/hooks/useLoadPage'
+import { useLoadPage } from '@repo/utils/hooks/useLoadPage'
 import { PageBuilder } from '@/components/PageBuilder'
 import PageContainer from '@/components/PageContainer'
 import { notFound } from 'next/navigation'
-import { metaData } from '@repo/utils/src/metadataUtils'
+import { metaData } from '@repo/utils/metadataUtils'
 import { AdvancedButton } from '@repo/ui/atoms/AdvancedButton'
 
 export default async function IndexRoute({ params }: { params: Promise<{ locale: string }> }) {

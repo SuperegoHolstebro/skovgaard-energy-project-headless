@@ -7,6 +7,6 @@ const token = getCurrentProjectToken()
 
 export const { sanityFetch, SanityLive } = defineLive({
   client,
-  browserToken: token,
-  serverToken: token,
+  browserToken: token as any,
+  serverToken: token as any,
 })

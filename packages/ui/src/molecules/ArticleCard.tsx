@@ -3,9 +3,9 @@ import Link from 'next/link'
 import React from 'react'
 import Heading from '../atoms/Heading'
 import Paragraph from '../atoms/Paragraph'
-import { formatDate } from '@repo/utils/src/date'
+import { formatDate } from '@repo/utils/date'
 import Card from '../atoms/Card'
-import { resolveHref } from '@repo/utils/src/resolveHref'
+import { resolveHref } from '@repo/utils/resolveHref'
 import Photo from '../atoms/Photo'
 
 /**

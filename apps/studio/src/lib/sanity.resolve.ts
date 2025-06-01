@@ -1,4 +1,4 @@
-import { resolveHref } from '@repo/utils/src/resolveHref'
+import { resolveHref } from '@repo/utils/resolveHref'
 import { defineDocuments, defineLocations } from 'sanity/presentation'
 /**
  * Sets up the Presentation Resolver API,

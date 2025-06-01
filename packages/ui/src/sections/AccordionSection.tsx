@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import Heading from '../atoms/Heading'
 import Accordion from '../molecules/Accordion'
 import Paragraph from '../atoms/Paragraph'
-import { clean } from '@repo/utils/src/sanitize'
+import { clean } from '@repo/utils/sanitize'
 import { FadeUp } from '../interactions/AnimateFadeIn'
 const AccordionSection = ({ data }: any) => {
   return (

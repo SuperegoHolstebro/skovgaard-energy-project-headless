@@ -1,8 +1,8 @@
 import { MetadataRoute } from 'next'
-import { getClient } from '@repo/utils/src/lib/sanity.client'
-import Appconfig from '@repo/utils/src/superego.config'
+import { getClient } from '@repo/utils/lib/sanity.client'
+import Appconfig from '@repo/utils/superego.config'
 import { ALL_SLUGS_QUERY } from '@repo/groq/organisms/allSlugs.query'
-import { resolveHref } from '@repo/utils/src/resolveHref'
+import { resolveHref } from '@repo/utils/resolveHref'
 
 const client = getClient()
 

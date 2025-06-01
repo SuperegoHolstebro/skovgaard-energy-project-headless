@@ -6,7 +6,7 @@ import React from 'react'
 // @ts-ignore
 import { preload } from 'react-dom'
 import Image from 'next/image'
-import { dataset, projectId } from '@repo/utils/src/lib/sanity.api'
+import { dataset, projectId } from '@repo/utils/lib/sanity.api'
 
 const isDev = process.env.NODE_ENV === 'development'
 

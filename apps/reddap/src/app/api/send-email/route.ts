@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
-import { client } from '@repo/utils/src/lib/sanity.client'
+import { client } from '@repo/utils/lib/sanity.client'
 import groq from 'groq'
 
 // fetch global settings

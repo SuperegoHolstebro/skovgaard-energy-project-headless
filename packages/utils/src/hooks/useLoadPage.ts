@@ -44,7 +44,7 @@ export async function loadQuery<QueryResponse>({
   const isDraftMode = (await draftMode()).isEnabled
   const currentProjectId = projectId || getCurrentProjectId()
 
-  const token = getTokenByProject(currentProjectId)
+  const token = getTokenByProject(currentProjectId as any)
 
   if (isDraftMode && !token) {
     throw new Error('The `SANITY_API_READ_TOKEN` environment variable is required in Draft Mode.')
@@ -56,7 +56,7 @@ export async function loadQuery<QueryResponse>({
     filterResponse: false,
     useCdn: false,
     resultSourceMap: isDraftMode ? 'withKeyArraySelector' : false,
-    token: isDraftMode ? token : undefined,
+    token: isDraftMode ? token : (undefined as any),
     perspective,
     next: {
       tags: ['sanity'],

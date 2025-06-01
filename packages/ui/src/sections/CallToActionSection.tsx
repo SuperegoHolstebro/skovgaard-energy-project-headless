@@ -3,7 +3,7 @@ import Section from './Section'
 import Paragraph from '../atoms/Paragraph'
 import Heading from '../atoms/Heading'
 import { Button } from '../atoms/Button'
-import { clean } from '@repo/utils/src/sanitize'
+import { clean } from '@repo/utils/sanitize'
 import { FadeUp } from '../interactions/AnimateFadeIn'
 const gridCols =
   'xs:grid-cols-4 sm:grid-cols-8 md:grid-cols-12 lg:grid-cols-12 xl:grid-cols-24 2xl:grid-cols-24'

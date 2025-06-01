@@ -3,7 +3,9 @@ export function extractPlainText(richText: any) {
   return richText
     .map((block) => {
       if (block._type === 'block' && Array.isArray(block.children)) {
-        return block.children.map((child) => (child._type === 'span' ? child.text : '')).join('')
+        return block.children
+          .map((child: any) => (child._type === 'span' ? child.text : ''))
+          .join('')
       }
       return ''
     })

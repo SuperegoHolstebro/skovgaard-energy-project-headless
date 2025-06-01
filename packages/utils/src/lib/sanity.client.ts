@@ -12,7 +12,7 @@ import { readToken, apiVersion, dataset, projectId, useCdn } from './sanity.api'
 export function getClient(preview?: { token: string }, customProjectId?: string): SanityClient {
   // Use custom project ID if provided, otherwise use default
   const currentProjectId = customProjectId || getCurrentProjectId()
-  const currentToken = getTokenByProject(currentProjectId)
+  const currentToken = getTokenByProject(currentProjectId as any)
 
   const client = createClient({
     projectId: currentProjectId,

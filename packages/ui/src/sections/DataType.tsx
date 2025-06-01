@@ -6,7 +6,7 @@ import Link from 'next/link'
 import Paragraph from '../atoms/Paragraph'
 import Heading from '../atoms/Heading'
 import { FadeUp } from '../interactions/AnimateFadeIn'
-import { clean } from '@repo/utils/src/sanitize'
+import { clean } from '@repo/utils/sanitize'
 
 interface DataTypeSection {
   data?: any
