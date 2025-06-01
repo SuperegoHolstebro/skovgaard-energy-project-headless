@@ -1,6 +1,5 @@
 'use client'
 import { useEffect } from 'react'
-import Header from '@/components/organisms/Header'
 import Script from 'next/script'
 import Header from '@repo/ui/src/organisms/Header'
 

@@ -1,5 +1,4 @@
 import React from 'react'
-import { useLoadPage } from '@/hooks/useLoadPage'
 import PageContainer from '@/components/PageContainer'
 import { notFound } from 'next/navigation'
 import { metaData } from '@repo/utils/metadataUtils'

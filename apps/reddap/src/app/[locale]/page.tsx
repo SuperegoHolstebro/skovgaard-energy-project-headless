@@ -27,6 +27,4 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const page = await useLoadPage('/', locale)
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || ''
   return metaData({ locale }, page)
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || ''
-  return metaData({ locale }, page)
 }

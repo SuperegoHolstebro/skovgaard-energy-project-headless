@@ -1,11 +1,11 @@
 import React from 'react'
-import { useLoadPage } from '@repo/utils/src/hooks/useLoadPage'
 import { PageBuilder } from '@/components/PageBuilder'
 import PageContainer from '@/components/PageContainer'
 import { notFound } from 'next/navigation'
 import { metaData } from '@repo/utils/metadataUtils'
 import { Params } from '../artikler/[...slug]/page'
 import { draftMode } from 'next/headers'
+import { useLoadPage } from '@repo/utils/hooks/useLoadPage'
 
 export interface PageParams {
   params: Promise<Params>
