@@ -112,7 +112,7 @@ export default defineConfig([
     name: Appconfig.sites.ramme.siteName,
     title: Appconfig.sites.ramme.siteTitle,
     subtitle: Appconfig.sites.ramme.subTitle,
-    projectId: 'projectId',
+    projectId: 'lks8fijv',
     dataset: 'production',
     ...defaultConfig({ website: Appconfig.sites.ramme }),
   },
