@@ -1,9 +1,10 @@
 import { defineArrayMember, defineField, defineType } from 'sanity'
 import { File } from '@mynaui/icons-react'
+import Appconfig from '@repo/utils/src/superego.config'
 
 export default defineType({
   name: 'article',
-  title: 'Artikel',
+  title: 'Nyhed',
   type: 'document',
   icon: File,
   groups: [
@@ -36,15 +37,10 @@ export default defineType({
       name: 'locale',
       type: 'string',
       readOnly: true,
+      hidden: true,
+      initialValue: Appconfig.i18n.defaultLocaleId,
     }),
-    {
-      name: 'category',
-      title: 'Kategori',
-      type: 'reference',
-      description: 'Vælg en kategori',
-      to: [{ type: 'category' }],
-      group: 'settings',
-    },
+
     defineField({
       name: 'mainImage',
       title: 'Udvalgt billede',
@@ -60,12 +56,11 @@ export default defineType({
       initialValue: () => new Date().toISOString(),
     }),
     defineField({
+      type: 'blockContent',
       name: 'body',
       title: 'Tekst',
       group: 'content',
       description: 'Sidens Tekst indhold',
-      type: 'array',
-      of: [defineArrayMember({ type: 'block', title: 'blockContent' })],
     }),
     defineField({
       group: 'seo',
@@ -78,16 +73,17 @@ export default defineType({
   preview: {
     select: {
       title: 'title',
-      author: 'author.title',
+      locale: 'locale',
+      slug: 'slug',
       date: 'date',
-      image: 'mainImage',
+      image: 'image',
     },
     prepare(selection) {
       return {
         title: selection.title,
-        subtitle: `Af: ${selection.author}`,
+        subtitle: `/${selection.locale}/${selection.slug.current} - ${new Date(selection.date).toLocaleDateString()}`,
         description: `Udgivet: ${new Date(selection.date).toLocaleDateString()}`,
-        media: selection.image,
+        imageUrl: selection.image?.asset?.url,
       }
     },
   },

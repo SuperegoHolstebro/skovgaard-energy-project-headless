@@ -147,7 +147,15 @@ function defaultConfig({ website, presentationOriginUrl }) {
       documentInternationalization({
         // Required configuration
         supportedLanguages: [...website.i18n.locales],
-        schemaTypes: ['page', 'navigation', 'footer', 'settings', 'article', 'event'],
+        schemaTypes: [
+          'page',
+          'navigation',
+          'footer',
+          'settings',
+          'article',
+          'event',
+          'BreakingNews',
+        ],
         languageField: 'locale',
       }),
       media({

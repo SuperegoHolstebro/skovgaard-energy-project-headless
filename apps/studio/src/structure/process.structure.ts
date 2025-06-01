@@ -1,28 +1,6 @@
-/* import { ListItemBuilder } from 'sanity/structure'
-import defineStructure from '../utils/defineStructure'
-import { FileText, Tag } from '@mynaui/icons-react'
- */
-/* export default defineStructure<ListItemBuilder>((S) =>
-  S.listItem()
-    .title('Nyheder')
-    .icon(FileText)
-    .id('artikler')
-    .child(
-      S.documentTypeList('article')
-        .title('Artikler')
-        .child((documentId) =>
-          S.document()
-            .documentId(documentId)
-            .schemaType('article')
-            .views([S.view.form().id('articleEditor')]),
-        ),
-    ),
-)
- */
-
+import { ChartLine } from '@mynaui/icons-react'
 import { ListItemBuilder } from 'sanity/structure'
 import Appconfig from '@repo/utils/src/superego.config'
-import { Folder } from '@mynaui/icons-react'
 import { iconByLocale } from '../utils/iconByLocale'
 import defineStructure from '../utils/defineStructure'
 
@@ -39,20 +17,20 @@ export default defineStructure<ListItemBuilder>((S, context) => {
   // Only one locale – no language switching needed
   if (locales.length === 1) {
     return S.listItem()
-      .title('Nyheder')
-      .icon(Folder)
+      .title('Procesplan')
+      .icon(ChartLine)
       .child(
-        S.documentTypeList('article')
-          .title('Alle nyheder')
-          .filter('_type == "article" && locale == $locale')
+        S.documentTypeList('process')
+          .title('Alle Procesplaner')
+          .filter('_type == "process" && locale == $locale')
           .params({ locale: locales[0].id }),
       )
   }
 
   // Multiple locales – show language-specific lists and "missing language"
   return S.listItem()
-    .title('Nyheder')
-    .icon(Folder)
+    .title('Procesplan')
+    .icon(ChartLine)
     .child(
       S.list()
         .title('Sprog')
@@ -62,9 +40,9 @@ export default defineStructure<ListItemBuilder>((S, context) => {
               .title(locale.title)
               .icon(iconByLocale(locale.id))
               .child(
-                S.documentTypeList('article')
+                S.documentTypeList('process')
                   .title(locale.title)
-                  .filter('_type == "article" && locale == $locale')
+                  .filter('_type == "process" && locale == $locale')
                   .params({ locale: locale.id }),
               ),
           ),
@@ -72,9 +50,9 @@ export default defineStructure<ListItemBuilder>((S, context) => {
             .title('Mangler sprog')
             .icon(iconByLocale('missing'))
             .child(
-              S.documentTypeList('article')
+              S.documentTypeList('process')
                 .title('Mangler sprog')
-                .filter('_type == "article" && !defined(locale)'),
+                .filter('_type == "process" && !defined(locale)'),
             ),
         ]),
     )
