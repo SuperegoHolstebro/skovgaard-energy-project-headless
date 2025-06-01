@@ -1,12 +1,5 @@
 {
   "name": "@repo/ui",
-  "exports": {
-    "./*": [
-      "./src/*.ts",
-      "./src/*.tsx"
-    ],
-    "./global.css": "./src/styles/global.css"
-  },
   "dependencies": {
     "eslint-config-next": "15.0.3",
     "next": "^15.0.3",
