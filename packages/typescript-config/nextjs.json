@@ -12,6 +12,7 @@
     "strict": false,
     "strictNullChecks": false,
     "noImplicitThis": false,
-    "strictFunctionTypes": false
+    "strictFunctionTypes": false,
+
   }
 }

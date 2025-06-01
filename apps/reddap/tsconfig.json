@@ -6,27 +6,27 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
-    }
+    },
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "incremental": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "strictFunctionTypes": false,
+    "strictBindCallApply": false,
+    "strictPropertyInitialization": false,
+    "noImplicitThis": false,
+    "alwaysStrict": false
   },
-  "allowJs": true,
-  "skipLibCheck": true,
-  "strict": false,
-  "forceConsistentCasingInFileNames": true,
-  "noEmit": true,
-  "incremental": true,
-  "esModuleInterop": true,
-  "module": "esnext",
   "moduleResolution": "node",
-  "resolveJsonModule": true,
-  "isolatedModules": true,
-  "jsx": "preserve",
-  "noImplicitAny": false,
-  "strictNullChecks": false,
-  "strictFunctionTypes": false,
-  "strictBindCallApply": false,
-  "strictPropertyInitialization": false,
-  "noImplicitThis": false,
-  "alwaysStrict": false,
   "include": [
     "next-env.d.ts",
     "**/*.ts",
@@ -35,7 +35,7 @@
     "tailwind.config.ts",
     "src/components/molecules/Seo.jsx",
     "sanity.cli.js",
-    "../../packages/sanity-studio/src/plugins/CustomPreviewHeader.tsx"
+    "src/components/shad/MenuBar.jsx"
   ],
   "exclude": ["node_modules"]
 }

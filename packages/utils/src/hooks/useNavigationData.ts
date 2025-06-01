@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { client } from '@repo/utils/src/lib/sanity.client'
+import { client } from '../lib/sanity.client'
 import { NAVIGATION_QUERY } from '@repo/groq/documents/navigation.query'
 
 const useNavigationData = (locale: any) => {
