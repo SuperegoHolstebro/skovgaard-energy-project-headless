@@ -1,5 +1,6 @@
 {
   "name": "@repo/ui",
+  "type": "module",
   "exports": {
     "./Button": "./src/atoms/Button.tsx",
     "./atoms/AdvancedButton": "./src/atoms/AdvancedButton.tsx",
