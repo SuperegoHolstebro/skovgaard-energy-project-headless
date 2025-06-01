@@ -4,7 +4,7 @@ import React from 'react'
 import { cn } from '@repo/utils/twMerge'
 import { ParagraphProps } from '../types/Paragraph.types'
 import Heading from './Heading'
-import { SanityLink } from '@repo/link-field/sanity-link'
+import { SanityLink } from '@repo/link-field/src/sanity-link'
 
 /**
  *
