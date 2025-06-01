@@ -5,7 +5,7 @@ import {
   isExternalLink,
   isInternalLink,
   isPhoneLink,
-} from './typeGaurds.js'
+} from './typeGaurds'
 
 /**
  * Get the text to display for the given link.

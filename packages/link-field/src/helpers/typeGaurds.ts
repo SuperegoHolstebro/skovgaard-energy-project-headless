@@ -6,7 +6,7 @@ import type {
   InternalLink,
   LinkValue,
   PhoneLink,
-} from '../types.js'
+} from '../types'
 
 export const isInternalLink = (link: LinkValue): link is InternalLink => link.type === 'internal'
 

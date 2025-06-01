@@ -1,9 +1,9 @@
 import { defineField, definePlugin, defineType, type ObjectInputProps } from 'sanity'
-import { CustomLinkInput } from './components/CustomLinkInput.js'
-import { LinkInput } from './components/LinkInput.js'
-import { LinkTypeInput } from './components/LinkTypeInput.js'
-import { isCustomLink } from './helpers/typeGaurds.js'
-import type { LinkFieldPluginOptions, LinkValue } from './types.js'
+import { CustomLinkInput } from './components/CustomLinkInput'
+import { LinkInput } from './components/LinkInput'
+import { LinkTypeInput } from './components/LinkTypeInput'
+import { isCustomLink } from './helpers/typeGaurds'
+import type { LinkFieldPluginOptions, LinkValue } from './types'
 
 /**
  * A plugin that adds a custom Link field for creating internal and external links,

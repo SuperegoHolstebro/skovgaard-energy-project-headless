@@ -1,8 +1,8 @@
 import { Box, Flex, Stack, Text } from '@sanity/ui'
 import { type FieldMember, FormFieldValidationStatus, ObjectInputMember } from 'sanity'
 import styled from 'styled-components'
-import { isCustomLink } from '../helpers/typeGaurds.js'
-import { LinkInputProps } from '../types.js'
+import { isCustomLink } from '../helpers/typeGaurds'
+import { LinkInputProps } from '../types'
 import React from 'react'
 
 const ValidationErrorWrapper = styled(Box)`
