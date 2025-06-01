@@ -16,7 +16,6 @@ import { CustomToolMenu } from './src/components/ToolMenu'
 import { createVisualAction } from './src/actions/sanity.actions'
 import { myTheme } from './src/lib/sanity.theme'
 import { pages } from '@repo/sanity-studio/src/plugins/navigator/index'
-import Appconfig from '@repo/utils/src/superego.config'
 import {
   DeleteTranslationAction,
   documentInternationalization,
@@ -32,13 +31,79 @@ import SuperegoWidget from '@repo/dashboard/superego-widget'
 const url = process.env.SANITY_STUDIO_FRONT_END
 const presentationOriginUrl = process.env.SANITY_STUDIO_PRESENTATION_URL
 
+const Appconfig = {
+  fullWebsiteUrl: 'https://sanity-turbo.vercel.app',
+  siteTitle: 'sanity turbo',
+  siteName: 'sanity-turbo',
+  i18n: {
+    locales: [
+      { id: 'da', title: 'Dansk' },
+      { id: 'en', title: 'English' },
+    ],
+    defaultLocaleId: 'da',
+  },
+  sites: {
+    reddap: {
+      fullWebsiteUrl: 'https://reddap.dk',
+      siteTitle: 'Reddap',
+      subTitle: 'Reddap - projektside',
+      siteName: 'reddap',
+      basePath: '/reddap',
+      projectId: 'wqb4hzip',
+      i18n: {
+        locales: [
+          { id: 'da', title: 'Dansk' },
+          { id: 'en', title: 'English' },
+        ],
+        defaultLocaleId: 'da',
+      },
+    },
+    ramme: {
+      fullWebsiteUrl: 'https://ramme.dk',
+      siteTitle: 'Ramme',
+      subTitle: 'Ramme - projektside',
+      siteName: 'ramme',
+      basePath: '/ramme',
+      projectId: 'lks8fijv',
+      i18n: {
+        locales: [{ id: 'da', title: 'Dansk' }],
+        defaultLocaleId: 'da',
+      },
+    },
+    idomlund: {
+      fullWebsiteUrl: 'https://idomlund.dk',
+      siteTitle: 'Idomlund',
+      subTitle: 'Idomlund - projektside',
+      siteName: 'idomlund',
+      basePath: '/idomlund',
+      projectId: '6dcmsap4',
+      i18n: {
+        locales: [{ id: 'da', title: 'Dansk' }],
+        defaultLocaleId: 'da',
+      },
+    },
+    nordvestjylland: {
+      fullWebsiteUrl: 'https://Nordvestjylland.dk',
+      siteTitle: 'Nordvestjylland',
+      subTitle: 'Nordvestjylland - projektside',
+      siteName: 'nordvestjylland',
+      basePath: '/nordvestjylland',
+      projectId: 'sdye5zc0',
+      i18n: {
+        locales: [{ id: 'da', title: 'Dansk' }],
+        defaultLocaleId: 'da',
+      },
+    },
+  },
+}
+
 export default defineConfig([
   {
     basePath: Appconfig.sites.reddap.basePath,
     name: Appconfig.sites.reddap.siteName,
     title: Appconfig.sites.reddap.siteTitle,
     subtitle: Appconfig.sites.reddap.subTitle,
-    projectId: Appconfig.sites.reddap.projectId,
+    projectId: 'wqb4hzip',
     dataset: 'production',
     ...defaultConfig({ website: Appconfig.sites.reddap }),
   },
@@ -47,7 +112,7 @@ export default defineConfig([
     name: Appconfig.sites.ramme.siteName,
     title: Appconfig.sites.ramme.siteTitle,
     subtitle: Appconfig.sites.ramme.subTitle,
-    projectId: Appconfig.sites.ramme.projectId,
+    projectId: 'projectId',
     dataset: 'production',
     ...defaultConfig({ website: Appconfig.sites.ramme }),
   },
@@ -56,7 +121,7 @@ export default defineConfig([
     name: Appconfig.sites.idomlund.siteName,
     title: Appconfig.sites.idomlund.siteTitle,
     subtitle: Appconfig.sites.idomlund.subTitle,
-    projectId: Appconfig.sites.idomlund.projectId,
+    projectId: '6dcmsap4',
     dataset: 'production',
     ...defaultConfig({ website: Appconfig.sites.idomlund }),
   },
@@ -65,7 +130,7 @@ export default defineConfig([
     name: Appconfig.sites.nordvestjylland.siteName,
     title: Appconfig.sites.nordvestjylland.siteTitle,
     subtitle: Appconfig.sites.nordvestjylland.subTitle,
-    projectId: Appconfig.sites.nordvestjylland.projectId,
+    projectId: 'sdye5zc0',
     dataset: 'production',
     ...defaultConfig({ website: Appconfig.sites.nordvestjylland }),
   },
