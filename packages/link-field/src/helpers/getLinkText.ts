@@ -1,11 +1,11 @@
-import { LinkValue } from '../types'
+import { LinkValue } from '../types.js'
 import {
   isCustomLink,
   isEmailLink,
   isExternalLink,
   isInternalLink,
   isPhoneLink,
-} from './typeGaurds'
+} from './typeGaurds.js'
 
 /**
  * Get the text to display for the given link.
