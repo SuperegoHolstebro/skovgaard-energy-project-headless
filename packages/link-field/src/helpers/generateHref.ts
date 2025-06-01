@@ -1,7 +1,7 @@
 import { type UrlObject } from 'url'
 
-import { FileLink, InternalLink, LinkValue } from '../types'
-import { isCustomLink, isEmailLink, isExternalLink, isPhoneLink } from './typeGaurds'
+import { FileLink, InternalLink, LinkValue } from '../types.js'
+import { isCustomLink, isEmailLink, isExternalLink, isPhoneLink } from './typeGaurds.js'
 
 export const generateHref = {
   internal: (link: LinkValue, hrefResolver?: (link: InternalLink) => string | UrlObject) => {

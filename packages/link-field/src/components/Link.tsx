@@ -1,8 +1,8 @@
 import React, { type ElementType, type ForwardedRef, forwardRef } from 'react'
-import { generateHref } from '../helpers/generateHref'
-import { getLinkText } from '../helpers/getLinkText'
-import { isCustomLink, isEmailLink, isPhoneLink } from '../helpers/typeGaurds'
-import { InternalLink, LinkValue } from '../types'
+import { generateHref } from '../helpers/generateHref.js'
+import { getLinkText } from '../helpers/getLinkText.js'
+import { isCustomLink, isEmailLink, isPhoneLink } from '../helpers/typeGaurds.js'
+import { InternalLink, LinkValue } from '../types.js'
 
 type LinkProps = {
   link?: LinkValue

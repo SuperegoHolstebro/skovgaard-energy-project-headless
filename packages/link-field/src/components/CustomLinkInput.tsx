@@ -3,7 +3,7 @@ import { Select, Spinner } from '@sanity/ui'
 import { useEffect, useState } from 'react'
 import { SanityDocument, set, type StringInputProps, useFormValue, useWorkspace } from 'sanity'
 import styled from 'styled-components'
-import { CustomLinkType, CustomLinkTypeOptions, LinkValue } from '../types'
+import { CustomLinkType, CustomLinkTypeOptions, LinkValue } from '../types.js'
 import React from 'react'
 
 const OptionsSpinner = styled(Spinner)`

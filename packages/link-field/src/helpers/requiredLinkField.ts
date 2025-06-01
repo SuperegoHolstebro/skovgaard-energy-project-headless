@@ -1,13 +1,13 @@
 import type { CustomValidatorResult } from 'sanity'
 
-import type { LinkValue } from '../types'
+import type { LinkValue } from '../types.js'
 import {
   isCustomLink,
   isEmailLink,
   isExternalLink,
   isInternalLink,
   isPhoneLink,
-} from './typeGaurds'
+} from './typeGaurds.js'
 
 /**
  * Helper to create a required link field.

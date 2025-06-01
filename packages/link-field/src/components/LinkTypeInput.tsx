@@ -3,7 +3,7 @@ import { Link, Earth, Envelope, Telephone, File } from '@mynaui/icons-react'
 import { Button, Menu, MenuButton, MenuItem } from '@sanity/ui'
 import { set, type StringInputProps } from 'sanity'
 import styled from 'styled-components'
-import { CustomLinkType, LinkFieldPluginOptions, LinkType } from '../types'
+import { CustomLinkType, LinkFieldPluginOptions, LinkType } from '../types.js'
 import React from 'react'
 
 const defaultLinkTypes: LinkType[] = [
