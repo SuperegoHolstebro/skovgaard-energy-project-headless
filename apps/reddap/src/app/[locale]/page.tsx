@@ -1,11 +1,10 @@
 import React from 'react'
+import { useLoadPage } from '@repo/utils/src/hooks/useLoadPage'
 import { PageBuilder } from '@/components/PageBuilder'
 import PageContainer from '@/components/PageContainer'
 import { notFound } from 'next/navigation'
 import { metaData } from '@repo/utils/src/metadataUtils'
-import { useLoadPage } from '@/hooks/UseLoadPage'
-import { client } from '@/sanity/lib/sanity.client'
-import { SITE_SETTINGS_QUERY } from '@repo/groq/documents/siteSettings.query'
+import { AdvancedButton } from '@repo/ui/atoms/AdvancedButton'
 
 export default async function IndexRoute({ params }: { params: Promise<{ locale: string }> }) {
   const locale = (await params).locale
@@ -26,10 +25,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const locale = (await params).locale
 
   const page = await useLoadPage('/', locale)
-  const settings = await client.fetch(SITE_SETTINGS_QUERY, {
-    locale: locale,
-  })
-
-  return metaData({ locale }, page, settings)
-
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || ''
+  return metaData({ locale }, page)
 }
