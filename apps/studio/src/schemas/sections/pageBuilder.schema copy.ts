@@ -12,6 +12,8 @@ export const pageBuilder = defineType({
       views: [
         {
           name: 'grid',
+          previewImageUrl: (schemaTypeName) =>
+            `/images/backend/${schemaTypeName}.png`,
         },
         { name: 'list' },
       ],
@@ -29,22 +31,7 @@ export const pageBuilder = defineType({
         {
           name: 'content',
           title: 'Indhold',
-          of: ['textWithIllustration', 'textContainer', 'CallToAction', 'CallToAction2'],
-        },
-        {
-          name: 'people',
-          title: 'Personale',
-          of: ['EmployeesType'],
-        },
-        {
-          name: 'events',
-          title: 'Begivenheder',
-          of: ['EventType'],
-        },
-        {
-          name: 'articles',
-          title: 'Artikler',
-          of: ['ArticlesType'],
+          of: ['textWithIllustration', 'textContainer'],
         },
       ],
     },
@@ -167,7 +154,7 @@ export const pageBuilder = defineType({
       name: 'NewsLetterCTA',
       type: 'NewsLetterCTA',
     }),
-    /*      defineArrayMember({
+/*      defineArrayMember({
       name: 'NewsType',
       type: 'NewsType',
     }), */

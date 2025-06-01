@@ -1,5 +1,5 @@
 import { PanelTopOpen } from '@mynaui/icons-react'
-import { defineField, defineType } from 'sanity'
+import { defineArrayMember, defineField, defineType } from 'sanity'
 
 export const accordionType = defineType({
   name: 'accordion',
@@ -9,20 +9,24 @@ export const accordionType = defineType({
   description:
     'Udfoldelige faner, som kan indeholde en overskrift og uddybende tekst. En accordion hjælper med at spare plads og gør hjemmesiden mere overskuelig og lettere at navigere i.',
   fields: [
+    defineField({
+      name: 'title',
+      title: 'Title',
+      type: 'string',
+    }),
     {
       name: 'accordions',
       title: 'Accordions',
       type: 'array',
       of: [
-        {
+        defineArrayMember({
           type: 'object',
           title: 'Accordion',
-          name: 'accordionObject',
           icon: PanelTopOpen,
           fields: [
             defineField({
               name: 'title',
-              title: 'Titel',
+              title: 'Title',
               type: 'string',
             }),
             defineField({
@@ -30,6 +34,12 @@ export const accordionType = defineType({
               title: 'Brødtekst',
               type: 'blockContent',
             }),
+            defineField({
+              name: 'link',
+              title: 'Link',
+              type: 'link',
+            }),
+
             defineField({
               name: 'unfloded',
               description:
@@ -51,17 +61,14 @@ export const accordionType = defineType({
               }
             },
           },
-        },
+        }),
       ],
     },
-    defineField({
-      name: 'turnIntoStructuredData',
-      title: 'Lav om til struktureret data (Google Schema markup)',
-      type: 'boolean',
-      description:
-        'Hvis denne er sat til, vil accordionen blive lavet om til struktureret data, som Google kan forstå.',
-      initialValue: false,
-    }),
+    {
+      type: 'design',
+      name: 'design',
+      title: 'Design',
+    },
   ],
   preview: {
     select: {

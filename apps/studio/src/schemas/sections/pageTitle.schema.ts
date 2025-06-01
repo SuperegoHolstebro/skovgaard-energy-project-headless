@@ -1,11 +1,14 @@
-import { Click } from '@mynaui/icons-react'
+// ./schemas/textWithIllustration.js
+
+import { PanelTop } from '@mynaui/icons-react'
 import { defineArrayMember, defineField, defineType } from 'sanity'
 
-export const CallToAction = defineType({
-  name: 'CallToAction',
+export const pageTitle = defineType({
+  name: 'pageTitle',
   type: 'object',
-  title: 'Call to action',
-  icon: Click,
+  title: 'Side titel',
+  icon: PanelTop,
+  description: 'En titel til en side',
   groups: [
     { title: 'Indhold', name: 'content' },
     { title: 'Design', name: 'design' },
@@ -16,33 +19,33 @@ export const CallToAction = defineType({
     defineField({
       name: 'title',
       type: 'string',
+      title: 'Overskrift',
       group: 'content',
     }),
     defineField({
-      name: 'body',
-      group: 'content',
-      title: 'Brødtekst',
-      type: 'blockContent',
+      name: 'description',
+      type: 'text',
+      title: 'Beskrivelse',
     }),
     defineField({
-      name: 'link',
-      type: 'link',
-      title: 'Link',
-      description: 'Link til en side eller ekstern URL.',
       group: 'content',
+      name: 'buttons',
+      title: 'Knapper ',
+      type: 'array',
+      description:
+        "Tilføj knapper til siden. Du kan tilføje links til sider eller eksterne URL'er.",
+      of: [
+        defineArrayMember({
+          name: 'button',
+          type: 'button',
+        }),
+      ],
     }),
+
     defineField({
       name: 'design',
       type: 'design',
       group: 'design',
-    }),
-    defineField({
-      name: 'overflow',
-      type: 'boolean',
-      title: 'Overflow?',
-      description: 'Fjern padding på bunden først.',
-      group: 'design',
-      initialValue: false,
     }),
     defineField({
       name: 'SectionSettings',
@@ -54,14 +57,13 @@ export const CallToAction = defineType({
   preview: {
     select: {
       title: 'title',
-      body: 'body',
+      tagline: 'tagline',
       media: 'image',
     },
-    prepare({ media, title, body }) {
+    prepare({ title, tagline }) {
       return {
-        title: title || 'Call to action',
-        subtitle: body ? 'Call to action | ' + body[0]?.children[0]?.text : 'Ingen brødtekst',
-        media: media || undefined,
+        title: title,
+        subtitle: 'Side titel',
       }
     },
   },

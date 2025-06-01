@@ -1,10 +1,11 @@
+import { paddingIndicator } from '../../../utils/paddingindicator'
 import { Album } from '@mynaui/icons-react'
 import { defineType } from 'sanity'
 
-export const LogoGallery2 = defineType({
-  name: 'LogoGallery2',
+export const LogoGallery = defineType({
+  name: 'LogoGallery',
   type: 'object',
-  title: 'Logo Galleri 2',
+  title: 'Logo Galleri',
   icon: Album,
   fields: [
     {
@@ -13,16 +14,15 @@ export const LogoGallery2 = defineType({
       title: 'Titel',
       description: 'Titel på logogalleriet',
     },
-
     {
       name: 'images',
       type: 'array',
-      title: 'Images',
+      title: 'Billeder',
       of: [
         {
           name: 'image',
           type: 'image',
-          title: 'Image',
+          title: 'Billede',
           options: {
             hotspot: true,
           },
@@ -39,18 +39,30 @@ export const LogoGallery2 = defineType({
         layout: 'grid',
       },
     },
+    {
+      name: 'design',
+      title: 'Design',
+      type: 'design',
+    },
+    {
+      name: 'SectionSettings',
+      title: 'Indstillinger',
+      type: 'SectionSettings',
+    },
   ],
   preview: {
     select: {
       images: 'images',
       image: 'images.0',
+      title: 'title',
+      design: 'design',
     },
     prepare(selection) {
-      const { images, image } = selection
+      const { images, image, design } = selection
 
       return {
-        title: `Galleri med ${Object.keys(images).length} billeder`,
-        subtitle: `Alt text: `,
+        title: `Logo Galleri med ${Object.keys(images).length} billeder`,
+        subtitle: `Logo Galleri | ${paddingIndicator(design)}`,
         media: image,
       }
     },

@@ -4,8 +4,15 @@ import { Folder } from '@mynaui/icons-react'
 import { iconByLocale } from '../utils/iconByLocale'
 import defineStructure from '../utils/defineStructure'
 
-export default defineStructure<ListItemBuilder>((S) => {
-  const locales = Appconfig.i18n.locales
+export default defineStructure<ListItemBuilder>((S, context) => {
+  // Get the current site configuration based on project ID
+  const currentProjectId = context.projectId
+  const currentSite = Object.values(Appconfig.sites).find(
+    (site) => site.projectId === currentProjectId,
+  )
+
+  // Fall back to global config if no matching site found
+  const locales = currentSite?.i18n?.locales || Appconfig.i18n.locales
 
   // Only one locale – no language switching needed
   if (locales.length === 1) {
