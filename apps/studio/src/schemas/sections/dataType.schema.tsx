@@ -2,8 +2,8 @@
 
 import { defineField, defineType } from 'sanity'
 import { QuestionCircle } from '@mynaui/icons-react'
-import Icon from '@repo/ui/atoms/Icons'
-import IconPickerInput from '@repo/ui/sanity/IconPickerInput'
+import Icon from '../../components/Icons'
+import IconPickerInput from '../../components/IconPickerInput'
 
 export const DataType = defineType({
   name: 'DataType',
@@ -43,7 +43,7 @@ export const DataType = defineType({
               return {
                 title: title || 'Ingen overskrift',
                 subtitle: subtitle || 'Ingen tekst',
-                media: icon ? <Icon type={icon} /> : null,
+                media: icon ? <Icon type={icon as any} /> : null,
               }
             },
           },

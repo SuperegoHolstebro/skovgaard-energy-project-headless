@@ -31,7 +31,7 @@ export default async function DynamicRoute({ params }: { params: Promise<Params>
   return (
     <PageContainer>
       <Section
-        variant="lys"
+        variant="default"
         paddingTop="none"
         paddingX="none"
         paddingBottom="none"

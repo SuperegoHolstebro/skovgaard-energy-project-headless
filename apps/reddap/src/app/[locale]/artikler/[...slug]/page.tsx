@@ -10,6 +10,7 @@ import { useLoadPage } from '@repo/utils/hooks/useLoadPage'
 import Section from '@repo/ui/sections/Section'
 import Heading from '@repo/ui/atoms/Heading'
 import Paragraph from '@repo/ui/atoms/Paragraph'
+
 export interface Params {
   slug: string[]
   locale: string
