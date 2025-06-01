@@ -6,6 +6,6 @@ export default defineCliConfig({
     dataset: 'production',
   },
   project: {
-    basePath: '/reddap',
+    basePath: '/projectsider',
   },
 })

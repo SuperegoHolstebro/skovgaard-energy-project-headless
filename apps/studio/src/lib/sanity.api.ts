@@ -9,13 +9,20 @@ export const dataset = assertValue(
   process.env.SANITY_STUDIO_DATASET,
   'Missing environment variable: SANITY_STUDIO_DATASET',
 )
+const theprojectId =
+  process.env.SANITY_STUDIO_PROJECT_ID ?? process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
 
 export const projectId = assertValue(
-  process.env.SANITY_STUDIO_PROJECT_ID,
-  'Missing environment variable: SANITY_STUDIO_PROJECT_ID',
+  theprojectId,
+  'Missing environment variable: NEXT_PUBLIC_SANITY_PROJECT_ID',
 )
 
-export const readToken = process.env.SANITY_API_READ_TOKEN || ''
+export const readToken = {
+  reddap: process.env.SANITY_STUDIO_READ_TOKEN_REDDAP,
+  idomlund: process.env.SANITY_STUDIO_READ_TOKEN_IDOMLUND,
+  ramme: process.env.SANITY_STUDIO_READ_TOKEN_RAMME,
+  nordvestjylland: process.env.SANITY_STUDIO_READ_TOKEN_NORDVESTJYLLAND,
+}
 
 // see https://www.sanity.io/docs/api-versioning for how versioning works
 export const apiVersion = process.env.SANITY_API_VERSION || '2023-09-01'
