@@ -4,13 +4,6 @@
     "dev": "tsc --watch",
     "build": "tsc"
   },
-  "exports": {
-    "./*": [
-      "./src/*.ts",
-      "./src/*.tsx"
-    ],
-    "./global.css": "./src/styles/global.css"
-  },
   "main": "src/index.tsx",
   "types": "src/index.ts",
   "link": "src/sanityLink.tsx",
