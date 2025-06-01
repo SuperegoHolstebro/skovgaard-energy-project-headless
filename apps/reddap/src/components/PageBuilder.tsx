@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import { sectionComponents } from '@repo/ui/sections/index'
+import { sectionComponents } from '@repo/ui/src/sections/index'
 import { createDataAttribute } from '@sanity/visual-editing'
 import { useOptimistic } from '@sanity/visual-editing/react'
 
