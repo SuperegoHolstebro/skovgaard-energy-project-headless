@@ -28,115 +28,62 @@ import SuperegoLogo from '@repo/dashboard/superego-logo'
 import LinksWidget from '@repo/dashboard/links-widget'
 import ProjectManagerWidget from '@repo/dashboard/project-manager-widget'
 import SuperegoWidget from '@repo/dashboard/superego-widget'
+import Appconfig from './superego.config'
 const url = process.env.SANITY_STUDIO_FRONT_END
 const presentationOriginUrl = process.env.SANITY_STUDIO_PRESENTATION_URL
 
-const Appconfig = {
-  fullWebsiteUrl: 'https://sanity-turbo.vercel.app',
-  siteTitle: 'sanity turbo',
-  siteName: 'sanity-turbo',
-  i18n: {
-    locales: [
-      { id: 'da', title: 'Dansk' },
-      { id: 'en', title: 'English' },
-    ],
-    defaultLocaleId: 'da',
-  },
-  sites: {
-    reddap: {
-      fullWebsiteUrl: 'https://reddap.dk',
-      siteTitle: 'Reddap',
-      subTitle: 'Reddap - projektside',
-      siteName: 'reddap',
-      basePath: '/reddap',
-      projectId: 'wqb4hzip',
-      i18n: {
-        locales: [
-          { id: 'da', title: 'Dansk' },
-          { id: 'en', title: 'English' },
-        ],
-        defaultLocaleId: 'da',
-      },
-    },
-    ramme: {
-      fullWebsiteUrl: 'https://ramme.dk',
-      siteTitle: 'Ramme',
-      subTitle: 'Ramme - projektside',
-      siteName: 'ramme',
-      basePath: '/ramme',
-      projectId: 'lks8fijv',
-      i18n: {
-        locales: [{ id: 'da', title: 'Dansk' }],
-        defaultLocaleId: 'da',
-      },
-    },
-    idomlund: {
-      fullWebsiteUrl: 'https://idomlund.dk',
-      siteTitle: 'Idomlund',
-      subTitle: 'Idomlund - projektside',
-      siteName: 'idomlund',
-      basePath: '/idomlund',
-      projectId: '6dcmsap4',
-      i18n: {
-        locales: [{ id: 'da', title: 'Dansk' }],
-        defaultLocaleId: 'da',
-      },
-    },
-    nordvestjylland: {
-      fullWebsiteUrl: 'https://Nordvestjylland.dk',
-      siteTitle: 'Nordvestjylland',
-      subTitle: 'Nordvestjylland - projektside',
-      siteName: 'nordvestjylland',
-      basePath: '/nordvestjylland',
-      projectId: 'sdye5zc0',
-      i18n: {
-        locales: [{ id: 'da', title: 'Dansk' }],
-        defaultLocaleId: 'da',
-      },
-    },
-  },
-}
-
 export default defineConfig([
   {
-    basePath: Appconfig.sites.reddap.basePath,
+    basePath: '/reddap',
     name: Appconfig.sites.reddap.siteName,
     title: Appconfig.sites.reddap.siteTitle,
     subtitle: Appconfig.sites.reddap.subTitle,
     projectId: 'wqb4hzip',
     dataset: 'production',
-    ...defaultConfig({ website: Appconfig.sites.reddap }),
+    ...defaultConfig({
+      website: Appconfig.sites.reddap,
+      presentationOriginUrl: process.env.SANITY_STUDIO_PRESENTATION_URL_REDDAP,
+    }),
   },
   {
-    basePath: Appconfig.sites.nordvestjylland.basePath,
+    basePath: '/nordvestjylland',
     name: Appconfig.sites.nordvestjylland.siteName,
     title: Appconfig.sites.nordvestjylland.siteTitle,
     subtitle: Appconfig.sites.nordvestjylland.subTitle,
     projectId: 'sdye5zc0',
     dataset: 'production',
-    ...defaultConfig({ website: Appconfig.sites.nordvestjylland }),
+    ...defaultConfig({
+      website: Appconfig.sites.nordvestjylland,
+      presentationOriginUrl: process.env.SANITY_STUDIO_PRESENTATION_URL_NORDVESTJYLLAND,
+    }),
   },
   {
-    basePath: Appconfig.sites.ramme.basePath,
+    basePath: '/ramme',
     name: Appconfig.sites.ramme.siteName,
     title: Appconfig.sites.ramme.siteTitle,
     subtitle: Appconfig.sites.ramme.subTitle,
     projectId: 'lks8fijv',
     dataset: 'production',
-    ...defaultConfig({ website: Appconfig.sites.ramme }),
+    ...defaultConfig({
+      website: Appconfig.sites.ramme,
+      presentationOriginUrl: process.env.SANITY_STUDIO_PRESENTATION_URL_RAMME,
+    }),
   },
   {
-    basePath: Appconfig.sites.idomlund.basePath,
+    basePath: '/idomlund',
     name: Appconfig.sites.idomlund.siteName,
     title: Appconfig.sites.idomlund.siteTitle,
     subtitle: Appconfig.sites.idomlund.subTitle,
     projectId: '6dcmsap4',
     dataset: 'production',
-    ...defaultConfig({ website: Appconfig.sites.idomlund }),
+    ...defaultConfig({
+      website: Appconfig.sites.idomlund,
+      presentationOriginUrl: process.env.SANITY_STUDIO_PRESENTATION_URL_IDOMLUND,
+    }),
   },
 ])
 
-function defaultConfig({ website }) {
+function defaultConfig({ website, presentationOriginUrl }) {
   return {
     theme: myTheme,
     icon: SuperegoLogo,

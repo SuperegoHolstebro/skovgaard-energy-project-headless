@@ -5,4 +5,7 @@ export default defineCliConfig({
     projectId: 'av1c1jvy',
     dataset: 'production',
   },
+  project: {
+    basePath: '/reddap',
+  },
 })
