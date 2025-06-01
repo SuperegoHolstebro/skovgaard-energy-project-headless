@@ -1,9 +1,8 @@
 'use client'
 import React from 'react'
-import { sectionComponents } from '@repo/ui/sections/index'
+import { sectionComponents } from '@repo/ui/src/sections/index'
 import { createDataAttribute } from '@sanity/visual-editing'
 import { useOptimistic } from '@sanity/visual-editing/react'
-import { PageBuilderProps, PageData, Section } from '@/types/PageBuilder.types'
 
 const sanityConfig = {
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || '',
@@ -14,8 +13,8 @@ export function PageBuilder({
   sections: initialSections,
   documentId,
   documentType,
-}: PageBuilderProps) {
-  const sections = useOptimistic<Section[], PageData>(
+}: any) {
+  const sections = useOptimistic<any[], any>(
     initialSections,
     (currentSections, action) => {
       if (action.id !== documentId) {
@@ -61,7 +60,7 @@ export function PageBuilder({
   )
 }
 
-function renderSection(section: Section) {
+function renderSection(section: any) {
   const Component = sectionComponents[section._type]
   if (!Component) {
     console.warn(`Unknown section type: ${section._type}`)

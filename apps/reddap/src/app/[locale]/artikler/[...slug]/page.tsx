@@ -1,15 +1,15 @@
 import React from 'react'
-import { useLoadPage } from '@/hooks/useLoadPage'
 import PageContainer from '@/components/PageContainer'
 import { notFound } from 'next/navigation'
-import Section from '@/components/sections/Section'
-import Heading from '@/components/atoms/Heading'
-import Paragraph from '@/components/atoms/Paragraph'
-import { formatDate } from '@/utils/date'
-import TextContainer from '@/components/sections/textContainer'
-import { metaData } from '@/utils/metadataUtils'
+import { metaData } from '@repo/utils/metadataUtils'
 import { draftMode } from 'next/headers'
-import { ARTICLE_QUERY } from '@/sanity/queries/documents/article.query'
+import { ARTICLE_QUERY } from '@repo/groq/documents/article.query'
+import TextContainer from '@repo/ui/src/sections/textContainer'
+import { formatDate } from '@repo/utils/date'
+import { useLoadPage } from '@repo/utils/hooks/useLoadPage'
+import Section from '@repo/ui/src/sections/Section'
+import Heading from '@repo/ui/src/atoms/Heading'
+import Paragraph from '@repo/ui/src/atoms/Paragraph'
 
 export interface Params {
   slug: string[]
@@ -33,7 +33,7 @@ export default async function DynamicRoute({ params }: { params: Promise<Params>
   return (
     <PageContainer>
       <Section
-        variant="lys"
+        variant="default"
         paddingTop="none"
         paddingX="none"
         paddingBottom="none"
@@ -68,6 +68,8 @@ export async function generateMetadata({ params }: { params: Promise<Params> }) 
   const { slug: slugArray } = await params
   const slug = slugArray.join('/')
   const page = await useLoadPage(slug, 'da', ARTICLE_QUERY)
+
+  return metaData({ locale }, page)
 
   return metaData({ locale }, page)
 }

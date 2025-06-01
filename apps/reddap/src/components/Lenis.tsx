@@ -1,7 +1,6 @@
 'use client'
 import 'lenis/dist/lenis.css'
-import { ReactLenis } from '@repo/utils/src/lenis'
-import { LenisProps } from '@/types/Lenis.types'
+import { ReactLenis } from '@repo/utils/lenis'
 
 /**
  *
@@ -15,7 +14,7 @@ import { LenisProps } from '@/types/Lenis.types'
  *
  **/
 
-export function Lenis({ root, options }: LenisProps) {
+export function Lenis({ root, options }: any) {
   return (
     <ReactLenis
       root={root}

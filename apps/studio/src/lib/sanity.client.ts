@@ -19,7 +19,7 @@ export function getClient(preview?: { token: string }): SanityClient {
       throw new Error('You must provide a token to preview drafts')
     }
     return client.withConfig({
-      token: readToken,
+      token: readToken as any,
       useCdn: false,
       ignoreBrowserTokenWarning: true,
       perspective: 'published',

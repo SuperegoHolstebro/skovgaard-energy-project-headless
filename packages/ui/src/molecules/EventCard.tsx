@@ -1,10 +1,10 @@
 import Link from 'next/link'
 import Heading from '../atoms/Heading'
 import Paragraph from '../atoms/Paragraph'
-import { formatDate } from '@repo/utils/src/date'
+import { formatDate } from '@repo/utils/date'
 import Photo from '../atoms/Photo'
 import Card from '../atoms/Card'
-import { resolveHref } from '@repo/utils/src/resolveHref'
+import { resolveHref } from '@repo/utils/resolveHref'
 
 /**
  *

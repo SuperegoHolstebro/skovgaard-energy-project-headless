@@ -25,7 +25,7 @@ interface Page {
   }
 }
 
-export async function metaData(params: { locale: string }, page: Page | null): Promise<Metadata> {
+export async function metaData(params: { locale: any }, page: Page | any): Promise<Metadata> {
   const settings = await client.fetch(SITE_SETTINGS_QUERY, {
     locale: params.locale,
   })
@@ -102,7 +102,7 @@ export async function metaData(params: { locale: string }, page: Page | null): P
       languages: hreflangs.reduce((acc, lang) => {
         acc[lang.hreflang] = lang.href
         return acc
-      }, {}),
+      }, {} as any),
     },
   }
 }

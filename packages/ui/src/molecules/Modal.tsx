@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import * as DialogPrimitive from "@radix-ui/react-dialog"
-import { cn } from "@repo/utils/src/twMerge"
+import { cn } from "@repo/utils/twMerge"
 import { X } from "@mynaui/icons-react"
 
 

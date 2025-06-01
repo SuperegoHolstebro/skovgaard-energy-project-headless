@@ -1,5 +1,5 @@
 import { cva, VariantProps } from 'class-variance-authority'
-import { cn } from '@repo/utils/src/twMerge'
+import { cn } from '@repo/utils/twMerge'
 import React from 'react'
 import { SanityImage, SanityImageProps } from './SanityImage'
 

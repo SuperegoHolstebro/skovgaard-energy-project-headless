@@ -16,7 +16,7 @@ import { styled } from 'styled-components'
 import { FoldersConfig, ListItemProps, PageTreeNode, TreeNode } from '../../../types'
 import { useNavigator } from '../context'
 import { PreviewElement } from './Preview'
-import { resolveHref } from '@repo/utils/src/resolveHref'
+import { resolveHref } from '@repo/utils/resolveHref'
 
 type PreviewStyleProps = {
   $isPreviewed?: boolean
@@ -35,7 +35,7 @@ const ListWrapper = styled(Box)`
   flex-direction: column;
 `
 
-const ListItemWrapper = styled(Stack)<PreviewStyleProps>`
+const ListItemWrapper = styled(Stack) <PreviewStyleProps>`
   --bg-selected: ${(props) => (props.$currentScheme === 'light' ? '#EFF1F2' : '#242B31')};
   --fg-selected: ${(props) => (props.$currentScheme === 'light' ? '#242B31' : '#AFB7BD')};
   --hover-bg: ${(props) => (props.$currentScheme === 'light' ? '#d4d4d4' : '#5F727F')};
@@ -83,20 +83,20 @@ const TextContainer = styled(Stack)`
   gap: 8px;
 `
 
-const TextElement = styled(Text)<PreviewStyleProps>`
+const TextElement = styled(Text) <PreviewStyleProps>`
   --fg-selected: ${(props) => (props.$currentScheme === 'light' ? '#242B31' : '#AFB7BD')};
 
   ${(props) => (!props.$isPreviewed ? '' : 'color: var(--fg-selected)')};
 `
 
-const PublishIconContainer = styled(Text)<PreviewStyleProps>`
+const PublishIconContainer = styled(Text) <PreviewStyleProps>`
   --published: ${(props) => (props.$currentScheme === 'light' ? '#3BE086' : '#3BE086')};
 
   padding: 0 8px;
   opacity: ${(props) => (props.muted ? 0.3 : 1)};
   color: ${(props) => (props.muted ? 'inherit' : 'var(--published)')};
 `
-const EditIconContainer = styled(Text)<PreviewStyleProps>`
+const EditIconContainer = styled(Text) <PreviewStyleProps>`
   --edited: ${(props) => (props.$currentScheme === 'light' ? '5F727F' : '#AFB7BD')};
 
   padding: 0 8px;

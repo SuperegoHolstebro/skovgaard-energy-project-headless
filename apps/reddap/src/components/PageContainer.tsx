@@ -1,6 +1,6 @@
 'use client'
-import Footer from '@repo/ui/organisms/Footer'
-import Header from '@repo/ui/organisms/Header'
+import Footer from '@repo/ui/src/organisms/Footer'
+import Header from '@repo/ui/src/organisms/Header'
 import { Lenis } from '@/components/Lenis'
 
 /**

@@ -195,76 +195,76 @@ export const linkField = definePlugin<LinkFieldPluginOptions | void>((opts) => {
       // Parameters
       ...(enableLinkParameters || enableAnchorLinks
         ? [
-            // Anchor
-            ...(enableAnchorLinks
-              ? [
-                  defineField({
-                    title: 'Anchor',
-                    name: 'anchor',
-                    type: 'string',
-                    description: descriptions.anchor,
-                    validation: (rule) =>
-                      rule.custom((value, context) => {
-                        if (
-                          !value ||
-                          (context.parent as any)?.type === 'email' ||
-                          (context.parent as any)?.type === 'phone'
-                        ) {
-                          return true
-                        }
+          // Anchor
+          ...(enableAnchorLinks
+            ? [
+              defineField({
+                title: 'Anchor',
+                name: 'anchor',
+                type: 'string',
+                description: descriptions.anchor,
+                validation: (rule) =>
+                  rule.custom((value, context) => {
+                    if (
+                      !value ||
+                      (context.parent as any)?.type === 'email' ||
+                      (context.parent as any)?.type === 'phone'
+                    ) {
+                      return true
+                    }
 
-                        if (value.indexOf('#') !== 0) {
-                          return 'Skal starte med #; f.eks. #side-sektion-1'
-                        }
+                    if (value.indexOf('#') !== 0) {
+                      return 'Skal starte med #; f.eks. #side-sektion-1'
+                    }
 
-                        if (value.length === 1) {
-                          return 'Skal indeholde mindst ét tegn'
-                        }
+                    if (value.length === 1) {
+                      return 'Skal indeholde mindst ét tegn'
+                    }
 
-                        return (
-                          new RegExp(/^([-?/:@._~!$&'()*+,;=a-zA-Z0-9]|%[0-9a-fA-F]{2})*$/).test(
-                            value.replace(/^#/, ''),
-                          ) || 'Skal være en gyldig ankerlink'
-                        )
-                      }),
-                    hidden: ({ parent }) => parent?.type === 'email' || parent?.type === 'phone',
-                    fieldset: 'advanced',
+                    return (
+                      new RegExp(/^([-?/:@._~!$&'()*+,;=a-zA-Z0-9]|%[0-9a-fA-F]{2})*$/).test(
+                        value.replace(/^#/, ''),
+                      ) || 'Skal være en gyldig ankerlink'
+                    )
                   }),
-                ]
-              : []),
-            ...(enableLinkParameters
-              ? [
-                  defineField({
-                    title: 'Parametre',
-                    name: 'parameters',
-                    type: 'string',
-                    description: descriptions.parameters,
-                    validation: (rule) =>
-                      rule.custom((value, context) => {
-                        if (
-                          !value ||
-                          (context.parent as any)?.type === 'email' ||
-                          (context.parent as any)?.type === 'phone'
-                        ) {
-                          return true
-                        }
+                hidden: ({ parent }) => parent?.type === 'email' || parent?.type === 'phone',
+                fieldset: 'advanced',
+              }),
+            ]
+            : []),
+          ...(enableLinkParameters
+            ? [
+              defineField({
+                title: 'Parametre',
+                name: 'parameters',
+                type: 'string',
+                description: descriptions.parameters,
+                validation: (rule) =>
+                  rule.custom((value, context) => {
+                    if (
+                      !value ||
+                      (context.parent as any)?.type === 'email' ||
+                      (context.parent as any)?.type === 'phone'
+                    ) {
+                      return true
+                    }
 
-                        if (value.indexOf('?') !== 0) {
-                          return 'Skal starte med ?; f.eks. ?utm_source=example.com&utm_medium=referral'
-                        }
+                    if (value.indexOf('?') !== 0) {
+                      return 'Skal starte med ?; f.eks. ?utm_source=example.com&utm_medium=referral'
+                    }
 
-                        if (value.length === 1) {
-                          return 'Skal indeholde mindst ét tegn'
-                        }
+                    if (value.length === 1) {
+                      return 'Skal indeholde mindst ét tegn'
+                    }
 
-                        return true
-                      }),
-                    hidden: ({ parent }) => parent?.type === 'email' || parent?.type === 'phone',
-                    fieldset: 'advanced',
+                    return true
                   }),
-                ]
-              : []),
-          ]
+                hidden: ({ parent }) => parent?.type === 'email' || parent?.type === 'phone',
+                fieldset: 'advanced',
+              }),
+            ]
+            : []),
+        ]
         : []),
     ],
     components: {

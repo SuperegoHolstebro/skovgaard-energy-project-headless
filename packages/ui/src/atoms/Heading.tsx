@@ -1,8 +1,8 @@
 import { cva, VariantProps } from 'class-variance-authority'
 import React from 'react'
 import { HeadingProps } from '../types/Heading.types'
-import { cn } from '@repo/utils/src/twMerge'
-import { clean } from '@repo/utils/src/sanitize'
+import { cn } from '@repo/utils/twMerge'
+import { clean } from '@repo/utils/sanitize'
 
 /**
  *

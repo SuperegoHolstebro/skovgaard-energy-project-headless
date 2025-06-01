@@ -3,7 +3,7 @@ import Heading from '../atoms/Heading'
 import Media from '../organisms/Media'
 import Section from '../sections/Section'
 import Paragraph from '../atoms/Paragraph'
-import { clean } from '@repo/utils/src/sanitize'
+import { clean } from '@repo/utils/sanitize'
 
 /**
  *

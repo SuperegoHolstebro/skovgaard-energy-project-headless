@@ -1,8 +1,8 @@
 import { cva, VariantProps } from 'class-variance-authority'
 import * as React from 'react'
 import { SectionProps } from '../types/Section.types'
-import { cn } from '@repo/utils/src/twMerge'
-import { clean } from '@repo/utils/src/sanitize'
+import { cn } from '@repo/utils/twMerge'
+import { clean } from '@repo/utils/sanitize'
 
 /**
  * @returns: En sektion.

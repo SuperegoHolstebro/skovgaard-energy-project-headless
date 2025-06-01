@@ -2,7 +2,7 @@ import { Slot } from '@radix-ui/react-slot'
 import { cva, type VariantProps } from 'class-variance-authority'
 import * as React from 'react'
 import { AdvancedButtonProps } from '../types/AdvancedButton.types'
-import { cn } from '@repo/utils/src/twMerge'
+import { cn } from '@repo/utils/twMerge'
 
 /**
  *

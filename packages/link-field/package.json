@@ -1,6 +1,5 @@
 {
   "name": "@repo/link-field",
-  "type": "module",
   "scripts": {
     "dev": "tsc --watch",
     "build": "tsc"

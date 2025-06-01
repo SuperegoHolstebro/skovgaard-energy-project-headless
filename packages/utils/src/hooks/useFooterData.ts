@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { client } from '@repo/utils/src/lib/sanity.client'
+import { client } from '../lib/sanity.client'
 import { FOOTER_QUERY } from '@repo/groq/documents/footer.query'
 
 /**
@@ -19,7 +19,7 @@ import { FOOTER_QUERY } from '@repo/groq/documents/footer.query'
  * ```
  */
 
-const useFooterData = (locale) => {
+const useFooterData = (locale: any) => {
   const [data, setData] = useState(null)
 
   useEffect(() => {

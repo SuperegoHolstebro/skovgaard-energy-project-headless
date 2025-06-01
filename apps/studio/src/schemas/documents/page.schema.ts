@@ -1,8 +1,8 @@
 import { File } from '@mynaui/icons-react'
 import { defineField, defineType } from 'sanity'
 import { definePathname } from '@repo/sanity-studio/src/utils/definePathname'
-import { isUniqueOtherThanLanguage } from '@repo/utils/src/isUniqueOtherThanLanguage'
-import Appconfig from '@repo/utils/src/superego.config'
+import { isUniqueOtherThanLanguage } from '@repo/utils/isUniqueOtherThanLanguage'
+import Appconfig from '@repo/utils/superego.config'
 
 export default defineType({
   name: 'page',

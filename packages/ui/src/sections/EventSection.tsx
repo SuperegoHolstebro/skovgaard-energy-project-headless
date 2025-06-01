@@ -2,8 +2,8 @@ import React from 'react'
 import Section, { Section_Variants } from './Section'
 import Heading from '../atoms/Heading'
 import EventCard from '../molecules/EventCard'
-import { clean } from '@repo/utils/src/sanitize'
-import { cn } from '@repo/utils/src/twMerge'
+import { clean } from '@repo/utils/sanitize'
+import { cn } from '@repo/utils/twMerge'
 
 /**
  *

@@ -1,26 +1,12 @@
 {
   "name": "@repo/ui",
-  "exports": {
-    "./Button": "./src/atoms/Button.tsx",
-    "./atoms/AdvancedButton": "./src/atoms/AdvancedButton.tsx",
-    "./atoms/Card": "./src/atoms/Card.tsx",
-    "./atoms/Heading": "./src/atoms/Heading.tsx",
-    "./atoms/Icons": "./src/atoms/Icons.tsx",
-    "./atoms/LocaleSwitcher": "./src/atoms/LocaleSwitcher.tsx",
-    "./atoms/Logo": "./src/atoms/Logo.tsx",
-    "./atoms/MenuButton": "./src/atoms/MenuButton.tsx",
-    "./atoms/NavigationItem": "./src/atoms/NavigationItem.tsx",
-    "./atoms/Paragraph": "./src/atoms/Paragraph.tsx",
-    "./atoms/Photo": "./src/atoms/Photo.tsx",
-    "./atoms/SanityImage": "./src/atoms/SanityImage.tsx",
-    "./atoms/ScrollToTop": "./src/atoms/ScrollToTop.tsx",
-    "./atoms/Video": "./src/atoms/Video.tsx",
-    "./sections/index": "./src/sections/index.tsx",
-    "./sections/Section": "./src/sections/Section.tsx",
-    "./organisms/Footer": "./src/organisms/Footer.tsx",
-    "./organisms/Header": "./src/organisms/Header.tsx",
-    "./global.css": "./src/styles/global.css",
-    "./sanity/IconPickerInput": "./src/sanity/IconPickerInput.tsx"
+  "dependencies": {
+    "eslint-config-next": "15.0.3",
+    "next": "^15.0.3",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "@repo/link-field": "*",
+    "tw-animate-css": "^1.3.3"
   },
   "scripts": {
     "dev": "tsc --watch",

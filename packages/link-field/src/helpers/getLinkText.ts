@@ -1,4 +1,4 @@
-import { LinkValue } from '../types'
+import { LinkValue } from '../types.js'
 import {
   isCustomLink,
   isEmailLink,

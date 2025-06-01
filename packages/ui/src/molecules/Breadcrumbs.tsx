@@ -34,7 +34,7 @@ const Breadcrumbs: React.FC = () => {
   })
 
   return (
-    <Section paddingTop="none" variant="lys" paddingBottom="none" paddingX="default">
+    <Section paddingTop="none" variant="default" paddingBottom="none" paddingX="default">
       <nav
         data-type="breadcrumb"
         aria-label="breadcrumb"

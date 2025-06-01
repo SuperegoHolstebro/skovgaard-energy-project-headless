@@ -3,7 +3,7 @@ import React from 'react'
 import ReactPlayer from 'react-player'
 import Photo from '../atoms/Photo'
 import Video, { VideoProps } from '../atoms/Video'
-import { clean } from '@repo/utils/src/sanitize'
+import { clean } from '@repo/utils/sanitize'
 import { SanityImageProps } from '../atoms/SanityImage'
 
 /**

@@ -3,17 +3,6 @@
   "compilerOptions": {
     "outDir": "dist"
   },
-  "include": [
-    "src",
-    "../utils/src/cleanScriptContent.ts",
-    "../utils/src/date.ts",
-    "../utils/src/formatBytes.ts",
-    "../utils/src/lenis.ts",
-    "../utils/src/metadataUtils.ts",
-    "../utils/src/sanitize.ts",
-    "../utils/src/slugify.ts",
-    "../utils/src/StructuredJsonData.ts",
-    "../utils/src/twMerge.ts"
-  ],
+  "include": ["src"],
   "exclude": ["node_modules", "dist"]
 }

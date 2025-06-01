@@ -1,6 +1,6 @@
 import { InputWithCharacterCount } from '@repo/sanity-studio/src/components/inputWithCharactersCount'
 import { Book, Code, Search, Tag } from '@mynaui/icons-react'
-import Appconfig from '@repo/utils/src/superego.config'
+import Appconfig from '@repo/utils/superego.config'
 import { defineField, defineType } from 'sanity'
 
 export default defineType({

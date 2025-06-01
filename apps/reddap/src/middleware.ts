@@ -1,4 +1,4 @@
-import Appconfig from '@repo/utils/src/superego.config'
+import Appconfig from '@repo/utils/superego.config'
 import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 

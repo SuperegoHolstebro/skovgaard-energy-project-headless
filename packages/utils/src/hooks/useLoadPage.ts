@@ -2,11 +2,11 @@ import type { QueryParams } from 'next-sanity'
 import type { UnfilteredResponseQueryOptions } from '@sanity/client'
 import { draftMode } from 'next/headers'
 import 'server-only'
-import { client } from '@repo/utils/src/lib/sanity.client'
-import { readToken } from '@repo/utils/src/lib/sanity.api'
-import { sanityFetch } from '@repo/utils/src/lib/sanity.live'
-import { SeoGroup } from '@repo/utils/src/metadataUtils'
+import { SeoGroup } from '../metadataUtils'
 import { PAGE_QUERY } from '@repo/groq/documents/page.query'
+
+import { getTokenByProject, getCurrentProjectId } from './projectTokens'
+import { sanityFetch } from '../lib/sanity.live'
 
 export type PagePayload = {
   image?: any
@@ -34,13 +34,17 @@ const DEFAULT_PARAMS = {} as QueryParams
 export async function loadQuery<QueryResponse>({
   query,
   params = DEFAULT_PARAMS,
+  projectId,
 }: {
   query: string
   params?: QueryParams
   groqQuery?: string
+  projectId?: string
 }): Promise<QueryResponse> {
   const isDraftMode = (await draftMode()).isEnabled
-  const token = readToken
+  const currentProjectId = projectId || getCurrentProjectId()
+
+  const token = getTokenByProject(currentProjectId as any)
 
   if (isDraftMode && !token) {
     throw new Error('The `SANITY_API_READ_TOKEN` environment variable is required in Draft Mode.')
@@ -52,7 +56,7 @@ export async function loadQuery<QueryResponse>({
     filterResponse: false,
     useCdn: false,
     resultSourceMap: isDraftMode ? 'withKeyArraySelector' : false,
-    token: isDraftMode ? token : undefined,
+    token: isDraftMode ? token : (undefined as any),
     perspective,
     next: {
       tags: ['sanity'],

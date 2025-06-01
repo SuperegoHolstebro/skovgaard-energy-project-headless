@@ -2,7 +2,7 @@ import React from 'react'
 import Section from '../sections/Section'
 import Heading from '../atoms/Heading'
 import EmployeeCard from '../molecules/EmployeeCard'
-import { clean } from '@repo/utils/src/sanitize'
+import { clean } from '@repo/utils/sanitize'
 
 const EmployeesSection = ({ data }: any) => {
   return (
