@@ -39,7 +39,8 @@
     "./sections/LogoGallery.query.ts": "./src/sections/LogoGallery.query.ts",
     "./sections/LogoGallery2.query.ts": "./src/sections/LogoGallery2.query.ts",
     "./sections/TextWithIllustration.query.ts": "./src/sections/TextWithIllustration.query.ts",
-    "./sections/textContainer.query.ts": "./src/sections/textContainer.query.ts"
+    "./sections/textContainer.query.ts": "./src/sections/textContainer.query.ts",
+    "./*": "./src/*"
   },
   "scripts": {
     "dev": "tsc --watch",
