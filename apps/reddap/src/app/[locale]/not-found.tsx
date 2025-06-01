@@ -4,10 +4,10 @@ import Link from 'next/link'
 import React from 'react'
 import { useParams } from 'next/navigation'
 import PageContainer from '@/components/PageContainer'
-import Section from '@repo/ui/sections/Section'
-import Heading from '@repo/ui/atoms/Heading'
-import Paragraph from '@repo/ui/atoms/Paragraph'
-import { AdvancedButton } from '@repo/ui/atoms/AdvancedButton'
+import Section from '@repo/ui/src/sections/Section'
+import Heading from '@repo/ui/src/atoms/Heading'
+import Paragraph from '@repo/ui/src/atoms/Paragraph'
+import { AdvancedButton } from '@repo/ui/src/atoms/AdvancedButton'
 
 // Simple inline translation object
 const translations = {

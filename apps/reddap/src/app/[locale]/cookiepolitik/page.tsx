@@ -1,7 +1,7 @@
 'use client'
 import { useEffect } from 'react'
 import Script from 'next/script'
-import Header from '@repo/ui/organisms/Header'
+import Header from '@repo/ui/src/organisms/Header'
 
 export default function Cookie() {
   useEffect(() => {
