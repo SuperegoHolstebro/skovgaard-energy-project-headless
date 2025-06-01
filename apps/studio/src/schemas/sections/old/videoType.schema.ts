@@ -1,4 +1,4 @@
-import {defineField, defineType} from 'sanity'
+import { defineField, defineType } from 'sanity'
 
 export const videoType = defineType({
   name: 'video',
@@ -15,4 +15,3 @@ export const videoType = defineType({
     }),
   ],
 })
-

@@ -1,78 +1,74 @@
-import { paddingIndicator } from '../../utils/paddingindicator'
-import { CalendarCheck } from '@mynaui/icons-react'
-import { defineField, defineType } from 'sanity'
+import { CalendarCheck } from "@mynaui/icons-react";
+import { defineField, defineType } from "sanity";
 export const EventType = defineType({
-  name: 'EventType',
-  title: 'Begivenheder',
-  description: 'Viser en liste af begivenheder',
-  type: 'object',
+  name: "EventType",
+  title: "Begivenheder",
+  description: "Viser en liste af begivenheder",
+  type: "object",
   icon: CalendarCheck,
   groups: [
-    { title: 'Indhold', name: 'content' },
-    { title: 'Design', name: 'design' },
-    { title: 'indstillinger', name: 'settings' },
+    { title: "Indhold", name: "content" },
+    { title: "Design", name: "design" },
+    { title: "indstillinger", name: "settings" },
   ],
   fields: [
     defineField({
-      group: 'content',
-      name: 'heading',
-      title: 'Overskrift',
-      type: 'string',
+      group: "content",
+      name: "heading",
+      type: "string",
     }),
     defineField({
-      group: 'content',
-      name: 'view',
-      title: 'Visning',
-      type: 'string',
+      group: "content",
+      name: "view",
+      title: "view",
+      type: "string",
       options: {
         list: [
-          { title: 'Manual', value: 'manual' },
-          { title: 'Nyeste', value: 'newest' },
-          { title: 'Alle', value: 'all' },
+          { title: "Manual", value: "manual" },
+          { title: "Nyeste", value: "newest" },
+          { title: "Alle", value: "all" },
         ],
-        layout: 'dropdown',
+        layout: "dropdown",
       },
-      initialValue: 'manual', // Set "public" as the default value
+      initialValue: "manual", // Set "public" as the default value
     }),
     {
-      group: 'content',
-      name: 'events',
-      title: 'Begivenheder',
-      type: 'array',
-      hidden: ({ parent }) => parent?.view !== 'manual',
+      group: "content",
+      name: "events",
+      type: "array",
+      hidden: ({ parent }) => parent?.view !== "manual",
       validation: (Rule) => Rule.unique(),
-      of: [{ type: 'reference', to: [{ type: 'event' }] }],
+      of: [{ type: "reference", to: [{ type: "event" }] }],
     },
     defineField({
-      group: 'content',
-      name: 'amount',
-      type: 'number',
-      hidden: ({ parent }) => parent?.view !== 'newest',
-      title: 'Antal begivenheder',
+      group: "content",
+      name: "amount",
+      type: "number",
+      hidden: ({ parent }) => parent?.view !== "newest",
+      title: "Antal begivenheder",
       initialValue: 4,
     }),
     {
-      name: 'design',
-      type: 'design',
-      group: 'design',
+      name: "design",
+      type: "design",
+      group: "design",
     },
     {
-      group: 'settings',
-      name: 'SectionSettings',
-      title: 'Indstillinger',
-      type: 'SectionSettings',
+      group: "settings",
+      name: "SectionSettings",
+      title: "Indstillinger",
+      type: "SectionSettings",
     },
   ],
   preview: {
     select: {
-      title: 'heading',
-      design: 'design',
+      title: "heading",
     },
-    prepare({ title, design }) {
+    prepare({ title }) {
       return {
         title: title,
-        subtitle: 'Begivenheder' + ' | ' + paddingIndicator(design),
-      }
+        subtitle: "Begivenheder",
+      };
     },
   },
-})
+});

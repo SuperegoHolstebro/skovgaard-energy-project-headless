@@ -1,43 +1,80 @@
-import { paddingIndicator } from '../../utils/paddingindicator'
 import { Envelope } from '@mynaui/icons-react'
-import { defineField, defineType } from 'sanity'
+import { defineArrayMember, defineField, defineType } from 'sanity'
 
 const contactFormType = defineType({
   name: 'contactFormType',
   title: 'Kontaktformular',
   type: 'object',
-  groups: [
-    { title: 'Content', name: 'content' },
-    { title: 'Indstillinger', name: 'settings' },
-  ],
+  // {title: 'indstillinger', name: 'settings'}
+  icon: Envelope,
   fields: [
     defineField({
       name: 'heading',
-      title: 'Overskrift',
-      type: 'string',
-      group: 'content',
+      type: 'heading',
     }),
     defineField({
-      name: 'description',
-      title: 'Beskrivelse',
-      type: 'string',
-      group: 'content',
+      name: 'array',
+      type: 'array',
+      title: 'Feltyper',
+      of: [
+        {
+          type: 'object',
+          name: 'formFields',
+          title: 'Form Fields',
+          fields: [
+            defineField({
+              name: 'required',
+              title: 'Required',
+              type: 'boolean',
+              initialValue: false,
+            }),
+            defineField({
+              name: 'fieldName',
+              title: 'Field Name',
+              type: 'string',
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'placeholder',
+              title: 'Placeholder',
+              type: 'string',
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'fieldId',
+              title: 'Field ID',
+              type: 'slug',
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'inputType',
+              title: 'Input Type',
+              type: 'string',
+              initialValue: 'text',
+              options: {
+                layout: 'dropdown',
+                list: [
+                  { value: 'text', title: 'Text input' },
+                  { value: 'email', title: 'Email' },
+                  { value: 'phone', title: 'Phone number' },
+                  { value: 'textArea', title: 'Text area' },
+                  { value: 'file', title: 'File upload' },
+                ],
+              },
+              validation: (Rule) => Rule.required(),
+            }),
+          ],
+        },
+      ],
     }),
-    // choose reference
-    defineField({
-      type: 'reference',
-      name: 'formular',
-      to: [{ type: 'formular' }],
-      title: 'Vælg formular',
-      description: 'Vælg en formular fra formularer',
-    }),
-
     {
       name: 'design',
       type: 'design',
       title: 'Design',
     },
+
     {
+      // group: "settings",
       name: 'SectionSettings',
       title: 'Indstillinger',
       type: 'SectionSettings',
@@ -46,13 +83,13 @@ const contactFormType = defineType({
   preview: {
     select: {
       title: 'heading',
-      description: 'description',
+      subtitle: 'Form Fields',
     },
-    prepare({ title, description }) {
+    prepare(selection) {
+      const { title, subtitle } = selection
       return {
-        title: title,
-        subtitle: description,
-        media: Envelope,
+        title: title.heading.heading,
+        subtitle: subtitle,
       }
     },
   },
