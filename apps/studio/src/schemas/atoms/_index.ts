@@ -1,4 +1,3 @@
-export { accordionType } from './accordionType.schema'
 export { buttonType } from './ButtonType.schema'
 export { figureType } from './figureType.schema'
 export { headingType } from './headingType.schema'

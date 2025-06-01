@@ -1,56 +1,108 @@
 import { PanelTopInactive } from '@mynaui/icons-react'
-import { defineField, defineType } from 'sanity'
+import { defineArrayMember, defineField, defineType } from 'sanity'
 export const heroType = defineType({
   name: 'hero',
   type: 'object',
   groups: [
-    { title: 'Media', name: 'media' },
     { title: 'Design', name: 'design' },
-    { title: 'Content', name: 'content' },
-    { title: 'Indstillinger', name: 'settings' },
+    { title: 'Indhold', name: 'content' },
+    { title: 'Billeder', name: 'media' },
+    { title: 'Infobokse', name: 'infoboxes' },
   ],
   description:
     'Banneret fungerer som et sidehoved, der skaber blikfang fra første øjekast og gør siden overskuelig.',
-  title: 'Hero 1',
+  title: 'Header',
   icon: PanelTopInactive,
   fields: [
     defineField({
-      group: 'content',
-      name: 'title',
+      name: 'heading',
       type: 'string',
-      title: 'Titel',
+      title: 'Overskrift',
+      group: 'content',
     }),
     defineField({
+      name: 'tagline',
+      type: 'text',
+      title: 'Beskrivelse',
       group: 'content',
-      name: 'subtitle',
-      type: 'string',
     }),
-    {
+    defineField({
+      name: 'image',
+      title: 'Billede',
       group: 'media',
-      name: 'MediaObject',
-      title: 'Medie',
-      type: 'MediaObject',
-    },
-    {
-      group: 'settings',
-      name: 'SectionSettings',
-      title: 'Indstillinger',
-      type: 'SectionSettings',
-    },
+      type: 'image',
+      description: 'Fallback billede, hvis brugeren`s enhed har langsomt internet.',
+    }),
+
+    defineField({
+      name: 'images',
+      title: 'Billeder',
+      description: 'Billedet der vises i start animation',
+      type: 'array',
+      group: 'media',
+      of: [
+        defineField({
+          name: 'image',
+          type: 'image',
+          title: 'Billede',
+        }),
+      ],
+    }),
+
+    defineField({
+      name: 'infoboxes',
+      title: 'Infobokse',
+      group: 'infoboxes',
+      description: 'Infobokse fremhæver vigtig information, som f.eks. Co2-reduktion mm, ',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'object',
+          name: 'info',
+          preview: {
+            select: {
+              title: 'heading',
+              subtitle: 'text',
+            },
+            prepare({ title, subtitle }) {
+              return {
+                title: title || 'Ingen overskrift',
+                subtitle: subtitle || 'Ingen tekst',
+              }
+            },
+          },
+          fields: [
+            defineField({
+              name: 'heading',
+              type: 'string',
+              title: 'Overskrift',
+              description: 'Overskrift for infoboksen',
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'text',
+              title: 'Tekst',
+              description: 'Tekst i infoboksen',
+              validation: (Rule) =>
+                Rule.max(55).warning('Infoboksen er tiltænkt til at være kort.'),
+              type: 'string',
+            }),
+          ],
+        }),
+      ],
+    }),
   ],
   preview: {
     select: {
-      title: 'title',
+      title: 'heading',
       tagline: 'tagline',
-      type: 'type',
       media: 'image',
-      icon: 'icon',
     },
-    prepare({ title, media, icon }) {
+    prepare({ title, media, tagline }) {
       return {
-        title: title || 'Ingen titel',
-        subtitle: 'Topbanner',
-        media: icon,
+        title: title || 'No title',
+        subtitle: `Header | ${tagline}`,
+        media,
       }
     },
   },

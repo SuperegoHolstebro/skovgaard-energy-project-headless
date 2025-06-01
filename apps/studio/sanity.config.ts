@@ -1,5 +1,4 @@
 'use client'
-import '@repo/dashboard/global.css'
 import { daDKLocale } from '@sanity/locale-da-dk'
 import { visionTool } from '@sanity/vision'
 import { defineConfig } from 'sanity'
@@ -17,7 +16,6 @@ import { CustomToolMenu } from './src/components/ToolMenu'
 import { createVisualAction } from './src/actions/sanity.actions'
 import { myTheme } from './src/lib/sanity.theme'
 import { pages } from '@repo/sanity-studio/src/plugins/navigator/index'
-import Appconfig from '@repo/utils/src/superego.config'
 import {
   DeleteTranslationAction,
   documentInternationalization,
@@ -33,139 +31,231 @@ import SuperegoWidget from '@repo/dashboard/superego-widget'
 const url = process.env.SANITY_STUDIO_FRONT_END
 const presentationOriginUrl = process.env.SANITY_STUDIO_PRESENTATION_URL
 
-export default defineConfig({
-  name: Appconfig.siteName,
-  title: Appconfig.siteTitle,
-  subtitle: 'Superweb Studio',
-  projectId,
-  theme: myTheme,
-  icon: SuperegoLogo,
-  dataset,
-  schema: schema,
-  releases: {
-    enabled: false,
+const Appconfig = {
+  fullWebsiteUrl: 'https://sanity-turbo.vercel.app',
+  siteTitle: 'sanity turbo',
+  siteName: 'sanity-turbo',
+  i18n: {
+    locales: [
+      { id: 'da', title: 'Dansk' },
+      { id: 'en', title: 'English' },
+    ],
+    defaultLocaleId: 'da',
   },
-  scheduledPublishing: {
-    enabled: false,
-  },
-  announcements: {
-    enabled: false,
-  },
-  studio: {
-    components: {
-      toolMenu: CustomToolMenu,
+  sites: {
+    reddap: {
+      fullWebsiteUrl: 'https://reddap.dk',
+      siteTitle: 'Reddap',
+      subTitle: 'Reddap - projektside',
+      siteName: 'reddap',
+      basePath: '/reddap',
+      projectId: 'wqb4hzip',
+      i18n: {
+        locales: [
+          { id: 'da', title: 'Dansk' },
+          { id: 'en', title: 'English' },
+        ],
+        defaultLocaleId: 'da',
+      },
+    },
+    ramme: {
+      fullWebsiteUrl: 'https://ramme.dk',
+      siteTitle: 'Ramme',
+      subTitle: 'Ramme - projektside',
+      siteName: 'ramme',
+      basePath: '/ramme',
+      projectId: 'lks8fijv',
+      i18n: {
+        locales: [{ id: 'da', title: 'Dansk' }],
+        defaultLocaleId: 'da',
+      },
+    },
+    idomlund: {
+      fullWebsiteUrl: 'https://idomlund.dk',
+      siteTitle: 'Idomlund',
+      subTitle: 'Idomlund - projektside',
+      siteName: 'idomlund',
+      basePath: '/idomlund',
+      projectId: '6dcmsap4',
+      i18n: {
+        locales: [{ id: 'da', title: 'Dansk' }],
+        defaultLocaleId: 'da',
+      },
+    },
+    nordvestjylland: {
+      fullWebsiteUrl: 'https://Nordvestjylland.dk',
+      siteTitle: 'Nordvestjylland',
+      subTitle: 'Nordvestjylland - projektside',
+      siteName: 'nordvestjylland',
+      basePath: '/nordvestjylland',
+      projectId: 'sdye5zc0',
+      i18n: {
+        locales: [{ id: 'da', title: 'Dansk' }],
+        defaultLocaleId: 'da',
+      },
     },
   },
-  plugins: [
-    dashboardTool({
-      title: 'Startside',
-      widgets: [
-        {
-          name: 'HeroWidget',
-          component: () => HeroWidget({ NEXT_PUBLIC_BASE_URL: url }),
-          layout: { width: 'full' },
+}
+
+export default defineConfig([
+  {
+    basePath: Appconfig.sites.reddap.basePath,
+    name: Appconfig.sites.reddap.siteName,
+    title: Appconfig.sites.reddap.siteTitle,
+    subtitle: Appconfig.sites.reddap.subTitle,
+    projectId: 'wqb4hzip',
+    dataset: 'production',
+    ...defaultConfig({ website: Appconfig.sites.reddap }),
+  },
+  {
+    basePath: Appconfig.sites.nordvestjylland.basePath,
+    name: Appconfig.sites.nordvestjylland.siteName,
+    title: Appconfig.sites.nordvestjylland.siteTitle,
+    subtitle: Appconfig.sites.nordvestjylland.subTitle,
+    projectId: 'sdye5zc0',
+    dataset: 'production',
+    ...defaultConfig({ website: Appconfig.sites.nordvestjylland }),
+  },
+  {
+    basePath: Appconfig.sites.ramme.basePath,
+    name: Appconfig.sites.ramme.siteName,
+    title: Appconfig.sites.ramme.siteTitle,
+    subtitle: Appconfig.sites.ramme.subTitle,
+    projectId: 'lks8fijv',
+    dataset: 'production',
+    ...defaultConfig({ website: Appconfig.sites.ramme }),
+  },
+  {
+    basePath: Appconfig.sites.idomlund.basePath,
+    name: Appconfig.sites.idomlund.siteName,
+    title: Appconfig.sites.idomlund.siteTitle,
+    subtitle: Appconfig.sites.idomlund.subTitle,
+    projectId: '6dcmsap4',
+    dataset: 'production',
+    ...defaultConfig({ website: Appconfig.sites.idomlund }),
+  },
+])
+
+function defaultConfig({ website }) {
+  return {
+    theme: myTheme,
+    icon: SuperegoLogo,
+    schema: schema,
+    releases: { enabled: false },
+    scheduledPublishing: { enabled: false },
+    announcements: { enabled: false },
+    studio: { components: { toolMenu: CustomToolMenu } },
+    plugins: [
+      dashboardTool({
+        title: 'Startside',
+        widgets: [
+          {
+            name: 'HeroWidget',
+            component: () => HeroWidget({ NEXT_PUBLIC_BASE_URL: url }),
+            layout: { width: 'full' },
+          },
+          {
+            name: 'links',
+            component: () => LinksWidget({ NEXT_PUBLIC_BASE_URL: url }),
+            layout: { width: 'auto', height: 'large' },
+          },
+          {
+            name: 'ProjectManagerWidget',
+            component: () => ProjectManagerWidget({ NEXT_PUBLIC_BASE_URL: url }),
+            layout: { width: 'medium', height: 'large' },
+          },
+          {
+            name: 'SuperegoWidget',
+            component: SuperegoWidget,
+            layout: { width: 'medium', height: 'large' },
+          },
+        ],
+      }),
+      structureTool({ structure, title: 'Indhold' }),
+      pages({
+        i18n: website.i18n,
+        title: 'Visuel redigering',
+        resolve,
+        previewUrl: {
+          origin: presentationOriginUrl,
+          previewMode: {
+            enable: '/api/draft-mode/enable',
+          },
         },
-        {
-          name: 'links',
-          component: () => LinksWidget({ NEXT_PUBLIC_BASE_URL: url }),
-          layout: { width: 'auto', height: 'large' },
+        creatablePages: [
+          {
+            title: 'Sider',
+            type: 'page',
+          },
+          {
+            title: 'Artikler',
+            type: 'article',
+          },
+          {
+            title: 'Event',
+            type: 'event',
+          },
+        ],
+      }),
+      documentInternationalization({
+        // Required configuration
+        supportedLanguages: [...website.i18n.locales],
+        schemaTypes: ['page', 'navigation', 'footer', 'settings', 'article', 'event'],
+        languageField: 'locale',
+      }),
+      media({
+        creditLine: {
+          enabled: true,
+          excludeSources: ['unsplash'],
         },
-        {
-          name: 'ProjectManagerWidget',
-          component: () => ProjectManagerWidget({ NEXT_PUBLIC_BASE_URL: url }),
-          layout: { width: 'medium', height: 'large' },
-        },
-        {
-          name: 'SuperegoWidget',
-          component: SuperegoWidget,
-          layout: { width: 'medium', height: 'large' },
-        },
-      ],
-    }),
-    structureTool({ structure, title: 'Indhold' }),
-    pages({
-      i18n: Appconfig.i18n,
-      title: 'Visuel redigering',
-      resolve,
-      previewUrl: {
-        origin: presentationOriginUrl,
-        previewMode: {
-          enable: '/api/draft-mode/enable',
-        },
+        maximumUploadSize: 10000000,
+      }),
+      visionTool({ defaultApiVersion: apiVersion, title: 'Udviklingsværktøj' }),
+      daDKLocale({ title: 'Dansk' }),
+      unsplashImageAsset(),
+      linkField({
+        linkableSchemaTypes: ['page', 'event', 'article'],
+      }),
+    ],
+    document: {
+      DeleteTranslationAction(prev, { schemaType }) {
+        //TODO move into i18n
+        // these will be the schema types you're passing to the plugin configuration
+        return schemaType.includes(schemaType)
+          ? prev.map((action) => (action.action === 'duplicate' ? DeleteTranslationAction : action))
+          : prev
       },
-      creatablePages: [
-        {
-          title: 'Sider',
-          type: 'page',
-        },
-        {
-          title: 'Artikler',
-          type: 'article',
-        },
-        {
-          title: 'Event',
-          type: 'event',
-        },
-      ],
-    }),
-    documentInternationalization({
-      // Required configuration
-      supportedLanguages: [...Appconfig.i18n.locales],
-      schemaTypes: ['page', 'navigation', 'footer', 'settings', 'article', 'event'],
-      languageField: 'locale',
-    }),
-    media({
-      creditLine: {
-        enabled: true,
-        excludeSources: ['unsplash'],
-      },
-      maximumUploadSize: 10000000,
-    }),
-    visionTool({ defaultApiVersion: apiVersion, title: 'Udviklingsværktøj' }),
-    daDKLocale({ title: 'Dansk' }),
-    unsplashImageAsset(),
-    linkField({
-      linkableSchemaTypes: ['page', 'event', 'article'],
-    }),
-  ],
-  document: {
-    DeleteTranslationAction(prev, { schemaType }) {
-      //TODO move into i18n
-      // these will be the schema types you're passing to the plugin configuration
-      return schemaType.includes(schemaType)
-        ? prev.map((action) => (action.action === 'duplicate' ? DeleteTranslationAction : action))
-        : prev
-    },
-    actions: (prev, context) =>
-      prev.map((originalAction) =>
-        originalAction.action === 'publish'
-          ? (props) => {
-              const action = createVisualAction(originalAction)(props)
-              return {
-                ...action,
-                tone: 'positive', // Ensure tone is one of the allowed types
-                label: action?.label || 'Publish', // Ensure label is defined
+      actions: (prev, context) =>
+        prev.map((originalAction) =>
+          originalAction.action === 'publish'
+            ? (props) => {
+                const action = createVisualAction(originalAction)(props)
+                return {
+                  ...action,
+                  tone: 'positive', // Ensure tone is one of the allowed types
+                  label: action?.label || 'Publish', // Ensure label is defined
+                }
               }
-            }
-          : originalAction,
-      ),
-    badges: (prev, context) => {
-      if (
-        context.schemaType === 'page' ||
-        context.schemaType === 'article' ||
-        context.schemaType === 'events'
-      ) {
-        return [DocumentStatus, ...prev]
-      }
-      return prev
-    },
-  },
-  form: {
-    // Don't use this plugin when selecting files only (but allow all other enabled asset sources)
-    file: {
-      assetSources: (previousAssetSources) => {
-        return previousAssetSources.filter((assetSource) => assetSource !== mediaAssetSource)
+            : originalAction,
+        ),
+      badges: (prev, context) => {
+        if (
+          context.schemaType === 'page' ||
+          context.schemaType === 'article' ||
+          context.schemaType === 'events'
+        ) {
+          return [DocumentStatus, ...prev]
+        }
+        return prev
       },
     },
-  },
-})
+    form: {
+      // Don't use this plugin when selecting files only (but allow all other enabled asset sources)
+      file: {
+        assetSources: (previousAssetSources) => {
+          return previousAssetSources.filter((assetSource) => assetSource !== mediaAssetSource)
+        },
+      },
+    },
+  }
+}
