@@ -108,6 +108,15 @@ export default defineConfig([
     ...defaultConfig({ website: Appconfig.sites.reddap }),
   },
   {
+    basePath: Appconfig.sites.nordvestjylland.basePath,
+    name: Appconfig.sites.nordvestjylland.siteName,
+    title: Appconfig.sites.nordvestjylland.siteTitle,
+    subtitle: Appconfig.sites.nordvestjylland.subTitle,
+    projectId: 'sdye5zc0',
+    dataset: 'production',
+    ...defaultConfig({ website: Appconfig.sites.nordvestjylland }),
+  },
+  {
     basePath: Appconfig.sites.ramme.basePath,
     name: Appconfig.sites.ramme.siteName,
     title: Appconfig.sites.ramme.siteTitle,
@@ -124,15 +133,6 @@ export default defineConfig([
     projectId: '6dcmsap4',
     dataset: 'production',
     ...defaultConfig({ website: Appconfig.sites.idomlund }),
-  },
-  {
-    basePath: Appconfig.sites.nordvestjylland.basePath,
-    name: Appconfig.sites.nordvestjylland.siteName,
-    title: Appconfig.sites.nordvestjylland.siteTitle,
-    subtitle: Appconfig.sites.nordvestjylland.subTitle,
-    projectId: 'sdye5zc0',
-    dataset: 'production',
-    ...defaultConfig({ website: Appconfig.sites.nordvestjylland }),
   },
 ])
 
