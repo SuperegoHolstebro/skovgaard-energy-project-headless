@@ -115,7 +115,7 @@ const Hero = ({ data }: any) => {
                 src={image.image}
                 alt={`Hero Image ${image.asset?._id}`}
                 layout="fill"
-                className="rounded-md !h-[inherit] !w-[inherit] ml-auto "
+                className="rounded-md !h-[inherit]  ml-auto "
                 objectFit="cover"
                 style={{ opacity: 0, position: 'absolute', top: 0, left: 0 }}
               />
