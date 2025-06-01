@@ -1,11 +1,14 @@
 import React from 'react'
-import { useLoadPage } from '@repo/utils/src/hooks/useLoadPage'
 import { PageBuilder } from '@/components/PageBuilder'
 import PageContainer from '@/components/PageContainer'
 import { notFound } from 'next/navigation'
 import { metaData } from '@repo/utils/src/metadataUtils'
 import { Params } from '../artikler/[...slug]/page'
 import { draftMode } from 'next/headers'
+import { useLoadPage } from '@/hooks/UseLoadPage'
+import { client } from '@/sanity/lib/sanity.client'
+import { SITE_SETTINGS_QUERY } from '@repo/groq/documents/siteSettings.query'
+import { set } from 'sanity'
 
 export interface PageParams {
   params: Promise<Params>
@@ -41,5 +44,8 @@ export async function generateMetadata({ params }: { params: Promise<Params> }) 
   const slug = slugArray.join('/')
   const page = await useLoadPage(slug, locale)
 
-  return metaData({ locale }, page)
+  const settings = await client.fetch(SITE_SETTINGS_QUERY, {
+    locale: locale,
+  })
+  return metaData({ locale }, page, settings)
 }

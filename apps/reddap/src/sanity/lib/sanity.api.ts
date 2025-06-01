@@ -15,12 +15,7 @@ export const projectId = assertValue(
   'Missing environment variable: NEXT_PUBLIC_SANITY_PROJECT_ID',
 )
 
-export const readToken = {
-  reddap: process.env.SANITY_STUDIO_READ_TOKEN_REDDAP,
-  idomlund: process.env.SANITY_STUDIO_READ_TOKEN_IDOMLUND,
-  ramme: process.env.SANITY_STUDIO_READ_TOKEN_RAMME,
-  nordvestjylland: process.env.SANITY_STUDIO_READ_TOKEN_NORDVESTJYLLAND,
-}
+export const readToken = process.env.SANITY_API_READ_TOKEN || ''
 
 // see https://www.sanity.io/docs/api-versioning for how versioning works
 export const apiVersion = process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2023-09-01'

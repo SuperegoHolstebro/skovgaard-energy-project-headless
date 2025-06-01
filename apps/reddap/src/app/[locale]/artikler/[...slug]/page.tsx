@@ -1,16 +1,12 @@
 import React from 'react'
-import { useLoadPage } from '@/hooks/useLoadPage'
 import PageContainer from '@/components/PageContainer'
 import { notFound } from 'next/navigation'
-import Section from '@/components/sections/Section'
-import Heading from '@/components/atoms/Heading'
-import Paragraph from '@/components/atoms/Paragraph'
-import { formatDate } from '@/utils/date'
-import TextContainer from '@/components/sections/textContainer'
-import { metaData } from '@/utils/metadataUtils'
 import { draftMode } from 'next/headers'
-import { ARTICLE_QUERY } from '@/sanity/queries/documents/article.query'
-
+import { useLoadPage } from '@/hooks/UseLoadPage'
+import { ARTICLE_QUERY } from '@repo/groq/documents/article.query'
+import { metaData } from '@repo/utils/src/metadataUtils'
+import { client } from '@/sanity/lib/sanity.client'
+import { SITE_SETTINGS_QUERY } from '@repo/groq/documents/siteSettings.query'
 export interface Params {
   slug: string[]
   locale: string
@@ -32,33 +28,9 @@ export default async function DynamicRoute({ params }: { params: Promise<Params>
   }
   return (
     <PageContainer>
-      <Section
-        variant="lys"
-        paddingTop="none"
-        paddingX="none"
-        paddingBottom="none"
-        className="h-screen/1.6"
-      >
-        <Section
-          paddingBottom="none"
-          className="order-2 col-span-full sm:col-span-8 md:col-span-6 lg:col-span-6 xl:col-span-12 md:order-1 md:my-auto"
-          tag={'div'}
-        >
-          <div className="col-span-full">
-            <Heading spacing="small">{page.title}</Heading>
-            <Heading size="xs" tag="p" spacing="default">
-              {page.date ? formatDate(page.date) : ''}
-            </Heading>
-            <Paragraph>{page.description}</Paragraph>
-          </div>
-        </Section>
-        <div className="order-1 col-span-full sm:col-span-8 md:col-span-6 lg:col-span-6 xl:col-span-12 md:order-2">
-          <img src={page.image.asset.url} className="h-full object-cover max-h-screen/1.6 w-full" />
-        </div>
-      </Section>
-      <TextContainer variant="default">
-        <Paragraph isPortableText>{page.body}</Paragraph>
-      </TextContainer>
+      <pre>
+        {JSON.stringify(page, null, 2)}
+      </pre>
     </PageContainer>
   )
 }
@@ -68,6 +40,8 @@ export async function generateMetadata({ params }: { params: Promise<Params> }) 
   const { slug: slugArray } = await params
   const slug = slugArray.join('/')
   const page = await useLoadPage(slug, 'da', ARTICLE_QUERY)
-
-  return metaData({ locale }, page)
+  const settings = await client.fetch(SITE_SETTINGS_QUERY, {
+    locale: locale,
+  })
+  return metaData({ locale }, page, settings)
 }

@@ -1,7 +1,7 @@
 'use client'
 import { useEffect } from 'react'
-import Header from '@/components/organisms/Header'
 import Script from 'next/script'
+import Header from '@repo/ui/organisms/Header'
 
 export default function Cookie() {
   useEffect(() => {
@@ -13,7 +13,7 @@ export default function Cookie() {
 
   return (
     <>
-      <Header />
+      <Header logoVariant='SkovgaardEnergy' />
       <Script
         className="cookie-policy-content"
         id="CookiePolicy"

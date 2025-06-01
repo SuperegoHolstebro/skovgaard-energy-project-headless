@@ -1,6 +1,5 @@
 import { Metadata } from 'next'
 import { clean } from './sanitize'
-import { client } from './lib/sanity.client'
 import Appconfig from './superego.config'
 import { SITE_SETTINGS_QUERY } from '@repo/groq/documents/siteSettings.query'
 
@@ -25,11 +24,11 @@ interface Page {
   }
 }
 
-export async function metaData(params: { locale: string }, page: Page | null): Promise<Metadata> {
-  const settings = await client.fetch(SITE_SETTINGS_QUERY, {
-    locale: params.locale,
-  })
-
+export async function metaData(
+  params: { locale: string },
+  page: Page | null,
+  settings,
+): Promise<Metadata> {
   const DEFAULT_TITLE = 'Siden kunne ikke findes'
   const DEFAULT_DESCRIPTION = 'Siden du leder efter kunne ikke findes'
 

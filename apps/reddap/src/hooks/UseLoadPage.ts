@@ -2,11 +2,10 @@ import type { QueryParams } from 'next-sanity'
 import type { UnfilteredResponseQueryOptions } from '@sanity/client'
 import { draftMode } from 'next/headers'
 import 'server-only'
-import { client } from '@repo/utils/src/lib/sanity.client'
-import { readToken } from '@repo/utils/src/lib/sanity.api'
-import { sanityFetch } from '@repo/utils/src/lib/sanity.live'
+import { sanityFetch } from '@/sanity/lib/sanity.live'
 import { SeoGroup } from '@repo/utils/src/metadataUtils'
 import { PAGE_QUERY } from '@repo/groq/documents/page.query'
+import { readToken } from '@/sanity/lib/sanity.api'
 
 export type PagePayload = {
   image?: any
