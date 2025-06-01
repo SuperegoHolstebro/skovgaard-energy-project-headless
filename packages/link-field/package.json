@@ -1,22 +1,13 @@
 {
   "name": "@repo/link-field",
   "type": "module",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
-    },
-    "./sanity-link": {
-      "import": "./dist/sanity-link.js",
-      "types": "./dist/sanity-link.d.ts"
-    }
-  },
   "scripts": {
     "dev": "tsc --watch",
     "build": "tsc"
   },
+  "main": "src/index.tsx",
+  "types": "src/index.ts",
+  "link": "src/sanityLink.tsx",
   "devDependencies": {
     "@repo/typescript-config": "*",
     "typescript": "latest"
