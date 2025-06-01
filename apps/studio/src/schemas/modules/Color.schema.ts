@@ -1,5 +1,4 @@
 import { defineField, defineType } from 'sanity'
-
 export const Color = defineType({
   type: 'object',
   name: 'color',
@@ -12,13 +11,12 @@ export const Color = defineType({
       options: {
         layout: 'radio',
         list: [
-          { title: 'Standard', value: 'default' },
-          { title: 'Støvet Grøn', value: 'secondary' },
-          { title: 'Tertiære', value: 'tertiary' },
-          { title: 'Hvid', value: 'quaternary' },
+          { title: 'Lys', value: 'lys' },
+          { title: 'Mørk', value: 'mørk' },
+          { title: 'Lilla', value: 'lilla' },
         ],
       },
-      initialValue: 'default',
+      initialValue: 'lys',
     }),
   ],
 })

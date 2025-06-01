@@ -50,7 +50,7 @@ export const pageBuilder = defineType({
     },
   },
   of: [
-    /* defineArrayMember({
+    defineArrayMember({
       name: 'hero',
       type: 'hero',
     }),
@@ -98,10 +98,10 @@ export const pageBuilder = defineType({
       name: 'EventType',
       type: 'EventType',
     }),
-    defineArrayMember({
-      name: 'MediaType',
-      type: 'MediaType',
-    }),
+    // defineArrayMember({
+    //   name: 'MediaType',
+    //   type: 'MediaType',
+    // }),
     defineArrayMember({
       name: 'textWithIllustration',
       type: 'textWithIllustration',
@@ -113,74 +113,6 @@ export const pageBuilder = defineType({
     defineArrayMember({
       name: 'IconPicker',
       type: 'IconPicker',
-    }), */
-
-    defineArrayMember({
-      name: 'hero',
-      type: 'hero',
     }),
-    defineArrayMember({
-      name: 'textContainer',
-      type: 'textContainer',
-    }),
-    defineArrayMember({
-      name: 'DataType',
-      type: 'DataType',
-    }),
-    defineArrayMember({
-      name: 'GalleryType',
-      type: 'GalleryType',
-    }),
-    defineArrayMember({
-      name: 'CallToAction',
-      type: 'CallToAction',
-    }),
-    defineArrayMember({
-      name: 'pageTitle',
-      type: 'pageTitle',
-    }),
-    defineArrayMember({
-      name: 'LogoGallery',
-      type: 'LogoGallery',
-    }),
-    defineArrayMember({
-      name: 'textWithIllustration',
-      type: 'textWithIllustration',
-    }),
-    defineArrayMember({
-      name: 'accordion',
-      type: 'accordion',
-    }),
-    defineArrayMember({
-      name: 'ProcessType',
-      type: 'ProcessType',
-    }),
-    defineArrayMember({
-      name: 'Downloadables',
-      type: 'Downloadables',
-    }),
-    defineArrayMember({
-      name: 'difSlider',
-      type: 'difSlider',
-    }),
-    defineArrayMember({
-      name: 'NewsLetterCTA',
-      type: 'NewsLetterCTA',
-    }),
-    /*      defineArrayMember({
-      name: 'NewsType',
-      type: 'NewsType',
-    }), */
-    /*     
-    defineArrayMember({ //!!ignore!!//
-      name: 'EmployeesType',
-      type: 'EmployeesType',
-    }),
-     defineArrayMember({ //!!ignore!!//
-      name: 'EventType',
-      type: 'EventType',
-    }),
-
-     */
   ],
 })

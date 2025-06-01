@@ -1,68 +1,100 @@
+import { paddingIndicator } from '../../utils/paddingindicator'
 import { Click } from '@mynaui/icons-react'
-import { defineArrayMember, defineField, defineType } from 'sanity'
+import { defineField, defineType } from 'sanity'
 
-export const CallToAction = defineType({
+const CallToAction = defineType({
   name: 'CallToAction',
-  type: 'object',
   title: 'Call to action',
+  description:
+    'Call to actions er fremtrædende bokse eller knapper, der opfordrer brugeren til at udføre en bestemt handling, f.eks. at klikke videre på relaterede sider på hjemmesiden eller tage kontakt til Jer. Call to actions gør oplevelsen mere intuitiv og flydende for brugeren.',
+  type: 'object',
   icon: Click,
   groups: [
     { title: 'Indhold', name: 'content' },
     { title: 'Design', name: 'design' },
-    { title: 'Medie', name: 'media' },
-    { title: 'Indstillinger', name: 'settings' },
+    { title: 'indstillinger', name: 'settings' },
   ],
   fields: [
-    defineField({
-      name: 'title',
-      type: 'string',
+    {
       group: 'content',
-    }),
-    defineField({
-      name: 'body',
-      group: 'content',
-      title: 'Brødtekst',
-      type: 'blockContent',
-    }),
-    defineField({
-      name: 'link',
-      type: 'link',
-      title: 'Link',
-      description: 'Link til en side eller ekstern URL.',
-      group: 'content',
-    }),
-    defineField({
+      name: 'callToActions',
+      title: 'Call to actions',
+      type: 'array',
+      of: [
+        {
+          name: 'callToAction',
+          title: 'Call to action',
+          type: 'object',
+          groups: [
+            { title: 'Medie', name: 'medie' },
+            { title: 'Tekst', name: 'text' },
+            { title: 'Link', name: 'link' },
+          ],
+          fields: [
+            // heading
+            defineField({
+              group: 'text',
+              name: 'heading',
+              title: 'Overskrift',
+              type: 'string',
+              description:
+                'Overskriften er det første, brugeren ser, og skal være kort og præcis. Den skal beskrive, hvad brugeren får ud af at klikke på knappen.',
+            }),
+            // subheading
+            defineField({
+              group: 'text',
+              name: 'subheading',
+              title: 'Underoverskrift',
+              type: 'string',
+              description:
+                'Underoverskriften er en kort beskrivelse af overskriften og skal uddybe, hvad brugeren får ud af at klikke på knappen.',
+            }),
+            // link
+            defineField({
+              group: 'link',
+              name: 'link',
+              title: 'Link',
+              type: 'link',
+              validation: (Rule) => Rule.required(),
+            }),
+            {
+              group: 'medie',
+              name: 'MediaObject',
+              title: 'Medie',
+              type: 'MediaObject',
+            },
+          ],
+        },
+      ],
+    },
+    {
       name: 'design',
       type: 'design',
       group: 'design',
-    }),
-    defineField({
-      name: 'overflow',
-      type: 'boolean',
-      title: 'Overflow?',
-      description: 'Fjern padding på bunden først.',
-      group: 'design',
-      initialValue: false,
-    }),
-    defineField({
-      name: 'SectionSettings',
-      type: 'SectionSettings',
-      title: 'Sektion indstillinger',
+    },
+
+    {
       group: 'settings',
-    }),
+      name: 'SectionSettings',
+      title: 'Indstillinger',
+      type: 'SectionSettings',
+    },
   ],
   preview: {
     select: {
-      title: 'title',
-      body: 'body',
-      media: 'image',
+      title: 'Call to action',
+      amountofCTAs: 'callToActions',
+      media: 'callToActions.0.image',
+      design: 'design',
     },
-    prepare({ media, title, body }) {
+    prepare({ amountofCTAs, media, design }) {
       return {
-        title: title || 'Call to action',
-        subtitle: body ? 'Call to action | ' + body[0]?.children[0]?.text : 'Ingen brødtekst',
-        media: media || undefined,
+        subtitle: 'Call to action' + ' | ' + paddingIndicator(design),
+        title: `Antal ${Object.keys(amountofCTAs).length}`,
+        media: media,
       }
     },
   },
 })
+
+export { CallToAction }

@@ -1,5 +1,6 @@
+import { paddingIndicator } from '../../utils/paddingindicator'
 import { Album } from '@mynaui/icons-react'
-import { defineType } from 'sanity'
+import { defineField, defineType } from 'sanity'
 
 export const LogoGallery2 = defineType({
   name: 'LogoGallery2',
@@ -17,12 +18,12 @@ export const LogoGallery2 = defineType({
     {
       name: 'images',
       type: 'array',
-      title: 'Images',
+      title: 'Billeder',
       of: [
         {
           name: 'image',
           type: 'image',
-          title: 'Image',
+          title: 'Billede',
           options: {
             hotspot: true,
           },
@@ -39,18 +40,29 @@ export const LogoGallery2 = defineType({
         layout: 'grid',
       },
     },
+    defineField({
+      name: 'design',
+      title: 'Design',
+      type: 'design',
+    }),
+    defineField({
+      name: 'SectionSettings',
+      title: 'Indstillinger',
+      type: 'SectionSettings',
+    }),
   ],
   preview: {
     select: {
       images: 'images',
       image: 'images.0',
+      design: 'design',
     },
     prepare(selection) {
-      const { images, image } = selection
+      const { images, image, design } = selection
 
       return {
         title: `Galleri med ${Object.keys(images).length} billeder`,
-        subtitle: `Alt text: `,
+        subtitle: `Galleri | ${paddingIndicator(design)}`,
         media: image,
       }
     },

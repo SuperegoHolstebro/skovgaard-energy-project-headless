@@ -69,27 +69,6 @@ export default defineType({
       ],
     }),
     defineField({
-      name: 'about',
-      type: 'object',
-      fields: [
-        defineField({
-          name: 'title',
-          type: 'string',
-          title: 'Overskrift',
-        }),
-        defineField({
-          name: 'description',
-          type: 'text',
-          title: 'Om os',
-        }),
-        defineField({
-          name: 'link',
-          type: 'link',
-          title: 'Knap',
-        }),
-      ],
-    }),
-    defineField({
       name: 'social',
       group: 'social',
       title: 'Sociale medier',
@@ -137,6 +116,45 @@ export default defineType({
             select: {
               title: 'platform',
               subtitle: 'url',
+            },
+          },
+        },
+      ],
+    }),
+    defineField({
+      name: 'openingHours',
+      title: 'Åbningstider',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'day',
+              title: 'Dag',
+              type: 'string',
+              options: {
+                list: [
+                  { title: 'Mandag', value: 'mandag' },
+                  { title: 'Tirsdag', value: 'tirsdag' },
+                  { title: 'Onsdag', value: 'onsdag' },
+                  { title: 'Torsdag', value: 'torsdag' },
+                  { title: 'Fredag', value: 'fredag' },
+                  { title: 'Lørdag', value: 'lørdag' },
+                  { title: 'Søndag', value: 'søndag' },
+                ],
+              },
+            }),
+            defineField({
+              name: 'hours',
+              title: 'Åbningstider',
+              type: 'string',
+            }),
+          ],
+          preview: {
+            select: {
+              title: 'day',
+              subtitle: 'hours',
             },
           },
         },

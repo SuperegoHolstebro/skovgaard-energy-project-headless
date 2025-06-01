@@ -1,5 +1,6 @@
 import { Click } from '@mynaui/icons-react'
-import { defineField, defineType } from 'sanity'
+import { defineArrayMember, defineField, defineType } from 'sanity'
+import { paddingIndicator } from '../../utils/paddingindicator'
 
 const CallToAction2 = defineType({
   name: 'CallToAction2',
@@ -22,7 +23,7 @@ const CallToAction2 = defineType({
         'Overskriften er det første, brugeren ser, og skal være kort og præcis. Den skal beskrive, hvad brugeren får ud af at klikke på knappen.',
     }),
 
-    {
+    defineField({
       name: 'links',
       title: 'Links',
       description: 'Tilføj op til 2 links',
@@ -31,55 +32,35 @@ const CallToAction2 = defineType({
         return rule.required().min(1).max(2)
       },
       of: [
-        {
+        defineArrayMember({
           name: 'link',
           title: 'Link',
           type: 'link',
           validation: (Rule) => Rule.required(),
-        },
+        }),
       ],
-    },
-    /*     // link
-    defineField({
-      name: 'link',
-      title: 'Link',
-      type: 'link',
-      validation: (Rule) => Rule.required(),
     }),
-
-    // link
     defineField({
-      name: 'link2',
-      title: 'Link',
-      type: 'link',
-      validation: (Rule) => Rule.required(),
-    }), */
-
-    {
       name: 'design',
       type: 'design',
       group: 'design',
-    },
-
-    {
+    }),
+    defineField({
       group: 'settings',
       name: 'SectionSettings',
       title: 'Indstillinger',
       type: 'SectionSettings',
-    },
+    }),
   ],
   preview: {
     select: {
-      title: 'Call to action',
-      amountofCTAs: 'callToActions',
-      media: 'callToActions.0.image',
+      links: 'links',
+      design: 'design',
     },
-    prepare({ title, amountofCTAs, media }) {
+    prepare({ links, design }) {
       return {
-        title: 'Call to action',
-        subtitle: `Antal ${Object.keys(amountofCTAs).length} Call to actions`,
-
-        media: media,
+        subtitle: 'Call to action | ' + paddingIndicator(design),
+        title: `Antal ${Object?.keys(links)?.length} Knapper `,
       }
     },
   },

@@ -1,74 +1,78 @@
-import { UsersGroup } from "@mynaui/icons-react";
-import { defineField, defineType } from "sanity";
+import { paddingIndicator } from '../../utils/paddingindicator'
+import { UsersGroup } from '@mynaui/icons-react'
+import { defineField, defineType } from 'sanity'
 
 export const EmployeesType = defineType({
-  name: "EmployeesType",
+  name: 'EmployeesType',
   icon: UsersGroup,
-  title: "Medarbejdere",
-  description: "Viser en liste af medarbejdere",
-  type: "object",
+  title: 'Medarbejdere',
+  description: 'Viser en liste af medarbejdere',
+  type: 'object',
   groups: [
-    { title: "Indhold", name: "content" },
-    { title: "Design", name: "design" },
-    {title: 'indstillinger', name: 'settings'}
-
+    { title: 'Indhold', name: 'content' },
+    { title: 'Design', name: 'design' },
+    { title: 'indstillinger', name: 'settings' },
   ],
   fields: [
     defineField({
-      group: "content",
-      name: "heading",
-      type: "string",
+      group: 'content',
+      name: 'heading',
+      type: 'string',
+      title: 'Overskrift',
     }),
     defineField({
-      group: "content",
-      name: "view",
-      title: "view",
-      type: "string",
+      group: 'content',
+      name: 'view',
+      title: 'Visning',
+      type: 'string',
       options: {
         list: [
-          { title: "Manual", value: "manual" },
-          { title: "Afdeling", value: "department" },
-          { title: "Alle", value: "all" }
+          { title: 'Manual', value: 'manual' },
+          { title: 'Afdeling', value: 'department' },
+          { title: 'Alle', value: 'all' },
         ],
-        layout: "dropdown",
+        layout: 'dropdown',
       },
-      initialValue: "manual", // Set "public" as the default value
+      initialValue: 'manual', // Set "public" as the default value
     }),
-     {
-      group: "content",
-      name: "employees",
-      type: "array",
-      hidden: ({ parent }) => parent?.view !== "manual",
-      of: [{ type: "reference", to: [{ type: "employee" }] }],
-    },
-    {
-      group: "content",
-      name: "department",
-      type: "array",
-      hidden: ({ parent }) => parent?.view !== "department",
-      of: [{ type: "reference", to: [{ type: "position" }] }],
-    },
-    {
-      name: "design",
-      type: "design",
-      group: "content",
-    },
-    {
+    defineField({
+      group: 'content',
+      name: 'employees',
+      title: 'Medarbejdere',
+      type: 'array',
+      hidden: ({ parent }) => parent?.view !== 'manual',
+      of: [{ type: 'reference', to: [{ type: 'employee' }] }],
+    }),
+    defineField({
+      group: 'content',
+      name: 'department',
+      title: 'Afdeling',
+      type: 'array',
+      hidden: ({ parent }) => parent?.view !== 'department',
+      of: [{ type: 'reference', to: [{ type: 'position' }] }],
+    }),
+    defineField({
+      name: 'design',
+      type: 'design',
+      group: 'content',
+    }),
+    defineField({
       group: 'settings',
       name: 'SectionSettings',
       title: 'Indstillinger',
-      type: 'SectionSettings'
-    }
+      type: 'SectionSettings',
+    }),
   ],
   preview: {
     select: {
-      title: "heading",
+      title: 'heading',
+      design: 'design',
     },
-    prepare({ title }) {
+    prepare({ title, design }) {
       return {
         title: title,
-        subtitle: "Medarbejdere",
-      };
+        subtitle: 'Medarbejdere' + ' | ' + paddingIndicator(design),
+      }
     },
-  }
-});
+  },
+})
