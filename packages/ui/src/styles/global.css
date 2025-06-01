@@ -1,0 +1,15 @@
+@import 'tailwindcss';
+@import './colors.css';
+@import './text.css';
+@import './breakpoints.css';
+@import './grid.css';
+@import './ease.css';
+@import './spacing.css';
+@import './lenis.css';
+@import 'tw-animate-css';
+
+@theme {
+  /**
+  * Add your custom theme variables here
+  */
+}
