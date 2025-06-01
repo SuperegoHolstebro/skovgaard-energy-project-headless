@@ -1,4 +1,5 @@
 import React from 'react'
+import { useLoadPage } from '@/hooks/useLoadPage'
 import PageContainer from '@/components/PageContainer'
 import { notFound } from 'next/navigation'
 import { metaData } from '@repo/utils/metadataUtils'
@@ -68,6 +69,8 @@ export async function generateMetadata({ params }: { params: Promise<Params> }) 
   const { slug: slugArray } = await params
   const slug = slugArray.join('/')
   const page = await useLoadPage(slug, 'da', ARTICLE_QUERY)
+
+  return metaData({ locale }, page)
 
   return metaData({ locale }, page)
 }

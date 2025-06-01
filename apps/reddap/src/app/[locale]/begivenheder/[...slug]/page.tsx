@@ -78,4 +78,5 @@ export async function generateMetadata({ params }: { params: Promise<Params> }) 
   const page = await useLoadPage(slug, 'da', EVENT_QUERY)
 
   return metaData({ locale }, page)
+  return metaData({ locale }, page)
 }
