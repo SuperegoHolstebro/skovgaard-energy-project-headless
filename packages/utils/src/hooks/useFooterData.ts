@@ -19,7 +19,7 @@ import { FOOTER_QUERY } from '@repo/groq/documents/footer.query'
  * ```
  */
 
-const useFooterData = (locale) => {
+const useFooterData = (locale: any) => {
   const [data, setData] = useState(null)
 
   useEffect(() => {

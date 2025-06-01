@@ -108,8 +108,8 @@ function SanityImage({
     )
   }
 
-  const aspectRatioWidth = aspectRatioValues ? parseFloat(aspectRatioValues[0]) : undefined
-  const aspectRatioHeight = aspectRatioValues ? parseFloat(aspectRatioValues[1]) : undefined
+  const aspectRatioWidth = aspectRatioValues ? parseFloat(aspectRatioValues[0] as any) : undefined
+  const aspectRatioHeight = aspectRatioValues ? parseFloat(aspectRatioValues[1] as any) : undefined
 
   const urlBuilder = imageUrlBuilder({
     dataset: dataset,

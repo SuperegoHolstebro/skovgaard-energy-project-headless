@@ -1,4 +1,4 @@
-export function extractPlainText(richText) {
+export function extractPlainText(richText: any) {
   if (!Array.isArray(richText)) return ''
   return richText
     .map((block) => {

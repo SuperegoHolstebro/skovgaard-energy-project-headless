@@ -19,7 +19,6 @@
     "./molecules/InnerBlocks.query": "./src/molecules/InnerBlocks.query.ts",
     "./molecules/MediaObject.query": "./src/molecules/MediaObject.query.ts",
     "./molecules/allSlugs.query": "./src/molecules/allSlugs.query.ts",
-    "./molecules/locale.query": "./src/molecules/locale.query.ts",
     "./molecules/PageBuilder.query": "./src/molecules/PageBuilder.query.ts",
     "./molecules/seo.query": "./src/molecules/seo.query.ts",
     "./organisms/allSlugs.query": "./src/organisms/allSlugs.query.ts",

@@ -52,8 +52,8 @@ const Button = forwardRef(
           {...props}
           ref={ref}
           link={clean(link as any) as any}
-          aria-label={clean(link.label)}
-          title={clean(link.label)}
+          aria-label={clean(link.label as any)}
+          title={clean(link.label as any)}
           hrefResolver={({ internalLink }) =>
             clean(
               resolveHref(internalLink?.locale, internalLink?._type, internalLink?.slug?.current),

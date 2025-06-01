@@ -65,6 +65,7 @@ const LocaleSwitcher = ({ position, className, view }: Props) => {
       : '' // fallback to empty string for homepage
 
   const data = useLocaleData(currentLocale, slug)
+  /* @ts-expect-error */
   const translations = data?.localeInfo?._translations ?? [] as any[]
   console.log('params.locale:', currentLocale)
   console.log('params.slug:', rawSlug, ' → normalized:', theslug)

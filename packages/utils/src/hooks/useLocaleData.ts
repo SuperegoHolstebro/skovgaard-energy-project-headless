@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { client } from '@repo/utils/src/lib/sanity.client'
 import { LOCALE_QUERY } from '@repo/groq/organisms/locale.query'
 
-const useLocaleData = (locale, slug) => {
+const useLocaleData = (locale: any, slug: any) => {
   const [data, setData] = useState(null)
 
   useEffect(() => {

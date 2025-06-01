@@ -10,7 +10,7 @@ const TOKEN_MAP = {
 }
 
 // Get token by project ID
-export const getTokenByProject = (projectId) => {
+export const getTokenByProject = (projectId: any) => {
   return TOKEN_MAP[projectId] || null
 }
 
