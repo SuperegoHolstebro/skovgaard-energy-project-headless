@@ -34,20 +34,25 @@ const ErrorPage: React.FC = () => {
 
   return (
     <PageContainer>
-      <Section className="min-h-screen">
+      <pre>
+        <code className="text-red-500">
+          {`Error 404: Page not found. Locale: ${locale}`}
+        </code>
+      </pre>
+      {/*       <Section className="min-h-screen">
         <div className="my-auto text-center col-span-full">
           <Heading tag="h1" type="h1">
             {t?.heading}
           </Heading>
-          <Paragraph size="regular">{t?.description}</Paragraph>
-          <div className="flex justify-center gap-4 mt-8">
+          <Paragraph size="regular">{t?.description}</Paragraph> */}
+      {/*  <div className="flex justify-center gap-4 mt-8">
             <AdvancedButton variant="default">
               <Link href={t?.slug}>{t?.button}</Link>
             </AdvancedButton>
-          </div>
-        </div>
-      </Section>
-    </PageContainer>
+          </div> */}
+      {/* </div> */}
+      {/* </Section> */}
+    </PageContainer >
   )
 }
 
