@@ -7,8 +7,8 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
+    "module": "esnext", // ✅ Allows ESM-style exports
+    "moduleResolution": "bundler", // ✅ Disables the extension requirement
     "preserveWatchOutput": true,
     "skipLibCheck": true,
     "noEmit": true,
