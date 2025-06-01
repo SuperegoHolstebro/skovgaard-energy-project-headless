@@ -102,7 +102,7 @@ export async function metaData(params: { locale: any }, page: Page | any): Promi
       languages: hreflangs.reduce((acc, lang) => {
         acc[lang.hreflang] = lang.href
         return acc
-      }, {}),
+      }, {} as any),
     },
   }
 }
