@@ -1,7 +1,7 @@
 import React from 'react'
 import PageContainer from '@/components/PageContainer'
 import { notFound } from 'next/navigation'
-import { metaData } from '@repo/utils//metadataUtils'
+import { metaData } from '@repo/utils/metadataUtils'
 import { draftMode } from 'next/headers'
 import { ARTICLE_QUERY } from '@repo/groq/documents/article.query'
 import TextContainer from '@repo/ui/sections/textContainer'
