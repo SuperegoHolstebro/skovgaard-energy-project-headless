@@ -5,6 +5,7 @@ import { Button } from '../atoms/Button'
 import Heading from '../atoms/Heading'
 import Paragraph from '../atoms/Paragraph'
 import { FadeUp } from '../interactions/AnimateFadeIn'
+import { clean } from '@repo/utils/sanitize'
 
 const PageTitle = ({ data }: any) => {
   const handleClick = () => {
@@ -44,7 +45,7 @@ const PageTitle = ({ data }: any) => {
               {data?.buttons?.map((button: any, index: number) => (
                 <React.Fragment key={index}>
                   {button?.link?.label && (
-                    <Button link={button?.link} variant={button?.style}>
+                    <Button link={button?.link} variant={clean(button?.style) as any}>
                       <span>{button?.link?.label}</span>
                     </Button>
                   )}
