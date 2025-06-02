@@ -5,6 +5,7 @@ import Icon from '../atoms/Icons'
 
 const IconPickerInput = ({ value, onChange, type }: any) => {
     const icons = [
+        { title: 'Igen ikon', value: 'empty' },
         { title: "Lokation", value: "Lokation" },
         { title: "Strategi", value: "Strategi" },
         { title: "Miljø", value: "Miljø" },

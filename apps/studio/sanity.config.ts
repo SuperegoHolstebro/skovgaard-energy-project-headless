@@ -155,6 +155,7 @@ function defaultConfig({ website, presentationOriginUrl }) {
           'article',
           'event',
           'BreakingNews',
+          'process',
         ],
         languageField: 'locale',
       }),

@@ -65,7 +65,7 @@ type IconProps = {
   "Download" |
   "Fil" |
   "Link" |
-  "Eksternt" |
+  "Eksternt" | "empty" |
   any
 
   [key: string]: React.SVGProps<SVGSVGElement> | string;

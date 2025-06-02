@@ -2,6 +2,7 @@ import { useParams } from 'next/navigation'
 import LocaleSwitcher from '../atoms/LocaleSwitcher'
 import MenuButton from '../atoms/MenuButton'
 import { NavigationGroupProps } from '../types/NavigationGroup.types'
+import Appconfig from '@repo/utils/superego.config'
 
 /**
  *
@@ -32,7 +33,6 @@ const NavigationGroup = ({ isOpen, setIsOpen }: NavigationGroupProps) => {
   const locale = useParams().locale
   return (
     <div className='flex justify-end col-start-4 gap-6 lg:hidden md:col-start-6 xl:col-start-8 -col-end-1 '>
-      <LocaleSwitcher view="desktop" />
       <MenuButton isOpen={isOpen} setIsOpen={setIsOpen} />
     </div>
 

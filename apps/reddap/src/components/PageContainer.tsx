@@ -46,13 +46,13 @@ export default function PageContainer({
 }) {
   return (
     <>
-      <Header logoVariant='SkovgaardEnergy' />
+      <Header logoVariant='SkovgaardEnergy' ShowLocaleSwitcher={true} />
       <Lenis
         options={lenis}
         root={typeof document !== 'undefined' ? document.documentElement : null}
       />
       {children}
-      <Footer />
+      <Footer logoVariant='SkovgaardEnergy' />
     </>
   )
 }

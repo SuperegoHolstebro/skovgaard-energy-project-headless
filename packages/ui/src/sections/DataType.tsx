@@ -21,11 +21,8 @@ const DataType = ({ data }: DataTypeSection) => {
             <div className="pt-4 overflow-hidden">
               <Heading
                 text="balance"
-                tag={data.heading?.heading?.tag}
-                type={data.heading?.heading?.type}
-                alignment={data.heading?.heading?.alignment}
-              >
-                {data.heading.heading?.heading}
+                data={data.heading}>
+                {data.heading.text}
               </Heading>
             </div>
           </FadeUp>
@@ -37,11 +34,11 @@ const DataType = ({ data }: DataTypeSection) => {
             <DataTypeListItem key={index} data={dataObject} index={index} />
           )
         })}
-        {data.link.label && (
+        {data.link.link.label && (
           <FadeUp>
             <div className='text-regular'>
-              <Button variant="tertiary" className='w-full' link={data?.link}>
-                {data?.link?.label}
+              <Button variant={data?.link?.style} className='w-full' link={data?.link.link}>
+                {data?.link.link?.label}
               </Button>
             </div>
           </FadeUp>
@@ -71,7 +68,7 @@ function DataTypeListItem({ data, index }: any) {
             <Heading spaceing="none" size="md" tag="h4">
               {data.heading}
             </Heading>
-            <Paragraph className="whitespace-pre-line">{data.text}</Paragraph>
+            <Paragraph isPortableText>{data.body}</Paragraph>
             {data?.link?.url && (
               <div className="mx-auto max-w-fit md:mx-0">
                 <Button className="group" variant="none">

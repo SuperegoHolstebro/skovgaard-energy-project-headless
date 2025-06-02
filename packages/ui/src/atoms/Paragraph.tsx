@@ -67,7 +67,7 @@ const myPortableTextComponents = {
       return (
         <SanityLink
           link={value}
-          className="underline transition-all custom-a underline-offset-2 hover:underline-offset-4"
+          className="underline transition-all custom-a ease-custom duration-700 underline-offset-2 hover:underline-offset-4"
           title={value.label}
         >
           {children}

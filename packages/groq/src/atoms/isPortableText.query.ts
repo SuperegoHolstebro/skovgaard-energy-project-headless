@@ -1,18 +1,30 @@
 import groq from 'groq'
 
 export const isPortableTextQuery = groq`
-  body[] {
+body[] {
+  ...,
+  markDefs[] {
     ...,
-    markDefs[] {
+    _type == "link" => {
       ...,
-      _type == "link" => {
-        ...,
-        internalLink-> {
-          _type,
+      internalLink-> {
+        _type,
+        slug,
+        title,
+        locale,
+        "_translations": *[_type == "translation.metadata" && references(^._id)].translations[].value-> {
+          title,
           slug,
-          title
+          locale
+        }
+      },
+      file {
+        asset-> {
+          ...
         }
       }
     }
+  }
 }
+
 `

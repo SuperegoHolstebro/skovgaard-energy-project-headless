@@ -17,6 +17,8 @@ import Media from './MediaSection'
 import DataType from './DataType'
 import PageTitle from './PageTitle'
 import AccordionSection from './AccordionSection'
+import ProcessSection from './ProcessSection'
+import NewsLetterCTA from './NewsLetterCTA'
 
 // use keyof Sanity schema later with proper types
 /**
@@ -45,7 +47,9 @@ export const sectionComponents: Record<string, React.ComponentType<any>> = {
   LogoGallery: LogoGallery,
   pageTitle: PageTitle,
   accordion: AccordionSection,
-
+  ProcessType: ProcessSection,
+  CallToAction: CallToActionSection,
+  NewsLetterCTA: NewsLetterCTA,
 
 
   /* !!!...Unsued...!!! */
@@ -64,5 +68,5 @@ export const sectionComponents: Record<string, React.ComponentType<any>> = {
   EventType: EventSection,
   textContainer: TextContainer,
   MediaType: Media,
-  CallToAction: CallToActionSection,
+
 }

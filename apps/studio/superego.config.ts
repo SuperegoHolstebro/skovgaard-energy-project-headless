@@ -45,7 +45,10 @@ const Appconfig = {
       basePath: '/idomlund',
       projectId: '6dcmsap4',
       i18n: {
-        locales: [{ id: 'da', title: 'Dansk' }],
+        locales: [
+          { id: 'da', title: 'Dansk' },
+          { id: 'en', title: 'English' },
+        ],
         defaultLocaleId: 'da',
       },
     },

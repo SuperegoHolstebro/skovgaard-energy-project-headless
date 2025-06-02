@@ -10,3 +10,10 @@
 @plugin "@tailwindcss/typography";
 @plugin "@tailwindcss/aspect-ratio";
 @import 'tw-animate-css';
+
+@theme {
+  --color-primary: #132c3f;
+  --color-secondary: #31b7c9;
+  --color-tertiary: #475966;
+  --color-quaternary: #ffffff;
+}

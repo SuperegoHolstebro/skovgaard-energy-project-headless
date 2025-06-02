@@ -11,9 +11,10 @@ import { resolveHomeHref } from '@repo/utils/resolveHref'
 
 type HeaderProps = {
   logoVariant?: LogoProps['variant']
+  ShowLocaleSwitcher?: boolean
 }
 
-export default function Header({ logoVariant = 'SkovgaardEnergy'
+export default function Header({ logoVariant = 'SkovgaardEnergy', ShowLocaleSwitcher
 }: HeaderProps) {
   const locale = useParams().locale
   const [isOpen, setIsOpen] = React.useState(false)
@@ -59,10 +60,10 @@ export default function Header({ logoVariant = 'SkovgaardEnergy'
           <Logo className="w-full h-auto max-w-3xs" variant={logoVariant as any} />
         </Link>
         <NavigationGroup isOpen={isOpen} setIsOpen={setIsOpen} />
-        <Navigation />
+        <Navigation ShowLocaleSwitcher={ShowLocaleSwitcher} />
       </Section>
       <AnimatePresence mode="wait">
-        {isOpen && <Navigation isMobile onClose={handleCloseNav} />}
+        {isOpen && <Navigation isMobile onClose={handleCloseNav} ShowLocaleSwitcher={ShowLocaleSwitcher} />}
       </AnimatePresence>
     </>
   )

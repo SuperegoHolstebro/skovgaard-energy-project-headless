@@ -22,3 +22,21 @@ export function getDanishDate(date: string): string {
     year: 'numeric',
   })
 }
+
+export function getDay(date: string) {
+  return new Date(date).toLocaleDateString('da-DK', {
+    day: 'numeric',
+  })
+}
+
+export function getMonth(date: string) {
+  return new Date(date).toLocaleDateString('da-DK', {
+    month: 'short',
+  })
+}
+
+export function getYear(date: string) {
+  return new Date(date).toLocaleDateString('da-DK', {
+    year: 'numeric',
+  })
+}

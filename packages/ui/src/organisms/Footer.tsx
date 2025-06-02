@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Heading from '../atoms/Heading'
 import Icon from '../atoms/Icons'
-import Logo from '../atoms/Logo'
+import Logo, { LogoProps } from '../atoms/Logo'
 import useFooterData from '@repo/utils/hooks/useFooterData'
 import { clean } from '@repo/utils/sanitize'
 import { useParams } from 'next/navigation'
@@ -20,7 +20,12 @@ import { Button } from '../atoms/Button'
  *
  **/
 
-export default function Footer() {
+
+type FooterProps = {
+  logoVariant?: LogoProps['variant']
+}
+
+export default function Footer({ logoVariant = 'SkovgaardEnergy' }: FooterProps) {
   const locale = useParams().locale
   const data = useFooterData(locale) as any
   const social = data?.social
@@ -40,7 +45,7 @@ export default function Footer() {
       <div className="col-span-full sm:col-span-full md:col-span-6 lg:col-span-4 xl:col-span-8">
         <div className="">
           <Link className="" href="/" title="">
-            <Logo className="w-full h-auto max-w-3xs" variant={'SkovgaardEnergy'} />
+            <Logo className="w-full h-auto max-w-3xs" variant={logoVariant as any} />
           </Link>
         </div>
         <ul className="flex flex-wrap justify-center mx-auto mt-8 max-w-64 md:mx-0 gap-x-3 gap-y-2 md:justify-start">
@@ -115,7 +120,7 @@ export default function Footer() {
       </div>
       <div className="space-y-6 col-span-full">
         <div className="hidden w-full h-px sm:block bg-primary/40"></div>
-        <div className="flex flex-col justify-between gap-1 text-center sm:text-left sm:flex-row sm:justify-between text-[14px] text-tertiary  ">
+        <div className="flex flex-col justify-between gap-1 text-center sm:text-left sm:flex-row sm:justify-between text-[14px] text-skovgaard-turkis  ">
           <p className="transition-all ">{`© ${new Date().getFullYear()} ${companyName}`}</p>
           <a
             className="transition-all hover:text-primary"
@@ -127,7 +132,7 @@ export default function Footer() {
           </a>
           <p className="relative transition-all group hover:text-primary ">
             <a
-              className="before:absolute before:-right-[11px] before:rounded-full before:animate-bounce duration-1000 before:bottom-[5px] before:size-[7px] before:block before:transition-all ease-linear transition-all group-hover:before:bg-green"
+              className="before:absolute before:-right-[11px] before:rounded-full before:animate-bounce duration-1000 before:bottom-[5px] before:size-[7px] before:block before:transition-all ease-linear transition-all group-hover:before:bg-superego-green"
               href="https://superego.nu/kontakt/holstebro"
               target="_blank"
               rel="noreferrer"

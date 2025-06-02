@@ -16,6 +16,8 @@ import { hero3Query } from '../sections/Hero3.query'
 import { DataTypeQuery } from '../sections/dataType.query'
 import { PageTitle_Query } from '../sections/PageTitle.query'
 import { AccordionSection_QUERY } from '../sections/AccordionSection.query'
+import { ProcessTypeQuery } from '../sections/ProcessType.query'
+import { NewsLetterCTA_QUERY } from '../sections/newsletterCTA.query'
 
 export const pageBuilderQuery = groq`
   pageBuilder[] {
@@ -40,6 +42,8 @@ export const pageBuilderQuery = groq`
     ${CallToActionQuery},
     ${textWithIllustrationQuery},
     ${GalleryQuery},
+    ${ProcessTypeQuery},
+    ${NewsLetterCTA_QUERY}
 
 
 

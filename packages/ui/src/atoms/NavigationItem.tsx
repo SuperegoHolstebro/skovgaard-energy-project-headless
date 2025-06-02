@@ -44,7 +44,7 @@ export default function NavigationItem({ item }: NavigationItemProps) {
         onClick={toggleSubmenu}
         link={item.link as any}
         variant="none"
-        className="w-full block relative pr-8 !text-medium md:!text-increased"
+        className="w-full block relative !text-medium md:!text-increased"
       >
         {item?.link?.label}
         {item.links && item.links.length > 0 && (

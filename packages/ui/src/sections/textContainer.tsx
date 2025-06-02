@@ -2,6 +2,7 @@ import React from 'react'
 import Section from '../sections/Section'
 import { TextContainerProps } from '../types/TextContainer.types'
 import InnerBlocks from '../molecules/InnerBlocks'
+import { clean } from '@repo/utils/sanitize'
 
 /**
  *
@@ -24,16 +25,27 @@ const TextContainer: React.FC<TextContainerProps> = ({
   paddingBottom,
 }) => {
   return (
-    <Section paddingX={paddingX} paddingTop={paddingTop} paddingBottom={paddingBottom} data={data}>
-      <div className="col-start-1 -col-end-1 sm:col-start-2 sm:-col-end-2 lg:col-start-3 lg:-col-end-3 xl:col-start-6 xl:-col-end-6 2xl:col-start-6 2xl:-col-end-6">
+    <Section paddingX={paddingX} paddingTop={paddingTop} paddingBottom={paddingBottom} data={data}
+      /* @ts-ignore */
+      marginX={data?.design?.color?.color === 'tertiary' ? 'almost' : 'none'}
+    >
+      <div
+        /* @ts-ignore */
+        className={`${clean(data?.design?.color?.color) === 'tertiary'
+          ? 'col-start-1 -col-end-1 sm:col-start-2 sm:-col-end-2 lg:col-start-3 lg:-col-end-3 xl:col-start-6 xl:-col-end-6 2xl:col-start-6 2xl:-col-end-6'
+          : 'col-start-1 -col-end-1 sm:col-start-2 sm:-col-end-2 lg:col-start-3 lg:-col-end-3 xl:col-start-6 xl:-col-end-6 2xl:col-start-6 2xl:-col-end-6'
+          }`}
+      //className=""
+      >
         {hasChild ? (
           <div>{children}</div>
         ) : (
           <InnerBlocks index={12} blocks={data?.innerBlocks as any} />
         )}
       </div>
-    </Section>
+    </Section >
   )
 }
 
 export default TextContainer
+

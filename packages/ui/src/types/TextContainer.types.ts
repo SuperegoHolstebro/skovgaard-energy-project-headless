@@ -6,4 +6,11 @@ export interface TextContainerProps {
   paddingBottom?: 'default' | 'none' | any
   children?: React.ReactNode
   [key: string]: any
+  design?: Design
+}
+
+export interface Design {
+  color?: {
+    color?: string
+  }
 }

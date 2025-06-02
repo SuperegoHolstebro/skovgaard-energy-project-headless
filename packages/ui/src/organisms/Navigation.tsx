@@ -24,9 +24,11 @@ import LocaleSwitcher from '../atoms/LocaleSwitcher'
 export default function Navigation({
   onClose,
   isMobile,
+  ShowLocaleSwitcher
 }: {
   onClose?: () => void
   isMobile?: boolean
+  ShowLocaleSwitcher?: boolean
 }) {
   const locale = useParams().locale
   const data = useNavigationData(locale) as any
@@ -51,13 +53,15 @@ export default function Navigation({
               {data?.links?.map((item: any, index: number) => (
                 <NavigationItem key={index} item={item} />
               ))}
-              <LocaleSwitcher
-                position="absolute"
-                className="bottom-4 right-4"
-                view="desktop"
-                /* @ts-ignore */
-                locale={locale}
-              />
+              \{ShowLocaleSwitcher && (
+                <LocaleSwitcher
+                  position="absolute"
+                  className="bottom-4 right-4"
+                  view="desktop"
+                  /* @ts-ignore */
+                  locale={locale}
+                />
+              )}
               <Sociale />
             </ul>
           </motion.nav>
@@ -76,18 +80,22 @@ export default function Navigation({
         </>
       ) : (
         <nav className="hidden my-auto font-heading lg:block  lg:-col-end-1 lg:col-start-4 xl:-col-end-1 xl:col-start-5">
-          <ul className="flex justify-end h-full gap-4 ">
+          <ul className="flex justify-end h-full gap-8 ">
             {data?.links?.map((item: any, index: number) => (
               <NavigationItem key={index} item={item} />
             ))}
             <li className="relative -ml-2 flex gap-4">
-              <span className=" block my-auto w-px h-4 lg:bg-skovgaard-dark " />
-              <LocaleSwitcher
-                className="h-full my-auto "
-                view="desktop"
-                /* @ts-ignore */
-                locale={locale}
-              />
+              {ShowLocaleSwitcher && (
+                <>
+                  <span className=" block my-auto w-px h-4 lg:bg-skovgaard-dark " />
+                  <LocaleSwitcher
+                    className="h-full my-auto "
+                    view="desktop"
+                    /* @ts-ignore */
+                    locale={locale}
+                  />
+                </>
+              )}
             </li>
           </ul>
         </nav>

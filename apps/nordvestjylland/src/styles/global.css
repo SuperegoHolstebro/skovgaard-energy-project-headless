@@ -1,0 +1,19 @@
+@import 'tailwindcss';
+@import '../../../../packages/ui/src/styles/colors.css';
+@import '../../../../packages/ui/src/styles/text.css';
+@import '../../../../packages/ui/src/styles/breakpoints.css';
+@import '../../../../packages/ui/src/styles/grid.css';
+@import '../../../../packages/ui/src/styles/ease.css';
+@import '../../../../packages/ui/src/styles/spacing.css';
+@import '../../../../packages/ui/src/styles/lenis.css';
+@source "../../../../packages/ui/src/**/*.{js,ts,jsx,tsx}";
+@plugin "@tailwindcss/typography";
+@plugin "@tailwindcss/aspect-ratio";
+@import 'tw-animate-css';
+
+@theme {
+  --color-primary: #17494f;
+  --color-secondary: #03a582;
+  --color-tertiary: #e8b245;
+  --color-quaternary: #31b7c9;
+}

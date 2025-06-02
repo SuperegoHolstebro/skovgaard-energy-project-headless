@@ -4,6 +4,7 @@ import { defineField, defineType } from 'sanity'
 import { QuestionCircle } from '@mynaui/icons-react'
 import Icon from '../../components/Icons'
 import IconPickerInput from '../../components/IconPickerInput'
+import { paddingIndicator } from '../../utils/paddingindicator'
 
 export const DataType = defineType({
   name: 'DataType',
@@ -36,13 +37,21 @@ export const DataType = defineType({
           preview: {
             select: {
               title: 'heading',
-              subtitle: 'text',
+              subtitle: 'body',
               icon: 'icon',
             },
             prepare({ title, subtitle, icon }) {
+              // Extract first line of blockContent for subtitle preview
+              let firstLine = ''
+              if (Array.isArray(subtitle) && subtitle.length > 0) {
+                const firstBlock = subtitle.find((block: any) => block._type === 'block')
+                if (firstBlock && Array.isArray(firstBlock.children) && firstBlock.children.length > 0) {
+                  firstLine = firstBlock.children.map((child: any) => child.text).join(' ')
+                }
+              }
               return {
                 title: title || 'Ingen overskrift',
-                subtitle: subtitle || 'Ingen tekst',
+                subtitle: firstLine || '',
                 media: icon ? <Icon type={icon as any} /> : null,
               }
             },
@@ -53,9 +62,14 @@ export const DataType = defineType({
               type: 'string',
               title: 'Overskrift',
             }),
+            /*             defineField({
+                          name: 'text',
+                          type: 'text',
+                          title: 'Tekst',
+                        }), */
             defineField({
-              name: 'text',
-              type: 'text',
+              name: 'body',
+              type: 'blockContent',
               title: 'Tekst',
             }),
             {
@@ -67,6 +81,7 @@ export const DataType = defineType({
               },
               options: {
                 list: [
+                  { title: 'Igen ikon', value: 'empty' },
                   { title: 'Lokation', value: 'Lokation' },
                   { title: 'Strategi', value: 'Strategi' },
                   { title: 'Miljø', value: 'Miljø' },
@@ -117,7 +132,7 @@ export const DataType = defineType({
       },
       name: 'link',
       title: 'Knap',
-      type: 'link',
+      type: 'button',
     }),
     {
       name: 'design',
@@ -136,11 +151,13 @@ export const DataType = defineType({
       heading: 'heading',
       subtitle: 'datBox',
       dataBox: 'dataBox',
+      design: 'design',
     },
-    prepare({ heading, dataBox }) {
+    prepare({ heading, dataBox, design }) {
       return {
-        title: heading.heading.heading,
-        subtitle: `Der er ${dataBox.length} kasser i denne sektion.`,
+        title: heading.text,
+        subtitle: `Der er ${dataBox.length} kasser i denne sektion. | ${paddingIndicator(design)}`,
+
       }
     },
   },
