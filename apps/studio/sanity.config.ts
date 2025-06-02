@@ -32,8 +32,8 @@ import Appconfig from './superego.config'
 const url = process.env.SANITY_STUDIO_FRONT_END
 
 const presentationOriginUrl_REDDAP = 'https://www.reddap.dk'
-const presentationOriginUrl_IDOMLUND = process.env.SANITY_STUDIO_PRESENTATION_URL_IDOMLUND
-const presentationOriginUrl_RAMME = 'http://localhost:3000'
+const presentationOriginUrl_IDOMLUND = 'https://idomlund-headless.vercel.app/'
+const presentationOriginUrl_RAMME = 'https://ramme-headless.vercel.app/'
 const presentationOriginUrl_NORDVESTJYLLAND = 'https://nordvestjylland-headless.vercel.app/'
 export default defineConfig([
   {
