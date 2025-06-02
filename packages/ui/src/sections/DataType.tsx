@@ -39,7 +39,7 @@ const DataType = ({ data }: DataTypeSection) => {
             <div className='text-regular'>
               <Button variant={clean(data?.link?.style) as any} className='w-full' link={data?.link?.link}>
                 {data?.link?.link?.label}
-                {data?.link?.style}
+
               </Button>
             </div>
           </FadeUp>
