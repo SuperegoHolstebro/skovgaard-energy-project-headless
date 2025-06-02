@@ -144,7 +144,7 @@ const ProcessSection = ({ data }: any) => {
                         {process.processes.map((proc: any, idx: number) => (
                           <CarouselItem
                             key={idx}
-                            className="pl-4 mb-4 md:mb-0 basis-auto relative"
+                            className="pl-4 mb-4 md:mb-0 basis-auto relative min-w-44"
                           >
                             <div className="flex flex-col items-center justify-between gap-3 md:flex-row min-w-0">
                               <button
@@ -155,14 +155,14 @@ const ProcessSection = ({ data }: any) => {
                                   } relative cursor-pointer rounded-full border-4 group size-10 ease-custom duration-700 transition hover:bg-tertiary hover:animate-none animate-pulse `}
                               >
                                 <div
-                                  className={`absolute bottom-0 invisible px-3 py-1 transition-all translate-y-full rounded shadow-md opacity-0 bg-skovgaard-white group-hover:visible group-hover:opacity-100 right-full text-nowrap`}
+                                  className={`absolute bottom-0 invisible px-3 py-1 ease-custom transition-all translate-y-full rounded shadow-md opacity-0 bg-skovgaard-white group-hover:visible group-hover:opacity-100 z-10 right-0 text-nowrap`}
                                 >
                                   <p>Klik for at få mere info</p>
                                 </div>
                               </button>
 
                               <div
-                                className={` ${!proc.date ? 'md:bottom-1/2 bottom-0  md:translate-y-20 ' : 'md:bottom-0 bottom-1/2 '} } absolute pl-6 md:pl-0 left-full md:left-1`}
+                                className={` ${!proc.date ? 'md:bottom-full bottom-0  md:translate-y-20 ' : 'md:bottom-0 bottom-1/2 '} } absolute pl-6 md:pl-0 left-full md:left-1`}
                               >
                                 <Heading spacing="none" tag="p" size="p">
                                   {proc.title}
