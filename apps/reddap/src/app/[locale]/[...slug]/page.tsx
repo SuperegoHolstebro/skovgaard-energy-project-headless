@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation'
 import { metaData } from '@repo/utils/metadataUtils'
 import { Params } from '../artikler/[...slug]/page'
 import { draftMode } from 'next/headers'
-import { useLoadPage } from '../../../sanity/UseLoadPage'
+import { useLoadPage } from '@/sanity/UseLoadPage'
 
 export interface PageParams {
   params: Promise<Params>
