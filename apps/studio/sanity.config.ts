@@ -32,9 +32,17 @@ import Appconfig from './superego.config'
 const url = process.env.SANITY_STUDIO_FRONT_END
 
 const presentationOriginUrl_REDDAP = 'https://www.reddap.dk'
+const frontend_URL_REDDAP = 'reddap.dk'
+
 const presentationOriginUrl_IDOMLUND = 'https://idomlund-headless.vercel.app/'
+const frontend_URL_IDOMLUND = 'idomlund-headless.vercel.app'
+
 const presentationOriginUrl_RAMME = 'https://ramme-headless.vercel.app/'
+const frontend_URL_RAMME = 'ramme-headless.vercel.app'
+
 const presentationOriginUrl_NORDVESTJYLLAND = 'https://nordvestjylland-headless.vercel.app/'
+const frontend_URL_NORDVESTJYLLAND = 'nordvestjylland-headless.vercel.app'
+
 export default defineConfig([
   {
     basePath: '/reddap',
@@ -47,6 +55,7 @@ export default defineConfig([
       website: Appconfig.sites.reddap,
       presentationOriginUrl: presentationOriginUrl_REDDAP,
       apiRoute: '/api/draft-mode/enable',
+      url: frontend_URL_REDDAP,
     }),
   },
   {
@@ -60,6 +69,7 @@ export default defineConfig([
       website: Appconfig.sites.nordvestjylland,
       presentationOriginUrl: presentationOriginUrl_NORDVESTJYLLAND,
       apiRoute: '/api/draft-mode/enable',
+      url: frontend_URL_NORDVESTJYLLAND,
     }),
   },
   {
@@ -73,6 +83,7 @@ export default defineConfig([
       website: Appconfig.sites.ramme,
       presentationOriginUrl: presentationOriginUrl_RAMME,
       apiRoute: '/api/draft-mode/enable',
+      url: frontend_URL_RAMME,
     }),
   },
   {
@@ -86,11 +97,12 @@ export default defineConfig([
       website: Appconfig.sites.idomlund,
       presentationOriginUrl: presentationOriginUrl_IDOMLUND,
       apiRoute: '/api/draft-mode/enable',
+      url: frontend_URL_IDOMLUND,
     }),
   },
 ])
 
-function defaultConfig({ website, presentationOriginUrl, apiRoute }) {
+function defaultConfig({ website, presentationOriginUrl, apiRoute, url }) {
   return {
     theme: myTheme,
     icon: SuperegoLogo,
