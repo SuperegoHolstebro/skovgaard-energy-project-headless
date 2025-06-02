@@ -127,7 +127,8 @@ function defaultConfig({ website, presentationOriginUrl, apiRoute, url }) {
           },
           {
             name: 'ProjectManagerWidget',
-            component: () => ProjectManagerWidget({ NEXT_PUBLIC_BASE_URL: url }),
+            component: () =>
+              ProjectManagerWidget({ NEXT_PUBLIC_BASE_URL: 'skovgaard-projects.sanity.studio' }),
             layout: { width: 'medium', height: 'large' },
           },
           {
