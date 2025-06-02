@@ -1,5 +1,4 @@
 import React from 'react'
-import { useLoadPage } from '@repo/utils/hooks/useLoadPage'
 import { PageBuilder } from '@/components/PageBuilder'
 import PageContainer from '@/components/PageContainer'
 import { notFound } from 'next/navigation'
@@ -13,6 +12,7 @@ import Image from 'next/image'
 import { Params } from '../../artikler/[...slug]/page'
 import { draftMode } from 'next/headers'
 import { EVENT_QUERY } from '@repo/groq/documents/event.query'
+import { useLoadPage } from '@/sanity/UseLoadPage'
 
 export default async function DynamicRoute({ params }: { params: Promise<Params> }) {
   const { slug: slugArray } = await params

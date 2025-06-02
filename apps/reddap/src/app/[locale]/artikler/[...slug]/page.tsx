@@ -6,10 +6,10 @@ import { draftMode } from 'next/headers'
 import { ARTICLE_QUERY } from '@repo/groq/documents/article.query'
 import TextContainer from '@repo/ui/src/sections/textContainer'
 import { formatDate } from '@repo/utils/date'
-import { useLoadPage } from '@repo/utils/hooks/useLoadPage'
 import Section from '@repo/ui/src/sections/Section'
 import Heading from '@repo/ui/src/atoms/Heading'
 import Paragraph from '@repo/ui/src/atoms/Paragraph'
+import { useLoadPage } from '@/sanity/UseLoadPage'
 
 export interface Params {
   slug: string[]
