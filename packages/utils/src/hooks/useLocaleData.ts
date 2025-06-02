@@ -8,9 +8,9 @@ const useLocaleData = (locale: any, slug: any) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        console.log('Fetching with:', { locale, slug })
+        // console.log('Fetching with:', { locale, slug })
         const result = await client.fetch(LOCALE_QUERY, { locale, slug })
-        console.log('Fetched result:', result)
+        // console.log('Fetched result:', result)
         setData(result)
       } catch (error) {
         console.error('Error fetching navigation data:', error)

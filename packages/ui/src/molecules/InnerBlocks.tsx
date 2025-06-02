@@ -48,7 +48,7 @@ InnerBlocks.Paragraphs = Paragraphs
 /* compound components */
 function Title({ data }: { data: any }) {
   return (
-    <Heading hyphens={'manual'} spacing="default" data={data} dangerouslySetInnerHTML={{ __html: data?.heading?.heading }} />
+    <Heading hyphens={'manual'} spacing="default" data={data} dangerouslySetInnerHTML={{ __html: data?.text }} />
   )
 }
 

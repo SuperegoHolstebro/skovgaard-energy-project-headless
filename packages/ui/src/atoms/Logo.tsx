@@ -1,6 +1,7 @@
 import SkovgaardEnergyLogo from '../logos/SkovgaardEnergyLogo'
 import NordvestjyllandLogo from '../logos/NordvestjyllandLogo'
 import React from 'react'
+import CloudberryLogo from '../logos/CloudberryLogo'
 
 
 /**
@@ -15,7 +16,7 @@ import React from 'react'
  */
 
 export type LogoProps = {
-  variant: "SkovgaardEnergy" | "Nordvestjylland" | "NeesHede"
+  variant: "SkovgaardEnergy" | "Nordvestjylland" | "NeesHede" | "Cloudberry"
   className?: string
 }
 
@@ -30,6 +31,8 @@ const Logo = ({ variant, className = " " }: LogoProps) => {
             return <NordvestjyllandLogo className={className} />;
           case "NeesHede":
             return <div> Nees Hede logo </div>;
+          case "Cloudberry":
+            return <CloudberryLogo className={className} />;
           default:
             return <div> Ukendt logo </div>;
         }

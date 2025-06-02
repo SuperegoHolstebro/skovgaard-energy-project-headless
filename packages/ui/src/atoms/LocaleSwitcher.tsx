@@ -67,8 +67,8 @@ const LocaleSwitcher = ({ position, className, view }: Props) => {
   const data = useLocaleData(currentLocale, slug)
   /* @ts-ignore */
   const translations = data?.localeInfo?._translations ?? [] as any[]
-  console.log('params.locale:', currentLocale)
-  console.log('params.slug:', rawSlug, ' → normalized:', theslug)
+  // console.log('params.locale:', currentLocale)
+  // console.log('params.slug:', rawSlug, ' → normalized:', theslug)
 
   type Translation = { locale: string; slug: string; _type: string }
 
