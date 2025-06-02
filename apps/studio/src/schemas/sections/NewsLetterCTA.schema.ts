@@ -1,22 +1,23 @@
 // ./schemas/textWithIllustration.js
 
-import { defineArrayMember, defineField, defineType } from "sanity";
+import { defineArrayMember, defineField, defineType } from 'sanity'
+import { paddingIndicator } from '../../utils/paddingindicator'
 
 export const NewsLetterCTA = defineType({
-  name: "NewsLetterCTA",
-  type: "object",
-  title: "Nyhedbrev CTA",
+  name: 'NewsLetterCTA',
+  type: 'object',
+  title: 'Nyhedbrev CTA',
   groups: [
-    { title: "Indhold", name: "content" },
-    { title: "Design", name: "design" },
+    { title: 'Indhold', name: 'content' },
+    { title: 'Design', name: 'design' },
     { title: 'Medie', name: 'media' },
-    { title: 'Indstillinger', name: 'settings'},
+    { title: 'Indstillinger', name: 'settings' },
   ],
   fields: [
     defineField({
-      name: "title",
-      type: "string",
-      group: "content",
+      name: 'title',
+      type: 'string',
+      group: 'content',
     }),
     {
       name: 'body',
@@ -36,9 +37,9 @@ export const NewsLetterCTA = defineType({
       group: 'content',
     }),
     {
-      name: "design",
-      type: "design",
-      group: "design",
+      name: 'design',
+      type: 'design',
+      group: 'design',
     },
     {
       name: 'overflow',
@@ -55,18 +56,17 @@ export const NewsLetterCTA = defineType({
   ],
   preview: {
     select: {
-      title: "title.heading",
-      tagline: "tagline",
-      type: "type",
-      media: "image",
+      title: 'title',
+      tagline: 'tagline',
+      media: 'image',
+      design: 'design',
     },
-    prepare({ media }) {
+    prepare({ media, title, design }) {
       return {
-        title: "Nyhedbrev CTA",
-        type: "Nyhedbrev CTA",
-        subtitle: "Nyhedbrev CTA",
+        title: title,
+        subtitle: 'Nyhedbrev CTA' + ' | ' + paddingIndicator(design),
         media,
-      };
+      }
     },
-  }
-});
+  },
+})

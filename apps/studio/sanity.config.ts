@@ -33,7 +33,7 @@ const url = process.env.SANITY_STUDIO_FRONT_END
 
 const presentationOriginUrl_REDDAP = 'https://www.reddap.dk'
 const presentationOriginUrl_IDOMLUND = process.env.SANITY_STUDIO_PRESENTATION_URL_IDOMLUND
-const presentationOriginUrl_RAMME = process.env.SANITY_STUDIO_PRESENTATION_URL_RAMME
+const presentationOriginUrl_RAMME = 'http://localhost:3000'
 const presentationOriginUrl_NORDVESTJYLLAND = 'https://nordvestjylland-headless.vercel.app/'
 export default defineConfig([
   {
@@ -49,7 +49,7 @@ export default defineConfig([
       apiRoute: '/api/draft-mode/enable',
     }),
   },
-  /*   {
+  {
     basePath: '/nordvestjylland',
     name: Appconfig.sites.nordvestjylland.siteName,
     title: Appconfig.sites.nordvestjylland.siteTitle,
@@ -59,7 +59,7 @@ export default defineConfig([
     ...defaultConfig({
       website: Appconfig.sites.nordvestjylland,
       presentationOriginUrl: presentationOriginUrl_NORDVESTJYLLAND,
-      apiRoute: '/api/draft-mode-nordvestjylland/enable',
+      apiRoute: '/api/draft-mode/enable',
     }),
   },
   {
@@ -72,7 +72,7 @@ export default defineConfig([
     ...defaultConfig({
       website: Appconfig.sites.ramme,
       presentationOriginUrl: presentationOriginUrl_RAMME,
-      apiRoute: '/api/draft-mode-ramme/enable',
+      apiRoute: '/api/draft-mode/enable',
     }),
   },
   {
@@ -85,9 +85,9 @@ export default defineConfig([
     ...defaultConfig({
       website: Appconfig.sites.idomlund,
       presentationOriginUrl: presentationOriginUrl_IDOMLUND,
-      apiRoute: '/api/draft-mode-idomlund/enable',
+      apiRoute: '/api/draft-mode/enable',
     }),
-  }, */
+  },
 ])
 
 function defaultConfig({ website, presentationOriginUrl, apiRoute }) {

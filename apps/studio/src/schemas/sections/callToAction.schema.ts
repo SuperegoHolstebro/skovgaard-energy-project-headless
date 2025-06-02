@@ -1,5 +1,6 @@
 import { Click } from '@mynaui/icons-react'
 import { defineArrayMember, defineField, defineType } from 'sanity'
+import { paddingIndicator } from '../../utils/paddingindicator'
 
 export const CallToAction = defineType({
   name: 'CallToAction',
@@ -56,11 +57,14 @@ export const CallToAction = defineType({
       title: 'title',
       body: 'body',
       media: 'image',
+      design: 'design',
     },
-    prepare({ media, title, body }) {
+    prepare({ media, title, body, design }) {
       return {
         title: title || 'Call to action',
-        subtitle: body ? 'Call to action | ' + body[0]?.children[0]?.text : 'Ingen brødtekst',
+        subtitle: body
+          ? `${paddingIndicator(design)} | ` + 'Call to action | ' + body[0]?.children[0]?.text
+          : 'Ingen brødtekst',
         media: media || undefined,
       }
     },

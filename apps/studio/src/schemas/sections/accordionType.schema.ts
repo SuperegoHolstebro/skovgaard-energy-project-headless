@@ -1,5 +1,6 @@
 import { PanelTopOpen } from '@mynaui/icons-react'
 import { defineArrayMember, defineField, defineType } from 'sanity'
+import { paddingIndicator } from '../../utils/paddingindicator'
 
 export const accordionType = defineType({
   name: 'accordion',
@@ -75,11 +76,12 @@ export const accordionType = defineType({
       title: 'Accordion',
       subtitle: 'Accordions',
       accordions: 'accordions',
+      design: 'design',
     },
-    prepare({ title, accordions }) {
+    prepare({ title, accordions, design }) {
       return {
         title: 'Accordion',
-        subtitle: `Der er ${accordions.length} accordions i denne sektion.`,
+        subtitle: `Der er ${accordions.length} accordions i denne sektion. | ${paddingIndicator(design)}`,
       }
     },
   },

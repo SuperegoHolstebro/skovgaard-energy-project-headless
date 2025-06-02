@@ -1,54 +1,54 @@
 // ./schemas/textWithIllustration.js
 
-import { defineArrayMember, defineField, defineType } from "sanity";
+import { defineArrayMember, defineField, defineType } from 'sanity'
+import { paddingIndicator } from '../../utils/paddingindicator'
 
 export const ProcessType = defineType({
-  name: "ProcessType",
-  type: "object",
-  title: "Procesplan ",
+  name: 'ProcessType',
+  type: 'object',
+  title: 'Procesplan ',
   groups: [
-    { title: "Indhold", name: "content" },
-    { title: "Design", name: "design" },
-    { title: "Medie", name: "media" },
-    { title: 'Indstillinger', name: 'settings'}
+    { title: 'Indhold', name: 'content' },
+    { title: 'Design', name: 'design' },
+    { title: 'Medie', name: 'media' },
+    { title: 'Indstillinger', name: 'settings' },
   ],
   fields: [
     defineField({
-      name: "title",
-      type: "string",
-      group: "content",
+      name: 'title',
+      type: 'string',
+      group: 'content',
     }),
     defineField({
-      name: "description",
-      type: "text",
-      title: "beskrivelse",
+      name: 'description',
+      type: 'text',
+      title: 'beskrivelse',
     }),
-
-   {
-      group: "content",
-      name: "processes",
-      title: "Informations kasser",
-      type: "array",
+    {
+      group: 'content',
+      name: 'processes',
+      title: 'Informations kasser',
+      type: 'array',
       of: [
         {
-          name: "processYear",
-          type: "object",
-          title: "Proces år",
+          name: 'processYear',
+          type: 'object',
+          title: 'Proces år',
           fields: [
             defineField({
-              name: "year",
-              type: "string",
-              title: "År",
+              name: 'year',
+              type: 'string',
+              title: 'År',
             }),
             {
-              name: "processes",
-              title: "Informations kasser",
-              type: "array",
+              name: 'processes',
+              title: 'Informations kasser',
+              type: 'array',
               of: [
                 {
-                  name: "reference",
-                  type: "reference",
-                  to: [{ type: "process" }],
+                  name: 'reference',
+                  type: 'reference',
+                  to: [{ type: 'process' }],
                 },
               ],
             },
@@ -58,9 +58,9 @@ export const ProcessType = defineType({
     },
 
     {
-      name: "design",
-      type: "design",
-      group: "design",
+      name: 'design',
+      type: 'design',
+      group: 'design',
     },
     {
       name: 'SectionSettings',
@@ -70,16 +70,17 @@ export const ProcessType = defineType({
   ],
   preview: {
     select: {
-      title: "title",
-      subtitle: 'processes.0.reference.title',
-      type: "type",
-      media: "image",
+      title: 'title',
+      subtitle: 'description',
+      type: 'type',
+      media: 'image',
+      design: 'design',
     },
-    prepare({ title, subtitle }) {
+    prepare({ title, subtitle, design }) {
       return {
         title: title,
-        subtitle: subtitle,
-      };
+        subtitle: paddingIndicator(design) + ' | ' + subtitle,
+      }
     },
   },
-});
+})

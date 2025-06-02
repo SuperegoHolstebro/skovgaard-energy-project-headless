@@ -2,6 +2,7 @@
 
 import { Album } from '@mynaui/icons-react'
 import { defineArrayMember, defineField, defineType } from 'sanity'
+import { paddingIndicator } from '../../utils/paddingindicator'
 
 export const GalleryType = defineType({
   name: 'GalleryType',
@@ -153,16 +154,17 @@ export const GalleryType = defineType({
       select: 'select',
       medie: 'medie',
       images: 'images',
+      design: 'design',
     },
     prepare(selection) {
-      const { select, medie, images } = selection
+      const { select, medie, images, design } = selection
       const isMedie = select === 'media' && medie?.length > 0
       const isCarousel = select === 'carousel' && images?.length > 0
       return {
         title: `${select === 'media' ? '2 Elementer' : 'Galleri'}`,
         subtitle: `Galleri | Viser ${
           isMedie ? medie.length : isCarousel ? images.length : 0
-        } element(er)`,
+        } element(er) | ${paddingIndicator(design)}`,
       }
     },
   },
