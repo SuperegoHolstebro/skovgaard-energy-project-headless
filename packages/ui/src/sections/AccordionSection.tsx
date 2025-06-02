@@ -1,6 +1,4 @@
-import React from 'react'
 import Section from './Section'
-import { motion } from 'framer-motion'
 import Heading from '../atoms/Heading'
 import Accordion from '../molecules/Accordion'
 import Paragraph from '../atoms/Paragraph'
@@ -35,7 +33,6 @@ const AccordionSection = ({ data }: any) => {
                   </Paragraph>
                 </Accordion>
               </FadeUp>
-
             ))}
           </div>
         </FadeUp>

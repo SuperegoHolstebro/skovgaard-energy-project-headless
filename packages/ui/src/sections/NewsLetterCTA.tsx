@@ -4,6 +4,7 @@ import Heading from '../atoms/Heading'
 import Paragraph from '../atoms/Paragraph'
 import { Button } from '../atoms/Button'
 import { clean } from '@repo/utils/sanitize'
+import { FadeUp } from '../interactions/AnimateFadeIn'
 
 const NewsLetterCTA = ({ data }: any) => {
   const gridCols =
@@ -15,33 +16,39 @@ const NewsLetterCTA = ({ data }: any) => {
     <>
       <Section
         data={data}
-        className={`${data?.design?.padding?.spacingBottom === 'none' ? 'pb-16' : ''}`}
+        className={`${clean(data?.design?.padding?.spacingBottom) === 'none' ? 'pb-16' : ''}`}
       >
         <div
           className={` bg-primary rounded xl:py-36 text-skovgaard-white col-span-full grid ${gridCols} ${gridGap} ${paddingX} ${paddingY} ${data?.overflow === true ? '-mb-8 sm:-mb-12 md:-mb-20 xl:-mb-28' : ''}`}
         >
           <div className="col-span-full sm:col-span-5 md:col-span-8 xl:col-span-18 prose-headings:!text-skovgaard-white">
             {data?.title && (
-              <Heading
-                spacing="none"
-                size="lg"
-                tag="h3"
-                text="balance"
-                dangerouslySetInnerHTML={{ __html: data?.title }}
-              />
+              <FadeUp delay={0.2}>
+                <Heading
+                  spacing="none"
+                  size="lg"
+                  tag="h3"
+                  text="balance"
+                  dangerouslySetInnerHTML={{ __html: data?.title }}
+                />
+              </FadeUp>
             )}
             <div className='max-w-prose'>
-              <Paragraph isPortableText >
-                {data?.body}
-              </Paragraph>
+              <FadeUp delay={0.4}>
+                <Paragraph isPortableText >
+                  {data?.body}
+                </Paragraph>
+              </FadeUp>
             </div>
           </div>
           <div className="sm:my-auto sm:ml-auto col-span-full sm:col-span-3 md:col-span-4 xl:col-span-6">
             <div className="my-auto text-skovgaard-white text-regular *:whitespace-nowrap">
               {data?.link?.label && (
-                <Button variant="outlineNegative" link={data?.link}>
-                  {data?.link?.label}
-                </Button>
+                <FadeUp delay={0.6}>
+                  <Button variant="outlineNegative" link={data?.link}>
+                    {data?.link?.label}
+                  </Button>
+                </FadeUp>
               )}
             </div>
           </div>

@@ -2,11 +2,9 @@ import type { QueryParams } from 'next-sanity'
 import type { UnfilteredResponseQueryOptions } from '@sanity/client'
 import { draftMode } from 'next/headers'
 import 'server-only'
-import { SeoGroup } from '../metadataUtils'
+import { readToken } from './sanity.api'
+import { sanityFetch } from './sanity.live'
 import { PAGE_QUERY } from '@repo/groq/documents/page.query'
-
-import { getTokenByProject, getCurrentProjectId } from './projectTokens'
-import { sanityFetch } from '../lib/sanity.live'
 
 export type PagePayload = {
   image?: any
@@ -16,9 +14,16 @@ export type PagePayload = {
   title?: string
   body?: any
   pageBuilder: any[]
-  seoGroup: SeoGroup
+  seoGroup: {
+    seoTitle?: string
+    seoDescription?: string
+    image?: string
+    radioField?: 'hidden' | 'visible'
+  }
+  callToAction?: any
   description?: string
   date?: string
+  CollectionGridItem?: any
   localeInfo: {
     locale?: string
     _translations?: {
@@ -34,17 +39,14 @@ const DEFAULT_PARAMS = {} as QueryParams
 export async function loadQuery<QueryResponse>({
   query,
   params = DEFAULT_PARAMS,
-  projectId,
+  groqQuery,
 }: {
   query: string
   params?: QueryParams
   groqQuery?: string
-  projectId?: string
 }): Promise<QueryResponse> {
   const isDraftMode = (await draftMode()).isEnabled
-  const currentProjectId = projectId || getCurrentProjectId()
-
-  const token = getTokenByProject(currentProjectId as any)
+  const token = readToken
 
   if (isDraftMode && !token) {
     throw new Error('The `SANITY_API_READ_TOKEN` environment variable is required in Draft Mode.')
@@ -56,22 +58,18 @@ export async function loadQuery<QueryResponse>({
     filterResponse: false,
     useCdn: false,
     resultSourceMap: isDraftMode ? 'withKeyArraySelector' : false,
-    token: isDraftMode ? token : (undefined as any),
+    token: isDraftMode ? token : undefined,
     perspective,
     next: {
       tags: ['sanity'],
       revalidate: isDraftMode ? 0 : 60,
     },
   } satisfies UnfilteredResponseQueryOptions
-
-  /* @deprecated
-  const result = await client.fetch<QueryResponse>(query, params, {
+  /*   const result = await client.fetch<QueryResponse>(query, params, {
     ...options,
     stega: isDraftMode,
   } as UnfilteredResponseQueryOptions)
-  return result.result
- */
-
+  return result.result */
   const result = await sanityFetch({
     query,
     params,

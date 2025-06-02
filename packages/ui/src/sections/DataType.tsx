@@ -34,11 +34,12 @@ const DataType = ({ data }: DataTypeSection) => {
             <DataTypeListItem key={index} data={dataObject} index={index} />
           )
         })}
-        {data.link.link.label && (
+        {data?.link?.link?.label && (
           <FadeUp>
             <div className='text-regular'>
-              <Button variant={data?.link?.style} className='w-full' link={data?.link.link}>
-                {data?.link.link?.label}
+              <Button variant={clean(data?.link?.style) as any} className='w-full' link={data?.link?.link}>
+                {data?.link?.link?.label}
+                {data?.link?.style}
               </Button>
             </div>
           </FadeUp>

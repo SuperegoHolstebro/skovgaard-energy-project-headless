@@ -53,7 +53,7 @@ export default function Navigation({
               {data?.links?.map((item: any, index: number) => (
                 <NavigationItem key={index} item={item} />
               ))}
-              \{ShowLocaleSwitcher && (
+              {ShowLocaleSwitcher && (
                 <LocaleSwitcher
                   position="absolute"
                   className="bottom-4 right-4"

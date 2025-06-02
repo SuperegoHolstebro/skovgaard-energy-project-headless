@@ -1,5 +1,5 @@
 import React from 'react'
-import { useLoadPage } from '@repo/utils/hooks/useLoadPage'
+import { useLoadPage } from '@/sanity/UseLoadPage'
 import { PageBuilder } from '@/components/PageBuilder'
 import PageContainer from '@/components/PageContainer'
 import { notFound } from 'next/navigation'

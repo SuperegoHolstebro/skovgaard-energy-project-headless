@@ -30,8 +30,11 @@ import ProjectManagerWidget from '@repo/dashboard/project-manager-widget'
 import SuperegoWidget from '@repo/dashboard/superego-widget'
 import Appconfig from './superego.config'
 const url = process.env.SANITY_STUDIO_FRONT_END
-const presentationOriginUrl = process.env.SANITY_STUDIO_PRESENTATION_URL
 
+const presentationOriginUrl_REDDAP = 'https://www.reddap.dk'
+const presentationOriginUrl_IDOMLUND = process.env.SANITY_STUDIO_PRESENTATION_URL_IDOMLUND
+const presentationOriginUrl_RAMME = process.env.SANITY_STUDIO_PRESENTATION_URL_RAMME
+const presentationOriginUrl_NORDVESTJYLLAND = 'https://nordvestjylland-headless.vercel.app/'
 export default defineConfig([
   {
     basePath: '/reddap',
@@ -42,10 +45,11 @@ export default defineConfig([
     dataset: 'production',
     ...defaultConfig({
       website: Appconfig.sites.reddap,
-      presentationOriginUrl: process.env.SANITY_STUDIO_PRESENTATION_URL_REDDAP,
+      presentationOriginUrl: presentationOriginUrl_REDDAP,
+      apiRoute: '/api/draft-mode/enable',
     }),
   },
-  {
+  /*   {
     basePath: '/nordvestjylland',
     name: Appconfig.sites.nordvestjylland.siteName,
     title: Appconfig.sites.nordvestjylland.siteTitle,
@@ -54,7 +58,8 @@ export default defineConfig([
     dataset: 'production',
     ...defaultConfig({
       website: Appconfig.sites.nordvestjylland,
-      presentationOriginUrl: process.env.SANITY_STUDIO_PRESENTATION_URL_NORDVESTJYLLAND,
+      presentationOriginUrl: presentationOriginUrl_NORDVESTJYLLAND,
+      apiRoute: '/api/draft-mode-nordvestjylland/enable',
     }),
   },
   {
@@ -66,7 +71,8 @@ export default defineConfig([
     dataset: 'production',
     ...defaultConfig({
       website: Appconfig.sites.ramme,
-      presentationOriginUrl: process.env.SANITY_STUDIO_PRESENTATION_URL_RAMME,
+      presentationOriginUrl: presentationOriginUrl_RAMME,
+      apiRoute: '/api/draft-mode-ramme/enable',
     }),
   },
   {
@@ -78,12 +84,13 @@ export default defineConfig([
     dataset: 'production',
     ...defaultConfig({
       website: Appconfig.sites.idomlund,
-      presentationOriginUrl: process.env.SANITY_STUDIO_PRESENTATION_URL_IDOMLUND,
+      presentationOriginUrl: presentationOriginUrl_IDOMLUND,
+      apiRoute: '/api/draft-mode-idomlund/enable',
     }),
-  },
+  }, */
 ])
 
-function defaultConfig({ website, presentationOriginUrl }) {
+function defaultConfig({ website, presentationOriginUrl, apiRoute }) {
   return {
     theme: myTheme,
     icon: SuperegoLogo,
@@ -126,7 +133,7 @@ function defaultConfig({ website, presentationOriginUrl }) {
         previewUrl: {
           origin: presentationOriginUrl,
           previewMode: {
-            enable: '/api/draft-mode/enable',
+            enable: apiRoute,
           },
         },
         creatablePages: [
