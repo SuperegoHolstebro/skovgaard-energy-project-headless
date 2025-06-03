@@ -16,7 +16,6 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
       debug: process.env.NODE_ENV === 'development',
     })
   }, [])
-  posthog.capture('my event', { property: 'value' })
 
   return (
     <PHProvider client={posthog}>
@@ -39,6 +38,7 @@ function PostHogPageView(): null {
         url += `?${search}`
       }
       posthog.capture('$pageview', { $current_url: url })
+      posthog.capture('my event', { property: 'value' })
     }
   }, [pathname, searchParams, posthog])
 
