@@ -1,19 +1,18 @@
 'use client'
 
+import { usePathname, useSearchParams } from "next/navigation"
+import { useEffect, Suspense } from "react"
+import { usePostHog } from 'posthog-js/react'
+
 import posthog from 'posthog-js'
-import { PostHogProvider as PHProvider, usePostHog } from 'posthog-js/react'
-import { Suspense, useEffect } from 'react'
-import { usePathname, useSearchParams } from 'next/navigation'
+import { PostHogProvider as PHProvider } from 'posthog-js/react'
 
 export function PostHogProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
-    posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
-      api_host: '/ingest',
-      ui_host: 'https://eu.posthog.com',
-      capture_pageview: false, // We capture pageviews manually
-      capture_pageleave: true, // Enable pageleave capture
-      capture_exceptions: true, // This enables capturing exceptions using Error Tracking
-      debug: process.env.NODE_ENV === 'development',
+    posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY as string, {
+      api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://eu.i.posthog.com',
+      person_profiles: 'identified_only', // or 'always' to create profiles for anonymous users as well
+      capture_pageview: false // Disable automatic pageview capture, as we capture manually
     })
   }, [])
 
@@ -25,19 +24,20 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
   )
 }
 
-function PostHogPageView(): null {
+function PostHogPageView() {
   const pathname = usePathname()
   const searchParams = useSearchParams()
   const posthog = usePostHog()
 
+  // Track pageviews
   useEffect(() => {
     if (pathname && posthog) {
       let url = window.origin + pathname
-      const search = searchParams.toString()
-      if (search) {
-        url += `?${search}`
+      if (searchParams.toString()) {
+        url = url + "?" + searchParams.toString();
       }
-      posthog.capture('$pageview', { $current_url: url })
+
+      posthog.capture('$pageview', { '$current_url': url })
       posthog.capture('my event', { property: 'value' })
     }
   }, [pathname, searchParams, posthog])
@@ -45,7 +45,10 @@ function PostHogPageView(): null {
   return null
 }
 
-function SuspendedPostHogPageView(): JSX.Element {
+// Wrap PostHogPageView in Suspense to avoid the useSearchParams usage above
+// from de-opting the whole app into client-side rendering
+// See: https://nextjs.org/docs/messages/deopted-into-client-rendering
+function SuspendedPostHogPageView() {
   return (
     <Suspense fallback={null}>
       <PostHogPageView />
