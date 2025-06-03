@@ -1,5 +1,6 @@
-import '../styles/global.css';
+import '../styles/global.css'
+import { PostHogProvider } from '../components/PostHogProvider'
 
 export default async function RootLayout({ children }) {
-  return <>{children}</>
+  return <PostHogProvider>{children}</PostHogProvider>
 }

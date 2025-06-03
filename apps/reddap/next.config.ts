@@ -31,7 +31,7 @@ async function generateRedirects() {
             : link.destinationUrl // Add leading slash for internal links, external link remains unchanged
           // Check if destination exists to prevent null values
           if (!formattedDestination) {
-            // console.warn(`Missing destination for source: ${formattedSource}`);
+            // console.warn(`Missing destination for source: ${formattedSource}`)
             return null // Skip this redirect if destination is missing
           }
           return {
@@ -76,5 +76,23 @@ const nextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: '/ingest/static/:path*',
+        destination: 'https://eu-assets.i.posthog.com/static/:path*',
+      },
+      {
+        source: '/ingest/:path*',
+        destination: 'https://eu.i.posthog.com/:path*',
+      },
+      {
+        source: '/ingest/decide',
+        destination: 'https://eu.i.posthog.com/decide',
+      },
+    ]
+  },
+  // This is required to support PostHog trailing slash API requests
+  skipTrailingSlashRedirect: true,
 }
 module.exports = nextConfig

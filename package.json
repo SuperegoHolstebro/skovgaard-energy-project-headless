@@ -91,6 +91,8 @@
     "next-sanity": "^9.8.15",
     "node-fetch": "^3.3.2",
     "nodemailer": "^6.9.16",
+    "posthog-js": "^1.249.2",
+    "posthog-node": "^4.18.0",
     "react-player": "^2.16.0",
     "sanity": "^3.88.3",
     "sanity-plugin-asset-source-unsplash": "^3.0.1",
