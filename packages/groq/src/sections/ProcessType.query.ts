@@ -11,6 +11,7 @@ export const ProcessTypeQuery = groq`
     year,
     processes[]->{
       title,
+      status,
       ${InnerBlocksQuery},
       image{
         ${ImageQuery}

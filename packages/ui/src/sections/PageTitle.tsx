@@ -21,7 +21,7 @@ const PageTitle = ({ data }: any) => {
       paddingTop="none"
       paddingBottom="none"
     >
-      <div className="col-start-1 mt-auto -col-end-1 md:col-end-7 lg:col-end-8 xl:col-end-8 2xl:col-end-8">
+      <div className="col-start-1 mt-auto -col-end-1 md:col-end-7 lg:col-end-8 xl:col-end-11 2xl:col-end-11">
         <FadeUp>
           <Heading tag="h1" size="xl" spaceing="none">
             {data.title}
