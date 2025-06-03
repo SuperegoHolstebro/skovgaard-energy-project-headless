@@ -37,7 +37,7 @@ const GallerySection = ({ data }: any) => {
               {item?._type === 'videoObject' ? (
                 <div className='relative overflow-hidden rounded size-full group'>
                   <Dialog>
-                    <Photo image={item?.poster} className='group-hover:scale-110 ease-custom transition-all duration-700' />
+                    <Photo image={item?.poster} className='group-hover:scale-110 ease-custom transition-all duration-700' aspectRatio='16/9' />
                     <DialogTrigger className='absolute  z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer'>
                       <PlayIcon />
                       <span className='text-skovgaard-white prose-headings:text-skovgaard-white'>
@@ -70,6 +70,7 @@ const GallerySection = ({ data }: any) => {
               {item?._type === 'image' ? (
                 <div className='relative overflow-hidden rounded size-full'>
                   <Photo
+                    aspectRatio='4/3'
                     image={item} />
                   {item?.alt ? (
                     <div className='absolute size-full inset-0 bg-gradient-to-t from-primary/60 to-transparent inset-0 z-50 to-45% w-full h-full z-[99] flex items-end justify-start h-full p-4 text-skovgaard-white isolate'>

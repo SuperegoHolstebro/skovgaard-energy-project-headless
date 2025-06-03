@@ -1,4 +1,5 @@
 import { ChartLine } from '@mynaui/icons-react'
+import Appconfig from '@repo/utils/superego.config'
 import { defineField, defineType } from 'sanity'
 
 export default defineType({
@@ -15,7 +16,7 @@ export default defineType({
     defineField({
       name: 'title',
       title: 'Title',
-      description: 'Titlen på begivenheden',
+      description: 'Titlen på processen, der vises i oversigten',
       type: 'string',
       group: 'content',
     }),
@@ -23,13 +24,14 @@ export default defineType({
       name: 'locale',
       type: 'string',
       readOnly: true,
+      hidden: true,
+      initialValue: Appconfig.i18n.defaultLocaleId,
     }),
     defineField({
       name: 'image',
       type: 'image',
       title: 'Udvalgt billede',
-      description:
-        'Billedet der vises i "begivenheder" oversigten og på selve begivenheden',
+      description: 'Billedet der vises i "begivenheder" oversigten og på selve begivenheden',
     }),
     defineField({
       name: 'status',
@@ -37,28 +39,17 @@ export default defineType({
       title: 'Status',
       group: 'content',
       description: 'Er processen færdig eller ej',
-      // initialValue: false,
       options: {
         layout: 'switch',
       },
       initialValue: false,
     }),
-    /* defineField({
-      name: "date",
-      title: "Dato",
-      description: "Årstal og måned for begivenheden",
-      type: "datetime",
-      options: {
-        dateFormat: "YYYY-MM",
-        timeFormat: "",
-        timeStep: 1440, // Set timeStep to 1 to remove hours and minutes
-      },
-      group: "content",
-    }), */
+
     defineField({
       name: 'innerBlocks',
       type: 'innerBlocks',
       group: 'content',
+      title: 'Indhold',
     }),
   ],
   preview: {

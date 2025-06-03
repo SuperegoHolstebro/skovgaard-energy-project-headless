@@ -140,13 +140,13 @@ const ProcessSection = ({ data }: any) => {
                       }}
                       setApi={(api) => setInnerCarouselApi(api)}
                     >
-                      <CarouselContent className="ml-16 md:ml-0 -ml-4 h-full *:overflow-visible overflow-visible">
+                      <CarouselContent className="ml-16 flex-col md:flex-row md:ml-0 items-start -ml-4 h-full *:overflow-visible overflow-visible">
                         {process.processes.map((proc: any, idx: number) => (
                           <CarouselItem
                             key={idx}
-                            className="pl-4 mb-4 md:mb-0 basis-auto relative min-w-44"
+                            className="pl-4 mb-4 md:mb-0 basis-auto relative md:min-w-44"
                           >
-                            <div className="flex flex-col items-center justify-between gap-3 md:flex-row min-w-0">
+                            <div className="flex flex-col items-start md:items-center justify-between gap-3 md:flex-row min-w-0">
                               <button
                                 onClick={() => openModal(idx)}
                                 className={` ${proc.status === true
@@ -155,21 +155,21 @@ const ProcessSection = ({ data }: any) => {
                                   } relative cursor-pointer rounded-full border-4 group size-10 ease-custom duration-700 transition hover:bg-tertiary hover:animate-none animate-pulse `}
                               >
                                 <div
-                                  className={`absolute bottom-0 invisible px-3 py-1 ease-custom transition-all translate-y-full rounded shadow-md opacity-0 bg-skovgaard-white group-hover:visible group-hover:opacity-100 z-10 right-0 text-nowrap`}
+                                  className={`translate-x-1/2 absolute bottom-0 invisible px-3 py-1 ease-custom transition-all translate-y-full rounded shadow-md opacity-0 bg-skovgaard-white group-hover:visible group-hover:opacity-100 z-10 right-0 text-nowrap`}
                                 >
                                   <p>Klik for at få mere info</p>
                                 </div>
                               </button>
 
                               <div
-                                className={` ${!proc.date ? 'md:bottom-full bottom-0  md:translate-y-20 ' : 'md:bottom-0 bottom-1/2 '} } absolute pl-6 md:pl-0 left-full md:left-1`}
+                                className={` ${!proc.date ? 'md:bottom-full bottom-1/2  md:translate-y-20 ' : 'md:bottom-0 bottom-1/2 '} absolute pl-6 md:pl-0 left-full md:left-1 *:text-nowrap`}
                               >
                                 <Heading spacing="none" tag="p" size="p">
                                   {proc.title}
                                 </Heading>
                               </div>
                               <div
-                                className={`flex-grow md:h-1 h-10 w-1 md:w-auto min-w-12 ${proc.status === true && idx === lastTrueIndex ? 'bg-primary' : proc.status === true ? 'bg-tertiary' : 'bg-primary'}`}
+                                className={` flex-grow md:h-1 h-10 w-1 md:w-auto mx-auto md:mx-0 md:min-w-12 ${proc.status === true && idx === lastTrueIndex ? 'bg-primary' : proc.status === true ? 'bg-tertiary' : 'bg-primary'}`}
                               ></div>
                             </div>
                           </CarouselItem>

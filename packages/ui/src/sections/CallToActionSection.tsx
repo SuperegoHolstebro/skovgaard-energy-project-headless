@@ -40,10 +40,7 @@ const CallToAction = ({ data }: any) => {
             </FadeUp>
             {data?.tagline ? (<Paragraph>{data?.tagline}</Paragraph>) : null}
           </div>
-          <div className="col-start-1 -col-end-1 sm:col-start-5 md:col-start-7 xl:col-start-15
-          
-          
-           ">
+          <div className="col-start-1 -col-end-1 sm:col-start-5 md:col-start-7 xl:col-start-15">
             <div className="space-y-8 text-skovgaard-white text-regular">
               {data?.body && (
                 <Paragraph isPortableText>
