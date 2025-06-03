@@ -9,6 +9,7 @@ import Appconfig from '@repo/utils/superego.config'
 import { Montserrat } from 'next/font/google'
 import { SITE_SETTINGS_QUERY } from '@repo/groq/documents/siteSettings.query'
 import localFont from 'next/font/local'
+import { PostHogProvider } from '@/components/PostHogProvider';
 
 const Skovgaard_Display = localFont({ src: '../Skovgaard-Display.woff2', variable: '--font-family-skovgaard' })
 
@@ -43,14 +44,17 @@ export default async function RootLayout({
         <GoogleTagManager gtmId={settings?.googleTagManager?.id} />
       </head>
       <body>
-        {children}
-        <SanityLive />
-        {(await draftMode()).isEnabled && (
-          <>
-            <VisualEditing />
-            <SanityLive />
-          </>
-        )}
+        <PostHogProvider>
+          {children}
+          <SanityLive />
+          {(await draftMode()).isEnabled && (
+            <>
+              <VisualEditing />
+              <SanityLive />
+            </>
+          )}
+
+        </PostHogProvider>
       </body>
     </html>
   )
