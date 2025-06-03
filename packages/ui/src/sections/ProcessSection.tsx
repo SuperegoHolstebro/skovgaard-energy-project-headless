@@ -232,7 +232,7 @@ const Modal = ({ closeModal, data }: any) => {
           transition={{ duration: 0.6, ease: defaultOptions.ease }}
         >
           <div className="fixed z-[99999999999999] pointer-events-auto inset-0  m-auto bg-skovgaard-white overflow-hidden max-h-[48rem] max-w-3xl  overflow-auto md:max-w-5xl xl:max-w-7xl">
-            {data?.image?.asset?.url && (
+            {data?.image && (
               <div className="relative w-full h-96">
                 <Photo image={data?.image} />
               </div>
