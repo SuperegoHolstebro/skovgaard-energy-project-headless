@@ -11,6 +11,7 @@ import Photo from '../atoms/Photo'
 import InnerBlocks from '../molecules/InnerBlocks'
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '../organisms/Carousel'
 import { defaultOptions } from '@repo/utils/hooks/useAnimate'
+import { X } from '@mynaui/icons-react'
 
 
 const ProcessSection = ({ data }: any) => {
@@ -231,9 +232,9 @@ const Modal = ({ closeModal, data }: any) => {
           transition={{ duration: 0.6, ease: defaultOptions.ease }}
         >
           <div className="fixed z-[99999999999999] pointer-events-auto inset-0  m-auto bg-skovgaard-white overflow-hidden max-h-[48rem] max-w-3xl  overflow-auto md:max-w-5xl xl:max-w-7xl">
-            {data?.image && (
+            {data?.image?.asset?.url && (
               <div className="relative w-full h-96">
-                <Photo image={data.image} />
+                <Photo image={data?.image} />
               </div>
             )}
             <div className="px-6 pt-8">
@@ -260,7 +261,7 @@ const Modal = ({ closeModal, data }: any) => {
                   size="default"
                   onClick={closeModal}
                 >
-                  x
+                  <X />
                 </AdvancedButton>
               </div>
             </div>

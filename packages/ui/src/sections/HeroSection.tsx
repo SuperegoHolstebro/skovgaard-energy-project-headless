@@ -6,6 +6,7 @@ import { useEffect, useRef } from 'react'
 import Section from './Section'
 import Heading from '../atoms/Heading'
 import Paragraph from '../atoms/Paragraph'
+import { CustomEase } from 'gsap/all'
 
 const Hero = ({ data }: any) => {
   const slideshowRef = useRef(null)
@@ -32,13 +33,15 @@ const Hero = ({ data }: any) => {
           width: window.innerWidth < 1024 ? '100%' : '33.3333%',
           height: window.innerWidth < 1024 ? '33%' : '100%',
           duration: animationSpeed,
-          ease: 'power2.inOut',
+          ease: CustomEase.create("custom", "M0,0 C0.65,0.05,0,1,1,1"),
+
         })
         gsap.from(contentRef.current, {
           opacity: 0,
           x: '-100%',
           duration: animationSpeed,
-          ease: 'power2.inOut',
+          ease: CustomEase.create("custom", "M0,0 C0.65,0.05,0,1,1,1"),
+
           delay: 0.1,
         })
 
@@ -46,7 +49,8 @@ const Hero = ({ data }: any) => {
           opacity: 0,
           x: '-100%',
           duration: 2,
-          ease: 'power2.inOut',
+          ease: CustomEase.create("custom", "M0,0 C0.65,0.05,0,1,1,1"),
+
           delay: isReturningVisitor ? 0.5 : 1,
         })
 
@@ -80,7 +84,8 @@ const Hero = ({ data }: any) => {
         height: window.innerWidth < 1024 ? '33%' : '100%',
         width: window.innerWidth < 1024 ? '100%' : '33.3333%',
         duration: 2,
-        ease: 'power2.inOut',
+        ease: CustomEase.create("custom", "M0,0 C0.65,0.05,0,1,1,1"),
+
       })
     }
 
@@ -166,9 +171,9 @@ const InfoBoxes = ({ data }: any) => {
     appearRefs.current.forEach((ref, index: number) => {
       gsap.from(ref, {
         y: 150,
-        delay: 1,
-        duration: animationSpeed,
-        ease: 'power2.inOut',
+        delay: 1 + index * 0.1,
+        duration: animationSpeed + index * 0.1,
+        ease: CustomEase.create("custom", "M0,0 C0.65,0.05,0,1,1,1"),
       })
     })
   }, [data])
