@@ -16,7 +16,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Map the slugs to create URLs for each page
   const dynamicPages = slugs.map(
     (slug: { locale: any; _type: string; slug: string; _updatedAt: string }) => ({
-      url: `${Appconfig.fullWebsiteUrl}/${resolveHref(slug.locale, slug._type, Array.isArray(slug.slug) ? slug.slug.join('/') : slug.slug)?.replace(/^\//, '')}`,
+      url: `https://www.reddap.dk/${resolveHref(slug.locale, slug._type, Array.isArray(slug.slug) ? slug.slug.join('/') : slug.slug)?.replace(/^\//, '')}`,
       lastModified: slug._updatedAt,
       changeFrequency: 'weekly',
       priority: 0.7,
