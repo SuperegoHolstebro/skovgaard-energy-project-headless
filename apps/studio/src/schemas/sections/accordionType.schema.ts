@@ -65,6 +65,14 @@ export const accordionType = defineType({
         }),
       ],
     },
+    defineField({
+      name: 'turnIntoStructuredData',
+      title: 'Lav om til struktureret data (Google Schema markup)',
+      type: 'boolean',
+      description:
+        'Hvis denne er sat til, vil accordionen blive lavet om til struktureret data, som Google kan forstå.',
+      initialValue: false,
+    }),
     {
       type: 'design',
       name: 'design',

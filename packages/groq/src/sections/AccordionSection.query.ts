@@ -7,6 +7,7 @@ export const AccordionSection_QUERY = groq`
     _key,
     design,
     title,
+    turnIntoStructuredData,
     accordions[]{
       _key,
       title,

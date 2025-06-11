@@ -4,7 +4,22 @@ import Accordion from '../molecules/Accordion'
 import Paragraph from '../atoms/Paragraph'
 import { clean } from '@repo/utils/sanitize'
 import { FadeUp } from '../interactions/AnimateFadeIn'
+import { extractPlainText } from '@repo/utils/StructuredJsonData'
+
 const AccordionSection = ({ data }: any) => {
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: data?.accordions?.map((accordion: any) => ({
+      '@type': 'Question',
+      name: accordion?.title || null,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: extractPlainText(accordion?.body) || null,
+      },
+    })),
+  }
+
   return (
     <Section className='relative'
       data={data}
@@ -36,8 +51,10 @@ const AccordionSection = ({ data }: any) => {
             ))}
           </div>
         </FadeUp>
-
       </div>
+      {data.turnIntoStructuredData == true && (
+        <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
+      )}
     </Section>
   )
 }
