@@ -8,14 +8,20 @@ This Turborepo includes the following packages/apps:
 
 ### Apps and Packages
 
-- `i18n`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
+- `idomlund`: a [Next.js](https://nextjs.org/) app
+- `nordvestjylland`: another [Next.js](https://nextjs.org/) app
+- `ramme`: another [Next.js](https://nextjs.org/) app
+- `reddap`: another [Next.js](https://nextjs.org/) app
+- `studio`: the backend of the apps, a [Sanity](https://www.sanity.io/) studio (headless)
 -
 - `@repo/link-field`: a package for a custom `LinkField` component
 - `@repo/sanity-studio`: a fork of tinloof's sanity-studio
 - `@repo/sanity-web`: a fork of tinloof's sanity-web
 - `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
 - `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+- `@repo/ui`: a package containing shared UI components and utilities
+- `@repo/utils`: a package containing shared utility functions
+- `@repo/groq`: a package for Groq queries and utilities
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
